@@ -75,7 +75,7 @@ def main():
       <h1>Impressum</h1>
 
       <h2>Angaben gemäß § 5 DDG</h2>
-      <p>
+      <p style="line-height:1.4; margin:0 0 12px 0;">
         Unternehmensberatung Andres<br>
         Inhaber: Christian Andres<br>
         Einzelunternehmen<br>
@@ -85,12 +85,12 @@ def main():
       </p>
 
       <h2>Kontakt</h2>
-      <p>
+      <p style="line-height:1.4; margin:0 0 12px 0;">
         E-Mail: info@wipp-aktuell.de
       </p>
 
       <h2>Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV</h2>
-      <p>
+      <p style="line-height:1.4; margin:0 0 12px 0;">
         Christian Andres<br>
         Neusser Str. 478<br>
         50733 Köln<br>
