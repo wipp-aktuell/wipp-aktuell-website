@@ -190,3 +190,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   .wrap { padding-inline: 18px; }
   .topline .wrap { justify-content: center; min-height: 34px; padding-block: 7px; text-align: center; font-size: 11px; }
   .topline .wrap > a { display: none; }
+
+/* Einheitliche Typografie im Instagram-Stil */
+.hero h1,
+.section-heading h2,
+.story h3,
+.article h1,
+.article-content h2,
+.sidebox h3,
+.company-card-content h2,
+.brand {
+  font-family: "Montserrat", Arial, sans-serif !important;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
