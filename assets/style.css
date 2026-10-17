@@ -226,3 +226,22 @@
     white-space: nowrap !important;
   }
 }
+
+/* Smartphone: obere Informationsleiste */
+@media (max-width: 620px) {
+  .topbar .wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 34px;
+  }
+
+  .topbar a {
+    display: none !important;
+  }
+
+  .topbar {
+    font-size: 0.72rem !important;
+  }
+}
