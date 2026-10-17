@@ -2,6 +2,7 @@
 """Build an independent static German local-news site; stdlib only."""
 import json, re, html, shutil, pathlib, datetime, unicodedata
 from urllib.parse import quote, urlsplit
+from zoneinfo import ZoneInfo
 ROOT=pathlib.Path(__file__).resolve().parent
 DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
@@ -232,7 +233,7 @@ def main():
 
 
     print(f'Werbeanzeigen eingelesen: {len(ads)}')
-    today = datetime.date.today().isoformat()
+    today = datetime.datetime.now(ZoneInfo('Europe/Berlin')).date().isoformat()
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)
