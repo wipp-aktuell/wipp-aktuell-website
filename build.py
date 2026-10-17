@@ -160,10 +160,10 @@ def select_ads(ads, placement, today, category=None):
     )
 
 
-def listing(title,description,arr,home=False):
+def listing(title,description,arr,home=False,premium_ad=''):
     hero=f'<div class="hero"><div class="wrap"><div class="eyebrow">Nachrichten für Wipperfürth</div><h1>Was unsere Stadt bewegt.</h1><p>Aktuelle Nachrichten, Hintergründe und Geschichten aus Wipperfürth – übersichtlich an einem Ort.</p></div></div>' if home else f'<div class="hero"><div class="wrap"><div class="eyebrow">Wipperfürth aktuell</div><h1>{esc(title)}</h1><p>{esc(description)}</p></div></div>'
     text=f'<div class="cards">{"".join(card(a) for a in arr)}</div>' if arr else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
-    return hero+f'''<main class="wrap layout"><section><div class="section-heading"><h2>{'Neueste Beiträge' if home else esc(title)}</h2><small>{len(arr)} Beiträge</small></div><label for="search" class="sr-only">Artikel durchsuchen</label><div class="searchbar"><input id="search" type="search" placeholder="Artikel durchsuchen …" aria-label="Artikel durchsuchen"><button type="button" onclick="document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input'))">Zurücksetzen</button></div>{text}<p class="empty" id="no-results" hidden>Keine passenden Artikel gefunden.</p></section>{sidebar()}</main>'''
+    return hero+premium_ad+f'''<main class="wrap layout"><section><div class="section-heading"><h2>{'Neueste Beiträge' if home else esc(title)}</h2><small>{len(arr)} Beiträge</small></div><label for="search" class="sr-only">Artikel durchsuchen</label><div class="searchbar"><input id="search" type="search" placeholder="Artikel durchsuchen …" aria-label="Artikel durchsuchen"><button type="button" onclick="document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input'))">Zurücksetzen</button></div>{text}<p class="empty" id="no-results" hidden>Keine passenden Artikel gefunden.</p></section>{sidebar()}</main>'''
 def main():
     if DIST.exists():shutil.rmtree(DIST)
     shutil.copytree(ROOT/'assets',DIST/'assets')
@@ -188,7 +188,11 @@ def main():
             ads.append(data)
 
     print(f'Werbeanzeigen eingelesen: {len(ads)}')
-    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True),canonical='/'))
+    today = datetime.date.today().isoformat()
+    premium_ads = select_ads(ads, 'Premium-Startseite', today)
+    premium_html = render_ad(premium_ads[0]) if premium_ads else ''
+    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True,premium_ad=premium_html)
+,canonical='/'))
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
         write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected),active=cat,canonical='/rubrik/'+slug(cat)+'/'))
