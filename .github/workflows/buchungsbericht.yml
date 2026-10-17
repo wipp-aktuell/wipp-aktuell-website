@@ -1,8 +1,19 @@
 
 name: Buchungsuebersicht erstellen
 
+
 on:
   workflow_dispatch:
+    inputs:
+      startdatum:
+        description: 'Beginn der Werbebuchung (JJJJ-MM-TT)'
+        required: true
+        type: string
+      enddatum:
+        description: 'Ende der Werbebuchung (JJJJ-MM-TT)'
+        required: true
+        type: string
+
 
 permissions:
   contents: read
@@ -20,8 +31,13 @@ jobs:
         with:
           python-version: '3.12'
 
+
       - name: Buchungsbericht erstellen
+        env:
+          BOOKING_START: ${{ inputs.startdatum }}
+          BOOKING_END: ${{ inputs.enddatum }}
         run: python3 booking_report.py
+
 
       - name: CSV-Bericht bereitstellen
         uses: actions/upload-artifact@v4
