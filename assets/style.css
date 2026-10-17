@@ -263,6 +263,30 @@
     display: none !important;
   }
 
+/* Mobile Artikelansicht: Lesbarkeit verbessern */
+@media (max-width: 620px) {
+
+  .article {
+    color: #24384B;
+  }
+
+  .article p {
+    color: #24384B;
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .article h1 {
+    line-height: 1.15;
+    overflow-wrap: break-word;
+  }
+
+  .article img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
   .topline {
     font-size: 0.75rem !important;
   }
