@@ -62,6 +62,43 @@ def card(a):
 def sidebar():
     tags=''.join(f'<a class="tag" href="/rubrik/{slug(c)}/">{esc(c)}</a>' for c in CATEGORIES)
     return f'''<aside class="sidebar"><section class="sidebox"><h3>Auf Instagram</h3><p>Weitere Meldungen, Eindrücke und Beiträge findest du auf unserem offiziellen Instagram-Profil.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">@wipp_aktuell öffnen ↗</a></section><section class="sidebox"><h3>Unsere Rubriken</h3><div class="taglist">{tags}</div></section><section class="sidebox"><h3>Hinweis senden</h3><p>Du hast eine lokale Nachricht oder einen Veranstaltungshinweis? Schreib uns gern über Instagram.</p><a class="button" href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Kontakt über Instagram ↗</a></section></aside>'''
+
+def ad_is_active(ad, today):
+    if not ad.get('active', False):
+        return False
+
+    start = str(ad.get('start_date') or '')[:10]
+    end = str(ad.get('end_date') or '')[:10]
+
+    if not start or not end:
+        return False
+
+    return start <= today <= end
+
+
+def select_ads(ads, placement, today, category=None):
+    selected = []
+
+    for ad in ads:
+        if not ad_is_active(ad, today):
+            continue
+
+        if ad.get('placement') != placement:
+            continue
+
+        if placement == 'Rubrikensponsor':
+            if ad.get('category') != category:
+                continue
+
+        selected.append(ad)
+
+    return sorted(
+        selected,
+        key=lambda ad: ad.get('priority') or 1,
+        reverse=True
+    )
+
+
 def listing(title,description,arr,home=False):
     hero=f'<div class="hero"><div class="wrap"><div class="eyebrow">Nachrichten für Wipperfürth</div><h1>Was unsere Stadt bewegt.</h1><p>Aktuelle Nachrichten, Hintergründe und Geschichten aus Wipperfürth – übersichtlich an einem Ort.</p></div></div>' if home else f'<div class="hero"><div class="wrap"><div class="eyebrow">Wipperfürth aktuell</div><h1>{esc(title)}</h1><p>{esc(description)}</p></div></div>'
     text=f'<div class="cards">{"".join(card(a) for a in arr)}</div>' if arr else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
