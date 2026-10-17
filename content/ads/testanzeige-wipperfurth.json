@@ -1,10 +1,11 @@
 {
   "title": "Testanzeige Wipperfürth",
   "company": "TESTANZEIGE – Wipperfürth aktuell",
-  "placement": "Standard-Startseite",
-  "description": "Technischer Funktionstest der Standard-Werbung. Keine kommerzielle Anzeige.",
+  "placement": "Rubrikensponsor",
+  "category": "Verkehr",
+  "description": "Technischer Test des Rubrikensponsorings. Keine kommerzielle Anzeige.",
   "start_date": "2026-10-17",
   "end_date": "2026-10-31",
-  "active": false,
+  "active": true,
   "priority": 1
 }
