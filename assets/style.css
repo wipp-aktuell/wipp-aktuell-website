@@ -132,6 +132,17 @@
     gap: 8px !important;
   }
 
+/* Slogan unter dem Schriftzug ausrichten */
+.masthead .brand-sub {
+  margin-left: 78px;
+}
+
+@media (max-width: 620px) {
+  .masthead .brand-sub {
+    margin-left: 54px;
+  }
+}
+
   .masthead .brand-with-logo .brand {
     font-size: 1.25rem !important;
   }
