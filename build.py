@@ -5,6 +5,7 @@ from urllib.parse import quote
 ROOT=pathlib.Path(__file__).resolve().parent
 DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
+ADS = ROOT / 'content' / 'ads'
 CATEGORIES=['Aktuelles','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
 def esc(s): return html.escape(str(s or ''),quote=True)
 def slug(s):
@@ -79,6 +80,16 @@ def main():
         if data['slug'] in used:raise ValueError('Duplicate article slug: '+data['slug'])
         used.add(data['slug']);articles.append(data)
     articles.sort(key=lambda a:(str(a.get('date','')),a['slug']),reverse=True)
+    ads = []
+
+    if ADS.exists():
+        for file in ADS.glob('*.json'):
+            data = json.loads(
+                file.read_text(encoding='utf-8')
+            )
+            ads.append(data)
+
+    print(f'Werbeanzeigen eingelesen: {len(ads)}')
     write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True),canonical='/'))
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
