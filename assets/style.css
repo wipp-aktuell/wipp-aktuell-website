@@ -245,3 +245,25 @@
     font-size: 0.72rem !important;
   }
 }
+
+/* Mobile obere Informationsleiste korrigieren */
+@media (max-width: 620px) {
+
+  .topline .wrap {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-height: 34px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .topline .wrap > a {
+    display: none !important;
+  }
+
+  .topline {
+    font-size: 0.75rem !important;
+  }
+}
