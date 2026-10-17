@@ -9,6 +9,42 @@ ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
 COMPANIES = ROOT / 'content' / 'companies'
 CATEGORIES=['Aktuelles','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
+
+def news_article_jsonld(article):
+    url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
+
+    data = {
+        '@context': 'https://schema.org',
+        '@type': 'NewsArticle',
+        'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': url
+        },
+        'headline': article.get('title', ''),
+        'description': article.get('summary', ''),
+        'datePublished': article.get('date', ''),
+        'author': {
+            '@type': 'Organization',
+            'name': 'Wipperfürth aktuell'
+        },
+        'publisher': {
+            '@type': 'Organization',
+            'name': 'Wipperfürth aktuell',
+            'url': 'https://wipp-aktuell.de/'
+        }
+    }
+
+    image = article.get('cover', '')
+    if image:
+        if image.startswith('/'):
+            image = 'https://wipp-aktuell.de' + image
+        data['image'] = image
+
+    payload = json.dumps(data, ensure_ascii=False)
+    payload = payload.replace('<', '\\u003c')
+
+    return '<script type="application/ld+json">' + payload + '</script>'
+
 def esc(s): return html.escape(str(s or ''),quote=True)
 def safe_ad_url(value):
     value = str(value or '').strip()
@@ -338,6 +374,8 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
         article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
 {cover(a, show_credit=True)}
 <div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
+        
+article = article + news_article_jsonld(a)
         write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True))
     
     for company in companies:
