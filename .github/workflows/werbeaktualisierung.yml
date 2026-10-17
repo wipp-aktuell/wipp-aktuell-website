@@ -1,0 +1,34 @@
+
+name: Taegliche Werbeaktualisierung
+
+on:
+  schedule:
+    - cron: '10 0 * * *'
+      timezone: 'Europe/Berlin'
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  website-aktualisieren:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cloudflare Build starten
+        env:
+          DEPLOY_HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "Cloudflare Deploy Hook fehlt."
+            exit 1
+          fi
+
+          curl --fail --silent --show-error \
+            --retry 3 \
+            --max-time 30 \
+            --request POST \
+            --url "$DEPLOY_HOOK"
+
+          echo "Cloudflare Build angefordert."
