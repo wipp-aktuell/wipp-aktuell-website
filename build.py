@@ -243,7 +243,7 @@ def main():
     today = datetime.datetime.now(ZoneInfo('Europe/Berlin')).date().isoformat()
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
-    standard_ads = select_ads(ads, 'Standard-Startseite', today)
+    standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
     write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
     for cat in CATEGORIES:
