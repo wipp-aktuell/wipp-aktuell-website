@@ -69,7 +69,45 @@ def main():
         article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>{cover(a)}<div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True))
     write(pathlib.Path('redaktion')/'index.html',base('Redaktion','Geschützter Redaktionszugang', '''<main class="legal"><h1>Redaktionsbereich</h1><p>Beiträge werden über Pages CMS geschrieben, bearbeitet und veröffentlicht. Der Login erfolgt sicher mit deinem GitHub-Konto.</p><p><a class="button" href="https://app.pagescms.org/" rel="noopener noreferrer" target="_blank">Zum Redaktionsbereich ↗</a></p><p><strong>Hinweis:</strong> Der Redaktionsbereich liegt bei Pages CMS und nicht auf dieser Website. Nur berechtigte GitHub-Konten können Inhalte bearbeiten.</p></main>''',canonical='/redaktion/'))
-    write(pathlib.Path('impressum')/'index.html',base('Impressum','Angaben gemäß geltendem Recht', '''<main class="legal"><h1>Impressum</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Vollständiger Name, ladungsfähige Anschrift und Kontaktangaben der verantwortlichen Person bzw. des Diensteanbieters. Bei journalistisch-redaktionellen Angeboten zudem die verantwortliche Person gemäß § 18 Abs. 2 MStV benennen.</div><p>Dies ist eine technische Vorlage und kein vollständiges Impressum.</p></main>''',canonical='/impressum/'))
+    
+    impressum_html = '''
+    <main class="legal">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        Unternehmensberatung Andres<br>
+        Inhaber: Christian Andres<br>
+        Einzelunternehmen<br>
+        Neusser Str. 478<br>
+        50733 Köln<br>
+        Deutschland
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: info@wipp-aktuell.de
+      </p>
+
+      <h2>Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV</h2>
+      <p>
+        Christian Andres<br>
+        Neusser Str. 478<br>
+        50733 Köln<br>
+        Deutschland
+      </p>
+    </main>
+    '''
+    write(
+        pathlib.Path('impressum') / 'index.html',
+        base(
+            'Impressum',
+            'Impressum von Wipperfürth aktuell',
+            impressum_html,
+            canonical='/impressum/'
+        )
+    )
+/'index.html',base('Impressum','Angaben gemäß geltendem Recht', '''<main class="legal"><h1>Impressum</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Vollständiger Name, ladungsfähige Anschrift und Kontaktangaben der verantwortlichen Person bzw. des Diensteanbieters. Bei journalistisch-redaktionellen Angeboten zudem die verantwortliche Person gemäß § 18 Abs. 2 MStV benennen.</div><p>Dies ist eine technische Vorlage und kein vollständiges Impressum.</p></main>''',canonical='/impressum/'))
     write(pathlib.Path('datenschutz')/'index.html',base('Datenschutz','Hinweise zur Datenverarbeitung', '''<main class="legal"><h1>Datenschutzerklärung</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Individuelle Datenschutzerklärung einschließlich Betreiberkontaktdaten, Hosting durch Cloudflare, gegebenenfalls Cloudflare-Logs, Speicherdauer, Betroffenenrechten, Drittlandtransfers und allen tatsächlich verwendeten Diensten. Rechtlich prüfen lassen.</div><p>In dieser technischen Vorschau werden keine Analyse- oder Werbetracker eingebunden. Instagram wird nur extern verlinkt; es werden keine eingebetteten Instagram-Tracker auf der Seite geladen.</p></main>''',canonical='/datenschutz/'))
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
     links=['/','/redaktion/','/impressum/','/datenschutz/']+[f'/rubrik/{slug(c)}/' for c in CATEGORIES]+[f'/artikel/{a["slug"]}/' for a in articles]
