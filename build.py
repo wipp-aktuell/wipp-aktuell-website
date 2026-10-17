@@ -613,7 +613,7 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
 
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
     links=['/','/impressum/','/datenschutz/','/unternehmen/','/werbung/']
-+[f'/rubrik/{slug(c)}/' for c in CATEGORIES]+[f'/artikel/{a["slug"]}/' for a in articles]
+    +[f'/rubrik/{slug(c)}/' for c in CATEGORIES]+[f'/artikel/{a["slug"]}/' for a in articles]
     write(pathlib.Path('sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://wipp-aktuell.de{esc(p)}</loc></url>' for p in links)+'</urlset>')
     print(f'Built {len(articles)} posts, {len(links)} URLs in {DIST}')
 if __name__=='__main__':main()
