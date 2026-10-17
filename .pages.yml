@@ -135,3 +135,65 @@ content:
         label: Priorität
         type: number
         default: 1
+
+  - name: unternehmen
+    label: Unternehmensvorstellungen
+    type: collection
+    path: content/companies
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, company, category, published]
+      primary: title
+    fields:
+      - name: title
+        label: Überschrift
+        type: string
+        required: true
+
+      - name: company
+        label: Firmenname
+        type: string
+        required: true
+
+      - name: category
+        label: Branche
+        type: select
+        options:
+          values:
+            - Gastronomie
+            - Einzelhandel
+            - Handwerk
+            - Dienstleistungen
+            - Gesundheit
+            - Immobilien
+            - Sonstiges
+
+      - name: summary
+        label: Kurzbeschreibung
+        type: text
+
+      - name: cover
+        label: Titelbild
+        type: image
+
+      - name: image_alt
+        label: Bildbeschreibung
+        type: string
+
+      - name: image_credit
+        label: Bildnachweis
+        type: string
+
+      - name: body
+        label: Unternehmensvorstellung
+        type: rich-text
+
+      - name: website
+        label: Unternehmenswebsite
+        type: string
+
+      - name: published
+        label: Veröffentlichen
+        type: boolean
+        default: false
