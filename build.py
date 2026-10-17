@@ -6,6 +6,7 @@ ROOT=pathlib.Path(__file__).resolve().parent
 DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
+COMPANIES = ROOT / 'content' / 'companies'
 CATEGORIES=['Aktuelles','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
 def esc(s): return html.escape(str(s or ''),quote=True)
 def safe_ad_url(value):
@@ -202,6 +203,30 @@ def main():
                 file.read_text(encoding='utf-8')
             )
             ads.append(data)
+
+    companies = []
+
+    if COMPANIES.exists():
+        for file in COMPANIES.glob('*.json'):
+            data = json.loads(
+                file.read_text(encoding='utf-8')
+            )
+
+            if not data.get('published', False):
+                continue
+
+            if not data.get('title'):
+                continue
+
+            data['slug'] = slug(file.stem)
+            companies.append(data)
+
+    companies.sort(
+        key=lambda company: company.get('title', '').lower()
+    )
+
+    print(f'Unternehmensvorstellungen eingelesen: {len(companies)}')
+
 
     print(f'Werbeanzeigen eingelesen: {len(ads)}')
     today = datetime.date.today().isoformat()
