@@ -1,0 +1,54 @@
+media:
+  input: public/uploads
+  output: /uploads
+  rename: true
+content:
+  - name: artikel
+    label: Nachrichtenartikel
+    type: collection
+    path: content/articles
+    format: json
+    filename: "{year}-{month}-{day}-{title}.json"
+    view:
+      fields: [title, category, date, published]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Überschrift
+        type: string
+        required: true
+      - name: category
+        label: Rubrik
+        type: select
+        required: true
+        options:
+          values: [Aktuelles, Blaulicht, Verkehr, Politik, Wirtschaft, Veranstaltungen, Sport, Stadtgeschichte]
+      - name: date
+        label: Datum
+        type: date
+        required: true
+      - name: summary
+        label: Kurzbeschreibung
+        type: text
+        required: true
+      - name: cover
+        label: Titelbild (optional)
+        type: image
+      - name: image_alt
+        label: Bildbeschreibung
+        type: string
+      - name: body
+        label: Artikeltext
+        type: rich-text
+        options:
+          format: markdown
+      - name: published
+        label: Veröffentlichen
+        type: boolean
+      - name: source
+        label: Quellenhinweis (optional)
+        type: string
