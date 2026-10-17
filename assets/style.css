@@ -160,3 +160,42 @@
     margin-left: 54px !important;
   }
 }
+
+/* Smartphone: Kopfbereich optimieren */
+@media (max-width: 620px) {
+
+  .masthead-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+  }
+
+  .masthead .brand-with-logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .masthead .site-logo {
+    width: 52px !important;
+    height: 52px !important;
+    max-width: 52px !important;
+  }
+
+  .masthead .brand-with-logo .brand {
+    font-size: 1.5rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .masthead .brand-sub,
+  .masthead .tagline {
+    margin-left: 62px !important;
+  }
+
+  .masthead .header-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+}
