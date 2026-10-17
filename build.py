@@ -107,7 +107,7 @@ def main():
             canonical='/impressum/'
         )
     )
-/'index.html',base('Impressum','Angaben gemäß geltendem Recht', '''<main class="legal"><h1>Impressum</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Vollständiger Name, ladungsfähige Anschrift und Kontaktangaben der verantwortlichen Person bzw. des Diensteanbieters. Bei journalistisch-redaktionellen Angeboten zudem die verantwortliche Person gemäß § 18 Abs. 2 MStV benennen.</div><p>Dies ist eine technische Vorlage und kein vollständiges Impressum.</p></main>''',canonical='/impressum/'))
+
     write(pathlib.Path('datenschutz')/'index.html',base('Datenschutz','Hinweise zur Datenverarbeitung', '''<main class="legal"><h1>Datenschutzerklärung</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Individuelle Datenschutzerklärung einschließlich Betreiberkontaktdaten, Hosting durch Cloudflare, gegebenenfalls Cloudflare-Logs, Speicherdauer, Betroffenenrechten, Drittlandtransfers und allen tatsächlich verwendeten Diensten. Rechtlich prüfen lassen.</div><p>In dieser technischen Vorschau werden keine Analyse- oder Werbetracker eingebunden. Instagram wird nur extern verlinkt; es werden keine eingebetteten Instagram-Tracker auf der Seite geladen.</p></main>''',canonical='/datenschutz/'))
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
     links=['/','/redaktion/','/impressum/','/datenschutz/']+[f'/rubrik/{slug(c)}/' for c in CATEGORIES]+[f'/artikel/{a["slug"]}/' for a in articles]
