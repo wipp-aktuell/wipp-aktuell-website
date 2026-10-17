@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wipp-aktuell.de/sitemap.xml
