@@ -1,11 +1,11 @@
 {
-  "title": "Testanzeige Wipperfürth",
-  "company": "TESTANZEIGE – Wipperfürth aktuell",
-  "placement": "Rubrikensponsor",
+  "title": "Testbuchung Premium A",
+  "company": "TESTBUCHUNG A",
+  "placement": "Premium-Startseite",
   "category": "Verkehr",
   "description": "Technischer Test des Rubrikensponsorings. Keine kommerzielle Anzeige.",
-  "start_date": "2026-10-17",
-  "end_date": "2026-10-31",
-  "active": false,
+  "start_date": "2026-11-01",
+  "end_date": "2026-11-30",
+  "active": true,
   "priority": 1
 }
