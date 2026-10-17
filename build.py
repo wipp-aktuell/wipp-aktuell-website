@@ -81,6 +81,22 @@ def cover(a, show_credit=False):
 
 def card(a):
     return f'''<a class="story" data-search="{esc((a['title']+' '+a.get('summary','')+' '+a['category']).lower())}" href="/artikel/{a['slug']}/">{cover(a)}<div class="story-body"><span class="pill">{esc(a['category'])}</span><h3>{esc(a['title'])}</h3><p>{esc(a.get('summary',''))}</p><div class="meta">{prettydate(a.get('date',''))} · weiterlesen →</div></div></a>'''
+
+def render_news_with_ads(articles, ads=None):
+    ads = ads or []
+    parts = []
+    ad_index = 0
+
+    for index, article in enumerate(articles):
+        parts.append(card(article))
+
+        if (index + 1) % 4 == 0 and ad_index < len(ads):
+            parts.append(render_ad(ads[ad_index]))
+            ad_index += 1
+
+    return ''.join(parts)
+
+
 def sidebar():
     tags=''.join(f'<a class="tag" href="/rubrik/{slug(c)}/">{esc(c)}</a>' for c in CATEGORIES)
     return f'''<aside class="sidebar"><section class="sidebox"><h3>Auf Instagram</h3><p>Weitere Meldungen, Eindrücke und Beiträge findest du auf unserem offiziellen Instagram-Profil.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">@wipp_aktuell öffnen ↗</a></section><section class="sidebox"><h3>Unsere Rubriken</h3><div class="taglist">{tags}</div></section><section class="sidebox"><h3>Hinweis senden</h3><p>Du hast eine lokale Nachricht oder einen Veranstaltungshinweis? Schreib uns gern über Instagram.</p><a class="button" href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Kontakt über Instagram ↗</a></section></aside>'''
@@ -160,9 +176,9 @@ def select_ads(ads, placement, today, category=None):
     )
 
 
-def listing(title,description,arr,home=False,premium_ad=''):
+def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
     hero=f'<div class="hero"><div class="wrap"><div class="eyebrow">Nachrichten für Wipperfürth</div><h1>Was unsere Stadt bewegt.</h1><p>Aktuelle Nachrichten, Hintergründe und Geschichten aus Wipperfürth – übersichtlich an einem Ort.</p></div></div>' if home else f'<div class="hero"><div class="wrap"><div class="eyebrow">Wipperfürth aktuell</div><h1>{esc(title)}</h1><p>{esc(description)}</p></div></div>'
-    text=f'<div class="cards">{"".join(card(a) for a in arr)}</div>' if arr else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
+    text=f'<div class="cards">{render_news_with_ads(arr, standard_ads)}</div>' if arr else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
     return hero+premium_ad+f'''<main class="wrap layout"><section><div class="section-heading"><h2>{'Neueste Beiträge' if home else esc(title)}</h2><small>{len(arr)} Beiträge</small></div><label for="search" class="sr-only">Artikel durchsuchen</label><div class="searchbar"><input id="search" type="search" placeholder="Artikel durchsuchen …" aria-label="Artikel durchsuchen"><button type="button" onclick="document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input'))">Zurücksetzen</button></div>{text}<p class="empty" id="no-results" hidden>Keine passenden Artikel gefunden.</p></section>{sidebar()}</main>'''
 def main():
     if DIST.exists():shutil.rmtree(DIST)
@@ -191,7 +207,8 @@ def main():
     today = datetime.date.today().isoformat()
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
-    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True,premium_ad=premium_html)
+    standard_ads = select_ads(ads, 'Standard-Startseite', today)
+    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
