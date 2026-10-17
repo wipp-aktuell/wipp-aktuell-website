@@ -136,6 +136,24 @@ content:
         type: number
         default: 1
 
+      - name: booking_number
+        label: Auftragsnummer
+        type: string
+
+      - name: booking_status
+        label: Buchungsstatus
+        type: select
+        options:
+          values:
+            - Angefragt
+            - Reserviert
+            - Bestätigt
+            - Storniert
+
+      - name: booking_note
+        label: Interne Buchungsnotiz
+        type: text
+
   - name: unternehmen
     label: Unternehmensvorstellungen
     type: collection
