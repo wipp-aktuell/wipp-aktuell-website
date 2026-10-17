@@ -173,9 +173,13 @@ def check_ad_bookings(ads):
 
     bookings = {}
 
+    
     for ad in ads:
-        if ad.get('active') is not True:
+        status = ad.get('booking_status', '')
+
+        if status not in ('Reserviert', 'Bestätigt'):
             continue
+
 
         placement = ad.get('placement', '')
         category = ad.get('category', '')
@@ -198,9 +202,14 @@ def check_ad_bookings(ads):
             end = datetime.date.fromisoformat(
                 str(ad.get('end_date', ''))[:10]
             )
-        except ValueError:
-            print('WARNUNG: Ungueltiges Buchungsdatum:', ad.get('title'))
+        
+        except (ValueError, TypeError):
+            print(
+                'WARNUNG: Ungueltiges Buchungsdatum:',
+                ad.get('title')
+            )
             continue
+
 
         if end < start:
             print('WARNUNG: Enddatum vor Startdatum:', ad.get('title'))
