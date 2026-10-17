@@ -1,0 +1,31 @@
+
+name: Buchungsuebersicht erstellen
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  buchungsbericht:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Buchungsbericht erstellen
+        run: python3 booking_report.py
+
+      - name: CSV-Bericht bereitstellen
+        uses: actions/upload-artifact@v4
+        with:
+          name: wipp-aktuell-buchungsuebersicht
+          path: buchungsuebersicht.csv
+          retention-days: 7
