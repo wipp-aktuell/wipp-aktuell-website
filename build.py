@@ -320,6 +320,69 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
 
     write(pathlib.Path('redaktion')/'index.html',base('Redaktion','Geschützter Redaktionszugang', '''<main class="legal"><h1>Redaktionsbereich</h1><p>Beiträge werden über Pages CMS geschrieben, bearbeitet und veröffentlicht. Der Login erfolgt sicher mit deinem GitHub-Konto.</p><p><a class="button" href="https://app.pagescms.org/" rel="noopener noreferrer" target="_blank">Zum Redaktionsbereich ↗</a></p><p><strong>Hinweis:</strong> Der Redaktionsbereich liegt bei Pages CMS und nicht auf dieser Website. Nur berechtigte GitHub-Konten können Inhalte bearbeiten.</p></main>''',canonical='/redaktion/'))
     
+    company_cards = []
+
+    for company in companies:
+        title = esc(company.get('title', ''))
+        name = esc(company.get('company', ''))
+        category = esc(company.get('category', ''))
+        summary = esc(company.get('summary', ''))
+        url = '/unternehmen/' + company['slug'] + '/'
+
+        image_html = ''
+        image = company.get('cover') or ''
+
+        if (
+            isinstance(image, str)
+            and image.startswith('/uploads/')
+            and '..' not in image
+        ):
+            image_html = (
+                '<img loading="lazy" src="' + esc(image)
+                + '" alt="' + esc(company.get('image_alt') or title)
+                + '">'
+            )
+
+        company_cards.append(
+            '<a class="company-card" href="' + esc(url) + '">'
+            '<div class="company-card-label">Anzeige</div>'
+            + image_html
+            + '<div class="company-card-content">'
+            + '<small>' + category + '</small>'
+            + '<h2>' + title + '</h2>'
+            + '<strong>' + name + '</strong>'
+            + '<p>' + summary + '</p>'
+            + '</div></a>'
+        )
+
+    company_overview = (
+        '<main class="wrap">'
+        '<section class="company-overview">'
+        '<h1>Unternehmen aus Wipperfürth</h1>'
+        '<p class="article-lead">'
+        'Bezahlte Unternehmensvorstellungen aus Wipperfürth '
+        'und Umgebung. Alle Einträge sind Werbung.'
+        '</p>'
+        '<div class="company-grid">'
+        + (
+            ''.join(company_cards)
+            if company_cards
+            else '<p>Derzeit sind keine Unternehmensvorstellungen veröffentlicht.</p>'
+        )
+        + '</div></section></main>'
+    )
+
+    write(
+        pathlib.Path('unternehmen') / 'index.html',
+        base(
+            'Unternehmen aus Wipperfürth',
+            'Bezahlte Unternehmensvorstellungen aus Wipperfürth.',
+            company_overview,
+            canonical='/unternehmen/'
+        )
+    )
+
+
     impressum_html = '''
     <main class="legal">
       <h1>Impressum</h1>
