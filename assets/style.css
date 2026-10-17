@@ -96,3 +96,43 @@
     gap: 9px;
   }
 }
+
+/* Wipperfürth aktuell: Logo-Header korrigieren */
+
+.masthead .brand-with-logo {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.masthead .site-logo {
+  display: block !important;
+  width: 64px !important;
+  height: 64px !important;
+  max-width: 64px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+.masthead .brand-with-logo .brand {
+  font-size: clamp(1.3rem, 3vw, 2.1rem) !important;
+  line-height: 1.05 !important;
+}
+
+@media (max-width: 620px) {
+  .masthead .site-logo {
+    width: 46px !important;
+    height: 46px !important;
+    max-width: 46px !important;
+  }
+
+  .masthead .brand-with-logo {
+    gap: 8px !important;
+  }
+
+  .masthead .brand-with-logo .brand {
+    font-size: 1.25rem !important;
+  }
+}
