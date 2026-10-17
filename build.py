@@ -108,7 +108,18 @@ def main():
         )
     )
 
-    write(pathlib.Path('datenschutz')/'index.html',base('Datenschutz','Hinweise zur Datenverarbeitung', '''<main class="legal"><h1>Datenschutzerklärung</h1><div class="notice"><strong>Vor Veröffentlichung ergänzen:</strong> Individuelle Datenschutzerklärung einschließlich Betreiberkontaktdaten, Hosting durch Cloudflare, gegebenenfalls Cloudflare-Logs, Speicherdauer, Betroffenenrechten, Drittlandtransfers und allen tatsächlich verwendeten Diensten. Rechtlich prüfen lassen.</div><p>In dieser technischen Vorschau werden keine Analyse- oder Werbetracker eingebunden. Instagram wird nur extern verlinkt; es werden keine eingebetteten Instagram-Tracker auf der Seite geladen.</p></main>''',canonical='/datenschutz/'))
+    
+    datenschutz_html = (ROOT / 'datenschutz.html').read_text(encoding='utf-8')
+    write(
+        pathlib.Path('datenschutz') / 'index.html',
+        base(
+            'Datenschutz',
+            'Datenschutzerklärung von Wipperfürth aktuell',
+            datenschutz_html,
+            canonical='/datenschutz/'
+        )
+    )
+
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
     links=['/','/redaktion/','/impressum/','/datenschutz/']+[f'/rubrik/{slug(c)}/' for c in CATEGORIES]+[f'/artikel/{a["slug"]}/' for a in articles]
     write(pathlib.Path('sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://wipp-aktuell.de{esc(p)}</loc></url>' for p in links)+'</urlset>')
