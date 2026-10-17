@@ -199,3 +199,30 @@
     gap: 16px !important;
   }
 }
+
+/* Smartphone: Redaktion und Instagram ordentlich anordnen */
+@media (max-width: 620px) {
+
+  .masthead .masthead-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .masthead .social {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 18px !important;
+    width: 100% !important;
+  }
+
+  .masthead .social a {
+    display: inline-block !important;
+    font-size: 0.82rem !important;
+    white-space: nowrap !important;
+  }
+}
