@@ -247,6 +247,77 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
 {cover(a, show_credit=True)}
 <div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True))
+    
+    for company in companies:
+        company_title = esc(company.get('title', ''))
+        company_name = esc(company.get('company', ''))
+        company_category = esc(company.get('category', ''))
+        company_summary = esc(company.get('summary', ''))
+        company_body = md(company.get('body', ''))
+
+        company_image = company.get('cover') or ''
+        company_image_html = ''
+
+        if (
+            isinstance(company_image, str)
+            and company_image.startswith('/uploads/')
+            and '..' not in company_image
+        ):
+            image_alt = esc(
+                company.get('image_alt') or company.get('title', '')
+            )
+            image_credit = esc(company.get('image_credit') or '')
+
+            company_image_html = (
+                '<figure class="article-figure">'
+                '<div class="cover"><img loading="lazy" src="'
+                + esc(company_image)
+                + '" alt="' + image_alt + '"></div>'
+                + (
+                    '<figcaption class="image-credit">Foto: '
+                    + image_credit + '</figcaption>'
+                    if image_credit else ''
+                )
+                + '</figure>'
+            )
+
+        company_url = safe_ad_url(company.get('website'))
+        company_link = ''
+
+        if company_url:
+            company_link = (
+                '<p><a class="button" href="' + esc(company_url)
+                + '" target="_blank" rel="sponsored noopener noreferrer">'
+                'Unternehmenswebsite besuchen</a></p>'
+            )
+
+        company_html = (
+            '<main class="wrap layout">'
+            '<article class="article">'
+            '<div class="pill">Anzeige · Unternehmensvorstellung</div>'
+            '<h1>' + company_title + '</h1>'
+            '<p class="article-lead">' + company_summary + '</p>'
+            + company_image_html
+            + '<div class="article-content">'
+            + '<p><strong>Unternehmen:</strong> ' + company_name + '</p>'
+            + '<p><strong>Branche:</strong> ' + company_category + '</p>'
+            + company_body
+            + company_link
+            + '</div></article>'
+            + sidebar()
+            + '</main>'
+        )
+
+        write(
+            pathlib.Path('unternehmen') / company['slug'] / 'index.html',
+            base(
+                company.get('title', ''),
+                company.get('summary', ''),
+                company_html,
+                canonical='/unternehmen/' + company['slug'] + '/'
+            )
+        )
+
     write(pathlib.Path('redaktion')/'index.html',base('Redaktion','Geschützter Redaktionszugang', '''<main class="legal"><h1>Redaktionsbereich</h1><p>Beiträge werden über Pages CMS geschrieben, bearbeitet und veröffentlicht. Der Login erfolgt sicher mit deinem GitHub-Konto.</p><p><a class="button" href="https://app.pagescms.org/" rel="noopener noreferrer" target="_blank">Zum Redaktionsbereich ↗</a></p><p><strong>Hinweis:</strong> Der Redaktionsbereich liegt bei Pages CMS und nicht auf dieser Website. Nur berechtigte GitHub-Konten können Inhalte bearbeiten.</p></main>''',canonical='/redaktion/'))
     
     impressum_html = '''
