@@ -37,11 +37,25 @@ def base(title,description,content,active='',canonical='',article=False):
 <div class="brand-sub">Lokal. Unabhängig. Informiert.</div></a><div class="social"><a href="/redaktion/">Redaktion</a><a class="red-link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">Instagram ↗</a></div></div></header><nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">Startseite</a>{nav}</div></nav>{content}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js" defer></script></body></html>'''
 def write(path,txt):
     p=DIST/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(txt,encoding='utf-8')
-def cover(a):
-    img=a.get('cover','')
-    if isinstance(img,str) and img.startswith('/uploads/') and not '..' in img:
-        return '<div class="cover"><img loading="lazy" src="'+esc(img)+'" alt="'+esc(a.get('image_alt') or a['title'])+'"></div>'
+
+def cover(a, show_credit=False):
+    img = a.get('cover', '')
+    if isinstance(img, str) and img.startswith('/uploads/') and '..' not in img:
+        alt = esc(a.get('image_alt') or a['title'])
+        credit = a.get('image_credit', '')
+        credit_html = (
+            '<figcaption class="image-credit">Foto: ' + esc(credit) + '</figcaption>'
+            if credit and show_credit else ''
+        )
+        return (
+            '<figure class="article-figure">'
+            '<div class="cover"><img loading="lazy" src="' + esc(img) +
+            '" alt="' + alt + '"></div>'
+            + credit_html +
+            '</figure>'
+        )
     return '<div class="cover">Wipperfürth aktuell</div>'
+
 def card(a):
     return f'''<a class="story" data-search="{esc((a['title']+' '+a.get('summary','')+' '+a['category']).lower())}" href="/artikel/{a['slug']}/">{cover(a)}<div class="story-body"><span class="pill">{esc(a['category'])}</span><h3>{esc(a['title'])}</h3><p>{esc(a.get('summary',''))}</p><div class="meta">{prettydate(a.get('date',''))} · weiterlesen →</div></div></a>'''
 def sidebar():
@@ -70,7 +84,9 @@ def main():
         selected=[a for a in articles if a['category']==cat]
         write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected),active=cat,canonical='/rubrik/'+slug(cat)+'/'))
     for a in articles:
-        article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>{cover(a)}<div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
+        article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
+{cover(a, show_credit=True)}
+<div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True))
     write(pathlib.Path('redaktion')/'index.html',base('Redaktion','Geschützter Redaktionszugang', '''<main class="legal"><h1>Redaktionsbereich</h1><p>Beiträge werden über Pages CMS geschrieben, bearbeitet und veröffentlicht. Der Login erfolgt sicher mit deinem GitHub-Konto.</p><p><a class="button" href="https://app.pagescms.org/" rel="noopener noreferrer" target="_blank">Zum Redaktionsbereich ↗</a></p><p><strong>Hinweis:</strong> Der Redaktionsbereich liegt bei Pages CMS und nicht auf dieser Website. Nur berechtigte GitHub-Konten können Inhalte bearbeiten.</p></main>''',canonical='/redaktion/'))
     
