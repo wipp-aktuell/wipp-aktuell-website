@@ -165,6 +165,77 @@ def ad_is_active(ad, today):
     return start <= today <= end
 
 
+def check_ad_bookings(ads):
+    limits = {
+        'Premium-Startseite': 1,
+        'Standard-Startseite': 3,
+    }
+
+    bookings = {}
+
+    for ad in ads:
+        if ad.get('active') is not True:
+            continue
+
+        placement = ad.get('placement', '')
+        category = ad.get('category', '')
+
+        if placement == 'Rubrikensponsor':
+            if not category:
+                continue
+            key = (placement, category)
+            limit = 1
+        elif placement in limits:
+            key = (placement, '')
+            limit = limits[placement]
+        else:
+            continue
+
+        try:
+            start = datetime.date.fromisoformat(
+                str(ad.get('start_date', ''))[:10]
+            )
+            end = datetime.date.fromisoformat(
+                str(ad.get('end_date', ''))[:10]
+            )
+        except ValueError:
+            print('WARNUNG: Ungueltiges Buchungsdatum:', ad.get('title'))
+            continue
+
+        if end < start:
+            print('WARNUNG: Enddatum vor Startdatum:', ad.get('title'))
+            continue
+
+        bookings.setdefault(key, []).append(
+            (start, end, ad.get('title', 'Ohne Namen'), limit)
+        )
+
+    for key, entries in bookings.items():
+        events = []
+
+        for start, end, title, limit in entries:
+            events.append((start, 1, title))
+            events.append((end + datetime.timedelta(days=1), -1, title))
+
+        events.sort(key=lambda event: event[0])
+
+        count = 0
+        warned = False
+
+        for date, change, title in events:
+            count += change
+
+            if count > entries[0][3] and not warned:
+                print(
+                    'WARNUNG: Werbeplatz ueberbucht:',
+                    key,
+                    'ab',
+                    date.isoformat()
+                )
+                warned = True
+
+
+
 def select_ads(ads, placement, today, category=None):
     selected = []
 
@@ -240,6 +311,7 @@ def main():
 
 
     print(f'Werbeanzeigen eingelesen: {len(ads)}')
+    check_ad_bookings(ads)
     today = datetime.datetime.now(ZoneInfo('Europe/Berlin')).date().isoformat()
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
