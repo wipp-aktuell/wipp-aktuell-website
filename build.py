@@ -87,6 +87,7 @@ def cover(a, show_credit=False):
 def card(a):
     return f'''<a class="story" data-search="{esc((a['title']+' '+a.get('summary','')+' '+a['category']).lower())}" href="/artikel/{a['slug']}/">{cover(a)}<div class="story-body"><span class="pill">{esc(a['category'])}</span><h3>{esc(a['title'])}</h3><p>{esc(a.get('summary',''))}</p><div class="meta">{prettydate(a.get('date',''))} · weiterlesen →</div></div></a>'''
 
+
 def render_news_with_ads(articles, ads=None):
     ads = ads or []
     parts = []
@@ -99,7 +100,13 @@ def render_news_with_ads(articles, ads=None):
             parts.append(render_ad(ads[ad_index]))
             ad_index += 1
 
+    # Verbleibende Anzeigen auch bei wenigen Artikeln anzeigen
+    while ad_index < len(ads):
+        parts.append(render_ad(ads[ad_index]))
+        ad_index += 1
+
     return ''.join(parts)
+
 
 
 def sidebar():
