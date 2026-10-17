@@ -385,6 +385,92 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
     )
 
 
+    werbung_html = '''
+    <main class="wrap">
+      <section class="company-overview">
+        <p class="pill">Werben bei Wipperfürth aktuell</p>
+        <h1>Werben, wo Wipperfürth liest.</h1>
+        <p class="article-lead">
+          Präsentieren Sie Ihr Unternehmen auf unserem lokalen
+          Nachrichtenportal. Wir bieten Werbemöglichkeiten für
+          Gastronomie, Einzelhandel, Handwerk, Dienstleister
+          und weitere Unternehmen aus Wipperfürth und Umgebung.
+        </p>
+
+        <div class="company-grid">
+          <div class="company-card">
+            <div class="company-card-content">
+              <h2>Premium-Banner</h2>
+              <p>Prominente Platzierung auf unserer Startseite,
+              oberhalb der neuesten Nachrichten.</p>
+            </div>
+          </div>
+
+          <div class="company-card">
+            <div class="company-card-content">
+              <h2>Standard-Anzeigen</h2>
+              <p>Ihre Werbung zwischen den Nachrichten
+              auf unserer Startseite.</p>
+            </div>
+          </div>
+
+          <div class="company-card">
+            <div class="company-card-content">
+              <h2>Rubrikensponsoring</h2>
+              <p>Werbung in einem passenden Themenbereich,
+              beispielsweise Verkehr, Sport oder Wirtschaft.</p>
+            </div>
+          </div>
+
+          <div class="company-card">
+            <div class="company-card-content">
+              <h2>Unternehmensvorstellungen</h2>
+              <p>Ein eigener, als Anzeige gekennzeichneter Beitrag
+              über Ihr Unternehmen und seine Angebote.</p>
+            </div>
+          </div>
+
+          <div class="company-card">
+            <div class="company-card-content">
+              <h2>Instagram & Website</h2>
+              <p>Fragen Sie nach einem individuellen Kombiangebot
+              mit unserem Instagram-Kanal @wipp_aktuell.</p>
+            </div>
+          </div>
+        </div>
+
+        <section class="sidebar-box" style="margin-top:32px">
+          <h2>Jetzt Werbeanfrage stellen</h2>
+          <p>
+            Sie möchten Ihr Unternehmen bei Wipperfürth aktuell
+            präsentieren? Wir erstellen Ihnen gerne ein
+            individuelles Angebot.
+          </p>
+          <p>
+            <a class="button"
+               href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%20Wipperfuerth%20aktuell">
+              Werbeanfrage per E-Mail senden
+            </a>
+          </p>
+          <p>
+            E-Mail: <strong>info@wipp-aktuell.de</strong>
+          </p>
+        </section>
+      </section>
+    </main>
+    '''
+
+    write(
+        pathlib.Path('werbung') / 'index.html',
+        base(
+            'Werbung schalten',
+            'Werbemöglichkeiten für Unternehmen aus Wipperfürth.',
+            werbung_html,
+            canonical='/werbung/'
+        )
+    )
+
+
     impressum_html = '''
     <main class="legal">
       <h1>Impressum</h1>
