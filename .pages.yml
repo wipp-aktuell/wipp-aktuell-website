@@ -56,3 +56,82 @@ content:
       - name: source
         label: Quellenhinweis (optional)
         type: string
+
+  - name: werbung
+    label: Werbeanzeigen
+    type: collection
+    path: content/ads
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, company, placement, start_date, end_date, active]
+      primary: title
+    fields:
+      - name: title
+        label: Interner Anzeigenname
+        type: string
+        required: true
+
+      - name: company
+        label: Firmenname
+        type: string
+        required: true
+
+      - name: placement
+        label: Werbeplatz
+        type: select
+        required: true
+        options:
+          values:
+            - Premium-Startseite
+            - Standard-Startseite
+            - Rubrikensponsor
+
+      - name: category
+        label: Zugeordnete Rubrik
+        type: select
+        options:
+          values:
+            - Aktuelles
+            - Blaulicht
+            - Verkehr
+            - Politik
+            - Wirtschaft
+            - Veranstaltungen
+            - Sport
+            - Stadtgeschichte
+
+      - name: image
+        label: Werbebanner
+        type: image
+
+      - name: image_alt
+        label: Bildbeschreibung
+        type: string
+
+      - name: description
+        label: Werbetext
+        type: text
+
+      - name: target_url
+        label: Zieladresse (https://...)
+        type: string
+
+      - name: start_date
+        label: Startdatum
+        type: date
+        required: true
+
+      - name: end_date
+        label: Enddatum
+        type: date
+        required: true
+
+      - name: active
+        label: Anzeige aktiviert
+        type: boolean
+
+      - name: priority
+        label: Priorität
+        type: number
+        default: 1
