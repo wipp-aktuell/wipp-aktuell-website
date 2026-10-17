@@ -1,13 +1,35 @@
 #!/usr/bin/env python3
 """Build an independent static German local-news site; stdlib only."""
 import json, re, html, shutil, pathlib, datetime, unicodedata
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 ROOT=pathlib.Path(__file__).resolve().parent
 DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
 CATEGORIES=['Aktuelles','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
 def esc(s): return html.escape(str(s or ''),quote=True)
+def safe_ad_url(value):
+    value = str(value or '').strip()
+
+    if not value:
+        return ''
+
+    try:
+        parsed = urlsplit(value)
+
+        if parsed.scheme not in ('https', 'http'):
+            return ''
+
+        if not parsed.hostname:
+            return ''
+
+        if parsed.username or parsed.password:
+            return ''
+
+        return value
+
+    except ValueError:
+        return ''
 def slug(s):
     s=unicodedata.normalize('NFKD',str(s).lower()).replace('ß','ss')
     s=''.join(c for c in s if not unicodedata.combining(c))
