@@ -334,3 +334,100 @@
     text-align: left;
   }
 }
+
+/* Werbung – Wipperfürth aktuell */
+
+.advertisement {
+  width: min(1120px, calc(100% - 32px));
+  margin: 28px auto;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #dce5ed;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(12, 38, 62, 0.06);
+}
+
+.ad-label {
+  margin-bottom: 10px;
+  color: #526578;
+  font-size: 12px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ad-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ad-link:hover .ad-company {
+  text-decoration: underline;
+}
+
+.ad-link:focus-visible {
+  outline: 3px solid #2472a5;
+  outline-offset: 4px;
+}
+
+.ad-content {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.ad-image {
+  display: block;
+  width: 35%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.ad-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.ad-company {
+  display: block;
+  color: #123752;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.ad-text p {
+  margin: 10px 0 0;
+  color: #44596b;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .advertisement {
+    width: calc(100% - 24px);
+    margin: 18px auto;
+    padding: 12px;
+  }
+
+  .ad-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .ad-image {
+    width: 100%;
+    max-height: 220px;
+  }
+
+  .ad-company {
+    font-size: 19px;
+  }
+
+  .ad-text p {
+    font-size: 14px;
+  }
+}
