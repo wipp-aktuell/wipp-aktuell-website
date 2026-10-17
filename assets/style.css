@@ -10,3 +10,89 @@
     line-height: 1.2 !important;
     margin: 16px 0 6px 0 !important;
 }
+
+/* Wipperfürth aktuell – Logo und Farbdesign */
+
+:root {
+  --ink: #142B40;
+  --navy: #09243D;
+  --accent: #245C86;
+  --muted: #627A8D;
+  --line: #DCE6EF;
+  --bg: #F2F6FA;
+  --card: #FFFFFF;
+}
+
+/* Logo neben dem Schriftzug */
+.brand-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-logo {
+  display: block;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #DCE6EF;
+}
+
+.brand-with-logo .brand {
+  font-size: clamp(1.35rem, 3vw, 2.25rem);
+}
+
+/* Blaue Akzentfarben */
+.brand strong {
+  color: var(--accent);
+}
+
+.red-link {
+  color: var(--accent);
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.eyebrow {
+  color: #9DD3F5;
+}
+
+.button {
+  background: var(--accent);
+}
+
+.button:hover {
+  background: #174466;
+}
+
+.article-content a {
+  color: var(--accent);
+}
+
+/* Darstellung auf Smartphones */
+@media (max-width: 620px) {
+  .brand-with-logo {
+    gap: 9px;
+  }
+
+  .site-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 7px;
+  }
+
+  .brand-with-logo .brand {
+    font-size: clamp(1.1rem, 4.4vw, 1.5rem);
+    letter-spacing: -0.045em;
+  }
+
+  .masthead-inner {
+    gap: 9px;
+  }
+}
