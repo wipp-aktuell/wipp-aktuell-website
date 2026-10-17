@@ -4,7 +4,7 @@ import datetime
 import io
 import json
 import pathlib
-
+import os
 ROOT = pathlib.Path(__file__).resolve().parent
 ADS = ROOT / "content" / "ads"
 
@@ -143,8 +143,73 @@ def check_conflicts(bookings):
     return conflicts
 
 
+def check_availability(bookings, placement, start, end, category=""):
+    if placement not in LIMITS:
+        raise ValueError("Unbekannter Werbeplatz")
+
+    if end < start:
+        raise ValueError("Enddatum liegt vor dem Startdatum")
+
+    if placement == "Rubrikensponsor" and not category:
+        raise ValueError("Bitte eine Rubrik angeben")
+
+    limit = LIMITS[placement]
+    events = []
+
+    for booking in bookings:
+        if booking["placement"] != placement:
+            continue
+
+        if placement == "Rubrikensponsor":
+            if booking["category"] != category:
+                continue
+
+        overlap_start = max(start, booking["start"])
+        overlap_end = min(end, booking["end"])
+
+        if overlap_start > overlap_end:
+            continue
+
+        events.append((overlap_start, 1))
+        events.append((
+            overlap_end + datetime.timedelta(days=1), -1
+        ))
+
+    events.sort()
+
+    occupied = 0
+    max_occupied = 0
+
+    for date, change in events:
+        occupied += change
+        max_occupied = max(max_occupied, occupied)
+
+    return max(0, limit - max_occupied)
+
 def main():
     bookings = load_bookings()
+    request_start = os.environ.get("BOOKING_START", "")
+    request_end = os.environ.get("BOOKING_END", "")
+
+    if request_start and request_end:
+        start = datetime.date.fromisoformat(request_start)
+        end = datetime.date.fromisoformat(request_end)
+        print("VERFUEGBARKEIT", start, "bis", end)
+
+        for placement in ("Premium-Startseite", "Standard-Startseite"):
+            free = check_availability(bookings, placement, start, end)
+            print(placement + ":", free, "freie Plaetze")
+
+        for category in (
+            "Aktuelles", "Blaulicht", "Verkehr", "Politik",
+            "Wirtschaft", "Veranstaltungen", "Sport", "Stadtgeschichte"
+        ):
+            free = check_availability(
+                bookings, "Rubrikensponsor", start, end, category
+            )
+            print("Rubrikensponsor " + category + ":", free, "freie Plaetze")
+
+
     report = create_report(bookings)
     conflicts = check_conflicts(bookings)
 
