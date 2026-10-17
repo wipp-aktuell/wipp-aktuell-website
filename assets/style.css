@@ -147,3 +147,16 @@
     font-size: 1.25rem !important;
   }
 }
+
+/* Slogan unter dem Schriftzug positionieren */
+.masthead .brand-sub,
+.masthead .tagline {
+  margin-left: 78px !important;
+}
+
+@media (max-width: 620px) {
+  .masthead .brand-sub,
+  .masthead .tagline {
+    margin-left: 54px !important;
+  }
+}
