@@ -212,7 +212,11 @@ def main():
 ,canonical='/'))
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
-        write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected),active=cat,canonical='/rubrik/'+slug(cat)+'/'))
+        sponsor_ads = select_ads(ads, 'Rubrikensponsor', today, category=cat)
+        sponsor_html = render_ad(sponsor_ads[0]) if sponsor_ads else ''
+        write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,
+listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=sponsor_html)
+,active=cat,canonical='/rubrik/'+slug(cat)+'/'))
     for a in articles:
         article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
 {cover(a, show_credit=True)}
