@@ -41,6 +41,10 @@ content:
       - name: image_alt
         label: Bildbeschreibung
         type: string
+      - name: image_credit
+        label: Bildnachweis (Fotograf/Quelle)
+        type: string
+        required: false
       - name: body
         label: Artikeltext
         type: rich-text
