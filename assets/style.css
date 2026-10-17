@@ -204,3 +204,45 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   font-weight: 800;
   letter-spacing: -0.035em;
 }
+
+/* Wipperfürth aktuell – einheitliche Instagram-Typografie */
+
+:root {
+  --font-editorial: "Montserrat", Arial, sans-serif;
+  --font-ui: "Inter", Arial, sans-serif;
+}
+
+body,
+.hero h1,
+.section-heading h2,
+.sidebox h3,
+.story h3,
+.article h1,
+.article-content h2,
+.company-card-content h2,
+.footer h3,
+.legal h1,
+.legal h2 {
+  font-family: "Montserrat", Arial, sans-serif !important;
+}
+
+.hero h1 {
+  font-weight: 900 !important;
+  letter-spacing: -0.045em;
+}
+
+.section-heading h2,
+.sidebox h3,
+.story h3,
+.article h1 {
+  font-weight: 800 !important;
+  letter-spacing: -0.035em;
+}
+
+.article-content,
+.article-content p,
+.article-lead,
+.story p,
+.sidebox p {
+  font-family: "Inter", Arial, sans-serif !important;
+}
