@@ -84,7 +84,46 @@ def card(a):
 def sidebar():
     tags=''.join(f'<a class="tag" href="/rubrik/{slug(c)}/">{esc(c)}</a>' for c in CATEGORIES)
     return f'''<aside class="sidebar"><section class="sidebox"><h3>Auf Instagram</h3><p>Weitere Meldungen, Eindrücke und Beiträge findest du auf unserem offiziellen Instagram-Profil.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">@wipp_aktuell öffnen ↗</a></section><section class="sidebox"><h3>Unsere Rubriken</h3><div class="taglist">{tags}</div></section><section class="sidebox"><h3>Hinweis senden</h3><p>Du hast eine lokale Nachricht oder einen Veranstaltungshinweis? Schreib uns gern über Instagram.</p><a class="button" href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Kontakt über Instagram ↗</a></section></aside>'''
+def render_ad(ad):
+    company = esc(ad.get('company', ''))
+    description = esc(ad.get('description', ''))
+    image = ad.get('image') or ''
+    image_alt = esc(ad.get('image_alt') or company)
+    target = safe_ad_url(ad.get('target_url'))
+    
+    image_html = ''
+    if (
+        isinstance(image, str)
+        and image.startswith('/uploads/')
+        and '..' not in image
+    ):
+        image_html = (
+            '<img class="ad-image" loading="lazy" src="'
+            + esc(image) + '" alt="' + image_alt + '">'
+        )
 
+    content = (
+        '<div class="ad-content">'
+        + image_html
+        + '<div class="ad-text">'
+        + '<strong class="ad-company">' + company + '</strong>'
+        + ('<p>' + description + '</p>' if description else '')
+        + '</div></div>'
+    )
+
+    if target:
+        content = (
+            '<a class="ad-link" href="' + esc(target)
+            + '" target="_blank" rel="sponsored noopener noreferrer">'
+            + content + '</a>'
+        )
+
+    return (
+        '<aside class="advertisement" aria-label="Werbung">'
+        '<div class="ad-label">Anzeige</div>'
+        + content
+        + '</aside>'
+    )
 def ad_is_active(ad, today):
     if not ad.get('active', False):
         return False
