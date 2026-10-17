@@ -297,3 +297,40 @@
     font-size: 0.75rem !important;
   }
 }
+
+/* Bildnachweise in Nachrichtenartikeln */
+
+.article-figure {
+  margin: 0 0 24px;
+}
+
+.article-figure .cover {
+  margin-bottom: 0;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.image-credit {
+  margin-top: 6px;
+  padding: 0 2px;
+  color: #526578;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  text-align: right;
+}
+
+@media (max-width: 620px) {
+  .article-figure {
+    margin-bottom: 20px;
+  }
+
+  .image-credit {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+}
