@@ -1,8 +1,8 @@
 {
-  "title": "Test einer Unternehmensvorstellung",
+  "title": "TEST – Unternehmensvorstellung",
   "company": "Musterunternehmen Wipperfürth",
   "category": "Einzelhandel",
-  "summary": "Technischer Test des neuen Unternehmensbereichs.",
-  "body": "Dieser Beitrag dient ausschließlich dem Test der Unternehmensverwaltung.",
-  "published": false
+  "summary": "Technischer Funktionstest der Unternehmensseiten.",
+  "body": "Dies ist eine technische Testveröffentlichung. Es handelt sich um kein echtes Unternehmen.",
+  "published": true
 }
