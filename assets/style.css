@@ -264,3 +264,71 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     transform: translateX(-50%);
   }
 }
+
+/* Wetteranzeige mit Drei-Tage-Vorhersage */
+
+#wipp-wetter:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: normal !important;
+  line-height: 1.4;
+}
+
+.weather-current {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.weather-divider {
+  width: 1px;
+  height: 18px;
+  background: #d5dee6;
+}
+
+.weather-day {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.weather-day-label {
+  font-weight: 700;
+  color: #526578;
+}
+
+.weather-day-icon {
+  font-size: 15px;
+}
+
+.weather-day-temp {
+  font-weight: 600;
+  color: #142b40;
+}
+
+@media (max-width: 620px) {
+  #wipp-wetter:not([hidden]) {
+    justify-content: flex-start;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .weather-current {
+    font-size: 13px;
+  }
+
+  .weather-divider {
+    height: 15px;
+  }
+
+  .weather-day-icon {
+    font-size: 13px;
+  }
+}
