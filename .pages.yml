@@ -26,7 +26,7 @@ content:
         type: select
         required: true
         options:
-          values: [Aktuelles, Blaulicht, Verkehr, Politik, Wirtschaft, Veranstaltungen, Sport, Stadtgeschichte]
+          values: [Stadtleben, Blaulicht, Verkehr, Politik, Wirtschaft, Veranstaltungen, Sport, Stadtgeschichte]
       - name: date
         label: Datum
         type: date
@@ -92,7 +92,7 @@ content:
         type: select
         options:
           values:
-            - Aktuelles
+            - Stadtleben
             - Blaulicht
             - Verkehr
             - Politik
