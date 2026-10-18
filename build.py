@@ -523,11 +523,18 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
     )
 
 
-    werbung_html = '''
+    
+werbung_html = '''
+    <div class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Wipperfürth aktuell</div>
+        <h1>Werbung schalten</h1>
+        <p>Erreichen Sie Menschen in Wipperfürth und Umgebung.</p>
+      </div>
+    </div>
     <main class="wrap">
       <section class="company-overview">
-        <p class="pill">Werben bei Wipperfürth aktuell</p>
-        <h1>Werben, wo Wipperfürth liest.</h1>
+
         <p class="article-lead">
           Präsentieren Sie Ihr Unternehmen auf unserem lokalen
           Nachrichtenportal. Wir bieten Werbemöglichkeiten für
