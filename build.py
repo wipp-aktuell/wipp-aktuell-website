@@ -319,7 +319,9 @@ def select_ads(ads, placement, today, category=None):
 
 
 def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
-    hero=f'<div class="hero hero-startseite"><div class="wrap"><div class="eyebrow">Nachrichten für Wipperfürth</div><h1>Was unsere Stadt bewegt.</h1><p>Aktuelle Nachrichten, Hintergründe und Geschichten aus Wipperfürth – übersichtlich an einem Ort.</p></div></div>' if home else f'<div class="hero{ " hero-stadtleben" if title == "Stadtleben" else " hero-blaulicht" if title == "Blaulicht" else "" }"><div class="wrap"><div class="eyebrow">Wipperfürth aktuell</div><h1>{esc(title)}</h1><p>{esc(description)}</p></div></div>'
+    hero=f'<div class="hero hero-startseite"><div class="wrap"><div class="eyebrow">Nachrichten für Wipperfürth</div><h1>Was unsere Stadt bewegt.</h1><p>Aktuelle Nachrichten, Hintergründe und Geschichten aus Wipperfürth – übersichtlich an einem Ort.</p></div></div>' if home 
+else f'<div class="hero{ " hero-stadtleben" if title == "Stadtleben" else " hero-blaulicht" if title == "Blaulicht" else " hero-verkehr" if title == "Verkehr" else "" }"><div class="wrap">
+<div class="eyebrow">Wipperfürth aktuell</div><h1>{esc(title)}</h1><p>{esc(description)}</p></div></div>'
     text=f'<div class="cards">{render_news_with_ads(arr, standard_ads)}</div>' if arr or standard_ads else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
     return hero+premium_ad+f'''<main class="wrap layout"><section><div class="section-heading">
 {'<h2>Neueste Beiträge</h2>' if home else ''}
