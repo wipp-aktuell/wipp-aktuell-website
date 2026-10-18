@@ -87,7 +87,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .hero .wrap { position: relative; }
 .eyebrow { color: #c0d9ea; font-size: 11px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
 .hero h1 { max-width: 790px; margin: 15px 0 16px; font-family: var(--font-editorial); font-size: 28px; font-weight: 700; letter-spacing: -.025em; line-height: 1.2; text-wrap: balance; }
-.hero p { max-width: 640px; margin: 0; color: #d6e1e9; font-size: 14px; line-height: 1.7; }
+.hero p { max-width: none; margin: 0; color: #d6e1e9; font-size: 14px; line-height: 1.7; }
 
 /* Editorial grid */
 .layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 40px; padding-top: 44px; padding-bottom: 76px; }
