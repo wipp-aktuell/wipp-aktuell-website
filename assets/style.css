@@ -347,3 +347,43 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   .masthead .weather-day-icon { font-size: 12px; }
   .masthead .weather-divider { height: 12px; }
 }
+
+/* Logo und Schriftzug gemeinsam ausrichten */
+
+.masthead .brand-with-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.masthead .site-logo {
+  width: 86px;
+  height: 86px;
+  max-width: 86px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.masthead .brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.masthead .brand-text .brand-sub {
+  margin-left: 0;
+  margin-top: 8px;
+}
+
+@media (max-width: 620px) {
+  .masthead .site-logo {
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+  }
+
+  .masthead .brand-with-logo {
+    gap: 11px;
+  }
+}
