@@ -347,6 +347,8 @@ def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
             '</div></div>'
         )
 
+    text = f'<div class="cards">{render_news_with_ads(arr, standard_ads)}</div>' if arr or standard_ads else '<div class="empty">In dieser Rubrik sind noch keine Artikel veröffentlicht.</div>'
+
     return hero+premium_ad+f'''<main class="wrap layout"><section><div class="section-heading">
 {'<h2>Neueste Beiträge</h2>' if home else ''}
 <small>{len(arr)} Beiträge</small></div><label for="search" class="sr-only">Artikel durchsuchen</label><div class="searchbar"><input id="search" type="search" placeholder="Artikel durchsuchen …" aria-label="Artikel durchsuchen"><button type="button" onclick="document.querySelector('#search').value='';document.querySelector('#search').dispatchEvent(new Event('input'))">Zurücksetzen</button></div>{text}<p class="empty" id="no-results" hidden>Keine passenden Artikel gefunden.</p></section>{sidebar()}</main>'''
