@@ -92,7 +92,8 @@ def base(title,description,content,active='',canonical='',article=False):
     nav=''.join(f'<a href="/rubrik/{slug(cat)}/" class="{"active" if cat==active else ""}">{esc(cat)}</a>' for cat in CATEGORIES)
     canonical_tag=f'<link rel="canonical" href="https://wipp-aktuell.de{esc(canonical)}">' if canonical else ''
     return f'''<!doctype html><html lang="de">
-<head><link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg">
+<head>
+<link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | Wipperfürth aktuell</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/style.css?v=20261018-10">
 </head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die Hansestadt</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div><header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
