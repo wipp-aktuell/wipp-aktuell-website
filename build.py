@@ -524,7 +524,7 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
 
 
     
-werbung_html = '''
+    werbung_html = '''
     <div class="hero">
       <div class="wrap">
         <div class="eyebrow">Wipperfürth aktuell</div>
