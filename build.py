@@ -99,7 +99,7 @@ def base(title,description,content,active='',canonical='',article=False):
 </head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div><header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo"><img class="site-logo" src="/assets/logo-wipp-aktuell.jpg" alt="Logo von Wipperfürth aktuell"><div class="brand">Wipperfürth <strong>aktuell.</strong></div></div>
 <div class="brand-sub">Lokal. Unabhängig. Informiert.</div>
-</a><div class="social"><span id="wipp-wetter" hidden style="white-space:nowrap;font-weight:700;font-size:14px" aria-label="Aktuelles Wetter in Wipperfürth"></span><a class="red-link"
+</a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div><div class="social"><a class="red-link"
  target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">Instagram ↗</a></div></div></header><nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
