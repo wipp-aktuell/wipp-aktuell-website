@@ -183,7 +183,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 /* Footer */
 .footer { padding: 43px 0 46px; background: #081e31; color: #dbe5ed; }
 .footer-inner { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
-.footer h3 { margin: 0 0 11px; color: #fff; font-family: var(--font-editorial); font-size: 25px; font-weight: 800; }
+.footer h3 { margin: 0 0 11px; color: #fff; font-family: var(--font-editorial); font-size: 18px; overflow-wrap: anywhere; font-weight: 800; }
 .footer p { max-width: 530px; margin: 0 0 15px; color: #b6c5d1; font-size: 14px; line-height: 1.7; }
 .footer a { display: inline-block; margin-right: 15px; color: #e3eaf0; font-size: 13px; }
 .footer a:hover { text-decoration: underline; }
