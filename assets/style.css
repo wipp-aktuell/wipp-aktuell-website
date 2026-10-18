@@ -367,3 +367,80 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-weight: 600 !important;
   }
 }
+
+/* Seitenkopf: Logo links, Wetter mittig, Instagram rechts */
+
+@media (min-width: 1050px) {
+  .masthead .masthead-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(110px, 1fr);
+    align-items: center;
+    gap: 24px;
+  }
+
+  .masthead .weather-header {
+    min-width: 0;
+    justify-self: center;
+  }
+
+  .masthead .social {
+    justify-self: end;
+    width: auto;
+  }
+}
+
+/* Einheitliche Wetterdarstellung */
+
+.weather-header #wipp-wetter:not([hidden]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 5px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.weather-header .weather-current,
+.weather-header .weather-day,
+.weather-header .weather-day-label,
+.weather-header .weather-day-temp {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.weather-header .weather-day-icon {
+  font-size: 15px !important;
+}
+
+/* Tablet und Smartphone */
+
+@media (max-width: 1049px) {
+  .masthead .masthead-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .masthead .weather-header {
+    order: 3;
+    width: 100%;
+  }
+
+  .masthead .weather-header #wipp-wetter:not([hidden]) {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 620px) {
+  .weather-header .weather-current,
+  .weather-header .weather-day,
+  .weather-header .weather-day-label,
+  .weather-header .weather-day-temp,
+  .weather-header .weather-day-icon {
+    font-size: 12px !important;
+  }
+}
