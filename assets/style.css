@@ -85,7 +85,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .hero::before { content: ""; position: absolute; right: -135px; top: -200px; width: 470px; height: 470px; border: 65px solid rgba(92, 146, 184, .13); border-radius: 50%; pointer-events: none; }
 .hero .wrap { position: relative; }
 .eyebrow { color: #c0d9ea; font-size: 11px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
-.hero h1 { max-width: 790px; margin: 15px 0 16px; font-family: var(--font-editorial); font-size: clamp(35px, 5.2vw, 62px); font-weight: 700; letter-spacing: -.045em; line-height: 1.09; text-wrap: balance; }
+.hero h1 { max-width: 790px; margin: 15px 0 16px; font-family: var(--font-editorial); font-size: clamp(29px, 3vw, 38px); font-weight: 700; letter-spacing: -.045em; line-height: 1.09; text-wrap: balance; }
 .hero p { max-width: 640px; margin: 0; color: #d6e1e9; font-size: clamp(15px, 1.45vw, 17px); line-height: 1.7; }
 
 /* Editorial grid */
