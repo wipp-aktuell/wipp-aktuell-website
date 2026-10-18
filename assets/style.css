@@ -424,3 +424,37 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     background-position: center center;
   }
 }
+
+/* Rubrik Stadtleben: Fotobanner */
+
+.hero.hero-stadtleben {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
+    ),
+    url("/assets/hero-stadtleben.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  padding: 55px 0 60px;
+}
+
+.hero.hero-stadtleben h1 {
+  color: #ffffff;
+}
+
+.hero.hero-stadtleben p {
+  color: #f0f4f7;
+}
+
+@media (max-width: 620px) {
+  .hero.hero-stadtleben {
+    padding: 38px 0 42px;
+    background-position: center center;
+  }
+}
