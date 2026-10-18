@@ -58,7 +58,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 }
 .brand-sub, .masthead .brand-sub, .masthead .tagline {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .17em;
   line-height: 1.45;
