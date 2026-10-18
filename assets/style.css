@@ -490,3 +490,36 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 38px 0 42px;
   }
 }
+
+/* Rubrik Verkehr: Fotobanner */
+
+.hero.hero-verkehr {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
+    ),
+    url("/assets/hero-verkehr.jpg");
+
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  padding: 55px 0 60px;
+}
+
+.hero.hero-verkehr h1 {
+  color: #ffffff;
+}
+
+.hero.hero-verkehr p {
+  color: #f0f4f7;
+}
+
+@media (max-width: 620px) {
+  .hero.hero-verkehr {
+    padding: 38px 0 42px;
+    background-position: center 25%;
+  }
+}
