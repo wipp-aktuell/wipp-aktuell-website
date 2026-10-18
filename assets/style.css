@@ -246,3 +246,20 @@ body,
 .sidebox p {
   font-family: "Inter", Arial, sans-serif !important;
 }
+
+/* Dezente Hauptüberschrift – Wipperfürth aktuell */
+
+.hero h1 {
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: clamp(29px, 3vw, 38px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.025em !important;
+}
+
+@media (max-width: 620px) {
+  .hero h1 {
+    font-size: 29px !important;
+    line-height: 1.25 !important;
+  }
+}
