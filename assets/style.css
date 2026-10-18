@@ -47,7 +47,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .brand, .masthead .brand-with-logo .brand {
   color: var(--navy);
   font-family: var(--font-editorial);
-  font-size: clamp(23px, 3.2vw, 42px);
+  font-size: clamp(23px, 3.1vw, 40px);
   font-weight: 750;
   letter-spacing: -.052em;
   line-height: 1.08;
