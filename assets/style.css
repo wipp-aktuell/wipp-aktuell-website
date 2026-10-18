@@ -444,3 +444,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 12px !important;
   }
 }
+
+/* Wetteranzeige vertikal am Instagram-Link ausrichten */
+@media (min-width: 1050px) {
+  .masthead .weather-header {
+    transform: translateY(-7px);
+  }
+}
