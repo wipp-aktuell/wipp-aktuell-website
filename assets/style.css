@@ -282,7 +282,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 
 .weather-current {
   font-weight: 700;
-  font-size: 14px;
+  font-size: 17px;
   white-space: nowrap;
 }
 
