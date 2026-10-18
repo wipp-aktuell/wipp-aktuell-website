@@ -8,7 +8,7 @@ DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
 COMPANIES = ROOT / 'content' / 'companies'
-CATEGORIES=['Aktuelles','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
+CATEGORIES=['Stadtleben','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
 
 def news_article_jsonld(article):
     url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
@@ -322,7 +322,7 @@ def main():
         data=json.loads(file.read_text(encoding='utf-8'))
         if not data.get('published',False):continue
         if not data.get('title'):continue
-        data['category']=data.get('category','Aktuelles')
+        data['category']=data.get('category','Stadtleben')
         data['slug']=slug(file.stem)
         if data['slug'] in used:raise ValueError('Duplicate article slug: '+data['slug'])
         used.add(data['slug']);articles.append(data)
@@ -366,7 +366,7 @@ def main():
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
-    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Aktuelles','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
+    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
