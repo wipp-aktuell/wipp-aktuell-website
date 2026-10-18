@@ -251,3 +251,16 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   font-weight: 800 !important;
   color: #09243d;
 }
+
+/* Wetteranzeige mittig im Seitenkopf */
+@media (min-width: 901px) {
+  .masthead-inner {
+    position: relative;
+  }
+
+  #wipp-wetter {
+    position: absolute;
+    left: 58%;
+    transform: translateX(-50%);
+  }
+}
