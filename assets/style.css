@@ -241,6 +241,6 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   .ad-text p { font-size: 14px; }
   .company-overview { padding-block: 26px 44px; }
   .company-grid { gap: 16px; }
-  .company-card-content h2 { font-size: 22px; }
+  .company-card-content h2 { font-size: 18px; }
   .footer-inner { display: block; }
 }
