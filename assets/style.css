@@ -329,3 +329,41 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     height: 12px;
   }
 }
+
+/* Seitenkopf: Logo links, Wetter mittig, Instagram rechts */
+
+@media (min-width: 1050px) {
+  .masthead-inner {
+    display: grid;
+    grid-template-columns: minmax(380px, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .masthead .social {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: 28px;
+    min-width: 0;
+  }
+
+  #wipp-wetter:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 5px;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+
+  .weather-current,
+  .weather-day,
+  .weather-day-label,
+  .weather-day-temp,
+  .weather-day-icon {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+  }
+}
