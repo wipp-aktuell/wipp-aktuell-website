@@ -265,70 +265,63 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
-/* Wetteranzeige mit Drei-Tage-Vorhersage */
+
+/* Einheitliche Wetteranzeige */
 
 #wipp-wetter:not([hidden]) {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: normal !important;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
   line-height: 1.4;
+  white-space: normal !important;
 }
 
-.weather-current {
-  font-weight: 700;
-  font-size: 17px;
+.weather-current,
+.weather-day,
+.weather-day-label,
+.weather-day-temp {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.weather-current,
+.weather-day {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   white-space: nowrap;
+}
+
+.weather-day-icon {
+  font-size: 20px;
+  line-height: 1;
 }
 
 .weather-divider {
   width: 1px;
-  height: 18px;
+  height: 20px;
   background: #d5dee6;
-}
-
-.weather-day {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-}
-
-.weather-day-label {
-  font-weight: 700;
-  color: #526578;
-}
-
-.weather-day-icon {
-  font-size: 15px;
-}
-
-.weather-day-temp {
-  font-weight: 600;
-  color: #142b40;
+  flex-shrink: 0;
 }
 
 @media (max-width: 620px) {
   #wipp-wetter:not([hidden]) {
-    justify-content: flex-start;
+    font-size: 14px;
     gap: 6px;
-    font-size: 11px;
-  }
-
-  .weather-current {
-    font-size: 13px;
-  }
-
-  .weather-divider {
-    height: 15px;
   }
 
   .weather-day-icon {
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .weather-divider {
+    height: 14px;
   }
 }
