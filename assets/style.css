@@ -244,3 +244,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   .company-card-content h2 { font-size: 18px; }
   .footer-inner { display: block; }
 }
+
+/* Wetteranzeige groesser darstellen */
+#wipp-wetter {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #09243d;
+}
