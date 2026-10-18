@@ -1,5 +1,6 @@
-/* Wipperfuerth aktuell | Editorial Design 2026
-   Replacement for assets/style.css. No external font requests required. */
+/* Wipperfuerth aktuell | Bereinigtes Design 2026
+   Montserrat: Headlines | Inter: Lesetexte
+   Fontdateien werden durch build.py eingebunden. */
 :root {
   --ink: #182b3b;
   --navy: #09243d;
@@ -9,7 +10,7 @@
   --line: #dde5ec;
   --bg: #f5f7f9;
   --card: #fff;
-  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --font-ui: "Inter", "Segoe UI", Arial, sans-serif;
   --font-editorial: "Montserrat", Arial, sans-serif;
   --shadow: 0 12px 32px rgba(18, 39, 58, .065);
 }
@@ -45,7 +46,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .site-logo, .masthead .site-logo { display: block; width: 66px; height: 66px; max-width: 66px; flex: 0 0 auto; object-fit: cover; border-radius: 7px; }
 .brand, .masthead .brand-with-logo .brand {
   color: var(--navy);
-  font-family: var(--font-ui);
+  font-family: var(--font-editorial);
   font-size: clamp(23px, 2.7vw, 35px);
   font-weight: 800;
   letter-spacing: -.052em;
@@ -85,14 +86,14 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .hero::before { content: ""; position: absolute; right: -135px; top: -200px; width: 470px; height: 470px; border: 65px solid rgba(92, 146, 184, .13); border-radius: 50%; pointer-events: none; }
 .hero .wrap { position: relative; }
 .eyebrow { color: #c0d9ea; font-size: 11px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
-.hero h1 { max-width: 790px; margin: 15px 0 16px; font-family: var(--font-editorial); font-size: clamp(29px, 3vw, 38px); font-weight: 700; letter-spacing: -.045em; line-height: 1.09; text-wrap: balance; }
+.hero h1 { max-width: 790px; margin: 15px 0 16px; font-family: var(--font-editorial); font-size: clamp(29px, 3vw, 38px); font-weight: 700; letter-spacing: -.025em; line-height: 1.2; text-wrap: balance; }
 .hero p { max-width: 640px; margin: 0; color: #d6e1e9; font-size: clamp(15px, 1.45vw, 17px); line-height: 1.7; }
 
 /* Editorial grid */
 .layout { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 40px; padding-top: 44px; padding-bottom: 76px; }
 .layout > * { min-width: 0; }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 14px; border-bottom: 1px solid #bfcbd5; margin-bottom: 23px; padding-bottom: 12px; }
-.section-heading h2 { margin: 0; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(26px, 2.6vw, 33px); font-weight: 700; letter-spacing: -.038em; line-height: 1.18; }
+.section-heading h2 { margin: 0; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(26px, 2.6vw, 33px); font-weight: 800; letter-spacing: -.038em; line-height: 1.18; }
 .section-heading small { margin-bottom: 3px; color: var(--muted); font-size: 12px; }
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .story { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: var(--card); transition: box-shadow .2s ease, transform .2s ease; }
@@ -101,13 +102,13 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .story-body { padding: 22px 23px 24px; }
 .pill { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-.story h3 { margin: 10px 0 11px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(21px, 2vw, 25px); font-weight: 700; letter-spacing: -.026em; line-height: 1.22; overflow-wrap: anywhere; }
+.story h3 { margin: 10px 0 11px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(21px, 2vw, 25px); font-weight: 800; letter-spacing: -.026em; line-height: 1.22; overflow-wrap: anywhere; }
 .story p { margin: 0 0 17px; color: #506273; font-size: 14px; line-height: 1.68; }
 .meta { color: var(--muted); font-size: 12px; letter-spacing: .01em; }
 
 /* Sidebar, search and controls */
 .sidebox, .sidebar-box { margin-bottom: 20px; padding: 23px; border: 1px solid var(--line); border-radius: 5px; background: var(--card); }
-.sidebox h3, .sidebar-box h3 { margin: 0 0 12px; color: var(--navy); font-family: var(--font-editorial); font-size: 22px; line-height: 1.25; }
+.sidebox h3, .sidebar-box h3 { margin: 0 0 12px; color: var(--navy); font-family: var(--font-editorial); font-size: 22px; font-weight: 800; line-height: 1.25; }
 .sidebox p, .sidebar-box p { margin: 0 0 15px; color: #536779; font-size: 14px; line-height: 1.7; }
 .button { display: inline-block; border: 0; border-radius: 4px; padding: 11px 17px; background: var(--accent); color: #fff; font-size: 13px; font-weight: 750; line-height: 1.35; text-align: center; cursor: pointer; transition: background .18s ease; }
 .button:hover { background: var(--accent-hover); }
@@ -121,9 +122,9 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 
 /* Article pages */
 .article { min-width: 0; padding: clamp(25px, 4.3vw, 54px); border: 1px solid var(--line); border-radius: 5px; background: #fff; }
-.article h1 { max-width: 800px; margin: 12px 0 19px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(32px, 4.1vw, 49px); font-weight: 700; letter-spacing: -.043em; line-height: 1.13; text-wrap: balance; overflow-wrap: anywhere; }
-.article-lead { margin: 16px 0 22px; color: #34495d; font-size: clamp(17px, 1.75vw, 20px); line-height: 1.65; font-weight: 450; }
-.article-content { color: #243545; font-size: 17px; line-height: 1.85; overflow-wrap: break-word; }
+.article h1 { max-width: 800px; margin: 12px 0 19px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(32px, 4.1vw, 49px); font-weight: 800; letter-spacing: -.043em; line-height: 1.13; text-wrap: balance; overflow-wrap: anywhere; }
+.article-lead { font-family: var(--font-ui); margin: 16px 0 22px; color: #34495d; font-size: clamp(17px, 1.75vw, 20px); line-height: 1.65; font-weight: 450; }
+.article-content { font-family: var(--font-ui); color: #243545; font-size: 17px; line-height: 1.85; overflow-wrap: break-word; }
 .article-content p { margin: 0 0 1.35em; }
 .article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .article-content img, .article img { max-width: 100%; height: auto; }
@@ -139,7 +140,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 /* Legal pages */
 .legal { max-width: 850px; margin: 40px auto 74px; padding: clamp(24px, 4vw, 42px); border: 1px solid var(--line); border-radius: 5px; background: #fff; }
 .legal h1 { margin-top: 0; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(30px, 4vw, 42px); line-height: 1.18; }
-.legal h2 { margin: 20px 0 8px; color: var(--navy); font-size: 20px; line-height: 1.3; }
+.legal h2 { font-family: var(--font-editorial); margin: 20px 0 8px; color: var(--navy); font-size: 20px; line-height: 1.3; }
 .legal p { margin: 0 0 11px; line-height: 1.55; white-space: normal; overflow-wrap: anywhere; }
 .legal a { color: var(--accent); text-decoration: underline; }
 
@@ -151,13 +152,13 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .ad-content { display: flex; align-items: center; gap: 24px; }
 .ad-image { display: block; width: 35%; max-height: 240px; object-fit: contain; border-radius: 4px; }
 .ad-text { flex: 1; min-width: 0; }
-.ad-company { display: block; color: var(--navy); font-size: 22px; font-weight: 750; line-height: 1.35; }
+.ad-company { font-family: var(--font-editorial); display: block; color: var(--navy); font-size: 22px; font-weight: 750; line-height: 1.35; }
 .ad-text p { margin: 10px 0 0; color: #44596b; font-size: 15px; line-height: 1.65; }
 .cards > .advertisement { grid-column: 1 / -1; width: 100%; margin: 12px 0; }
 
 /* Sponsored business directory */
 .company-overview { padding: 42px 0 64px; }
-.company-overview > h1 { margin-bottom: 20px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(33px, 4vw, 45px); line-height: 1.2; }
+.company-overview > h1 { margin-bottom: 20px; color: var(--navy); font-family: var(--font-editorial); font-weight: 800; font-size: clamp(33px, 4vw, 45px); line-height: 1.2; }
 .company-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 23px; margin-top: 30px; }
 .company-card { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: #fff; color: var(--ink); text-decoration: none; transition: box-shadow .18s ease, transform .18s ease; }
 .company-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
@@ -165,14 +166,14 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .company-card img { display: block; width: 100%; height: 190px; object-fit: cover; }
 .company-card-content { padding: 21px; }
 .company-card-content small { color: var(--muted); font-size: 12px; }
-.company-card-content h2 { margin: 9px 0 13px; color: var(--navy); font-family: var(--font-editorial); font-size: 25px; line-height: 1.24; }
+.company-card-content h2 { margin: 9px 0 13px; color: var(--navy); font-family: var(--font-editorial); font-weight: 800; font-size: 25px; line-height: 1.24; }
 .company-card-content strong { display: block; margin-bottom: 10px; }
 .company-card-content p { margin: 0; color: #44596b; font-size: 14px; line-height: 1.68; }
 
 /* Footer */
 .footer { padding: 43px 0 46px; background: #081e31; color: #dbe5ed; }
 .footer-inner { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
-.footer h3 { margin: 0 0 11px; color: #fff; font-family: var(--font-editorial); font-size: 25px; font-weight: 700; }
+.footer h3 { margin: 0 0 11px; color: #fff; font-family: var(--font-editorial); font-size: 25px; font-weight: 800; }
 .footer p { max-width: 530px; margin: 0 0 15px; color: #b6c5d1; font-size: 14px; line-height: 1.7; }
 .footer a { display: inline-block; margin-right: 15px; color: #e3eaf0; font-size: 13px; }
 .footer a:hover { text-decoration: underline; }
@@ -185,81 +186,51 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   .company-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Phone */
+/* Phone: klare Abstaende und gut lesbare Groessen */
 @media (max-width: 620px) {
   .wrap { padding-inline: 18px; }
   .topline .wrap { justify-content: center; min-height: 34px; padding-block: 7px; text-align: center; font-size: 11px; }
   .topline .wrap > a { display: none; }
 
-/* Einheitliche Typografie im Instagram-Stil */
-.hero h1,
-.section-heading h2,
-.story h3,
-.article h1,
-.article-content h2,
-.sidebox h3,
-.company-card-content h2,
-.brand {
-  font-family: "Montserrat", Arial, sans-serif !important;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-}
+  .masthead-inner { flex-direction: column; align-items: flex-start; gap: 11px; padding-block: 17px; min-height: 0; }
+  .masthead .brand-with-logo { gap: 10px; }
+  .site-logo, .masthead .site-logo { width: 52px; height: 52px; max-width: 52px; }
+  .brand, .masthead .brand-with-logo .brand { font-size: clamp(21px, 5.2vw, 26px); }
+  .brand-sub, .masthead .brand-sub, .masthead .tagline { margin-left: 62px; letter-spacing: .12em; font-size: 9px; }
+  .social, .masthead .social, .masthead .header-links { flex-wrap: wrap; gap: 14px; }
 
-/* Wipperfürth aktuell – einheitliche Instagram-Typografie */
+  .nav-inner { gap: 21px; }
+  .nav a { padding-block: 13px 12px; font-size: 12px; }
+  .hero { padding: 33px 0 37px; }
+  .hero::before { width: 290px; height: 290px; right: -145px; top: -150px; border-width: 45px; }
+  .hero h1 { font-size: 29px; line-height: 1.25; letter-spacing: -.025em; }
+  .hero p { font-size: 15px; }
 
-:root {
-  --font-editorial: "Montserrat", Arial, sans-serif;
-  --font-ui: "Inter", Arial, sans-serif;
-}
+  .layout { padding-top: 28px; padding-bottom: 48px; }
+  .section-heading h2 { font-size: 25px; }
+  .cards, .sidebar, .company-grid { grid-template-columns: 1fr; }
+  .cards { gap: 17px; }
+  .sidebar { gap: 16px; }
+  .story-body { padding: 19px; }
+  .story h3 { font-size: 22px; }
+  .sidebox, .sidebar-box { padding: 20px; margin-bottom: 0; }
+  .sidebox h3, .sidebar-box h3 { font-size: 21px; }
 
-body,
-.hero h1,
-.section-heading h2,
-.sidebox h3,
-.story h3,
-.article h1,
-.article-content h2,
-.company-card-content h2,
-.footer h3,
-.legal h1,
-.legal h2 {
-  font-family: "Montserrat", Arial, sans-serif !important;
-}
+  .article { padding: 23px 19px; }
+  .article h1 { font-size: clamp(29px, 7vw, 36px); }
+  .article-content { font-size: 16.5px; line-height: 1.8; }
+  .article-lead { font-size: 17px; }
+  .article-figure { margin-bottom: 20px; }
+  .image-credit { text-align: left; }
+  .legal { margin-block: 24px 48px; padding: 22px 19px; }
 
-.hero h1 {
-  font-weight: 900 !important;
-  letter-spacing: -0.045em;
-}
-
-.section-heading h2,
-.sidebox h3,
-.story h3,
-.article h1 {
-  font-weight: 800 !important;
-  letter-spacing: -0.035em;
-}
-
-.article-content,
-.article-content p,
-.article-lead,
-.story p,
-.sidebox p {
-  font-family: "Inter", Arial, sans-serif !important;
-}
-
-/* Dezente Hauptüberschrift – Wipperfürth aktuell */
-
-.hero h1 {
-  font-family: "Montserrat", Arial, sans-serif;
-  font-size: 38px !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.025em !important;
-}
-
-@media (max-width: 620px) {
-  .hero h1 {
-    font-size: 29px !important;
-    line-height: 1.25 !important;
-  }
+  .advertisement { width: calc(100% - 24px); margin-block: 18px; padding: 12px; }
+  .ad-content { flex-direction: column; align-items: stretch; gap: 12px; }
+  .ad-image { width: 100%; max-height: 220px; }
+  .ad-company { font-size: 19px; }
+  .ad-text p { font-size: 14px; }
+  .company-overview { padding-block: 26px 44px; }
+  .company-grid { gap: 16px; }
+  .company-card-content h2 { font-size: 22px; }
+  .footer-inner { display: block; }
 }
