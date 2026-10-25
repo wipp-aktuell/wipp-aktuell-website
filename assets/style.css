@@ -529,8 +529,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .hero-politik {
   background-image:
     linear-gradient(
-      rgba(9, 36, 61, 0.72),
-      rgba(9, 36, 61, 0.78)
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
     ),
     url('/assets/hero-politik.jpeg');
 
