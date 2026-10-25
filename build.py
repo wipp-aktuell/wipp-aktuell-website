@@ -565,7 +565,7 @@ def main():
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
-    write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
+    write(pathlib.Path('index.html'),base('Wipperfürth aktuell','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
     RUBRIK_BESCHREIBUNGEN = {
         'Stadtleben': 'Was Wipperfürth bewegt – Menschen, Alltag und Geschichten aus unserer Stadt.',
