@@ -339,6 +339,7 @@ def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
             'Wirtschaft': 'hero-wirtschaft',
             'Veranstaltungen': 'hero-veranstaltungen',
             'Sport': 'hero-sport',
+            'Stadtgeschichte': 'hero-stadtgeschichte',
         }
         hero_class = hero_classes.get(title, '')
 
