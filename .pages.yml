@@ -50,6 +50,17 @@ content:
         type: rich-text
         options:
           format: markdown
+      - name: ai_usage
+        label: KI-Einsatz im Beitrag
+        type: select
+        required: true
+        default: "Keine KI"
+        options:
+          values:
+            - "Keine KI"
+            - "KI-unterstützt, redaktionell geprüft"
+            - "KI-generiert, redaktionell geprüft"
+            - "KI-generiert, ohne redaktionelle Prüfung"
       - name: published
         label: Veröffentlichen
         type: boolean
