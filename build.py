@@ -535,7 +535,7 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
         )
 
     company_overview = (
-        '<div class="hero"><div class="wrap">'
+        '<div class="hero hero-unternehmen"><div class="wrap">'
         '<div class="eyebrow">Wipperfürth aktuell</div>'
         '<h1>Unternehmen</h1>'
         '<p>Lokale Unternehmen aus Wipperfürth und Umgebung kennenlernen.</p>'
