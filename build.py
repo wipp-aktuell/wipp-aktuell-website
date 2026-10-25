@@ -229,7 +229,7 @@ def event_calendar():
 
     items = []
 
-    for event in events[:5]:
+    for event in events:
         date = datetime.date.fromisoformat(
             str(event['date'])[:10]
         )
@@ -270,11 +270,27 @@ def event_calendar():
             + '</div></div>'
         )
 
-    content = (
-        ''.join(items)
-        if items
-        else '<p>Derzeit sind keine Termine eingetragen.</p>'
-    )
+
+    if len(items) > 5:
+        content = (
+            ''.join(items[:5])
+            + '<details class="calendar-expand">'
+            + '<summary>'
+            + '<span class="calendar-show-more">'
+            + 'Alle Veranstaltungen anzeigen'
+            + '</span>'
+            + '<span class="calendar-show-less">'
+            + 'Weniger anzeigen'
+            + '</span>'
+            + '</summary>'
+            + ''.join(items[5:])
+            + '</details>'
+        )
+    elif items:
+        content = ''.join(items)
+    else:
+        content = '<p>Derzeit sind keine Termine eingetragen.</p>'
+
 
     return (
         '<section class="sidebox event-calendar">'
