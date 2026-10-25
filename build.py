@@ -134,6 +134,39 @@ def cover(a, show_credit=False):
         )
     return '<div class="cover">Wipperfürth aktuell</div>'
 
+def ai_notice(a):
+    usage = a.get('ai_usage', 'Keine KI')
+
+    notices = {
+        'KI-unterstützt, redaktionell geprüft':
+            'Dieser Beitrag wurde mit Unterstützung künstlicher '
+            'Intelligenz erstellt und vor der Veröffentlichung '
+            'redaktionell geprüft. Die redaktionelle Verantwortung '
+            'liegt bei Wipperfürth aktuell.',
+
+        'KI-generiert, redaktionell geprüft':
+            'Dieser Beitrag wurde mithilfe künstlicher Intelligenz '
+            'generiert und vor der Veröffentlichung redaktionell '
+            'geprüft. Die redaktionelle Verantwortung liegt bei '
+            'Wipperfürth aktuell.',
+
+        'KI-generiert, ohne redaktionelle Prüfung':
+            'Dieser Beitrag wurde mithilfe künstlicher Intelligenz '
+            'generiert und nicht redaktionell geprüft.'
+    }
+
+    notice = notices.get(usage, '')
+
+    if not notice:
+        return ''
+
+    return (
+        '<div class="ai-notice" role="note">'
+        '<strong>Hinweis zur Erstellung</strong>'
+        '<p>' + esc(notice) + '</p>'
+        '</div>'
+    )
+
 def card(a):
     return f'''<a class="story" data-search="{esc((a['title']+' '+a.get('summary','')+' '+a['category']).lower())}" href="/artikel/{a['slug']}/">{cover(a)}<div class="story-body"><span class="pill">{esc(a['category'])}</span><h3>{esc(a['title'])}</h3><p>{esc(a.get('summary',''))}</p><div class="meta">{prettydate(a.get('date',''))} · weiterlesen →</div></div></a>'''
 
@@ -445,7 +478,7 @@ listing(
 )
 ,active=cat,canonical='/rubrik/'+slug(cat)+'/'))
     for a in articles:
-        article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
+        article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div>{ai_notice(a)}<p class="article-lead">{esc(a.get('summary',''))}</p>
 {cover(a, show_credit=True)}
 <div class="article-content">{md(a.get('body',''))}</div>{'<div class="notice">Quelle: '+esc(a['source'])+'</div>' if a.get('source') else ''}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         
