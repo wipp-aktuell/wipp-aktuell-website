@@ -562,3 +562,28 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     min-height: 190px;
   }
 }
+.hero.hero-wirtschaft {
+  height: 222px;
+  min-height: 222px;
+  padding: 55px 0 60px;
+  color: #fff;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
+    ),
+    url("/assets/hero-wirtschaft.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 700px) {
+  .hero.hero-wirtschaft {
+    height: auto;
+    min-height: 222px;
+    padding: 44px 0 48px;
+    background-position: center;
+  }
+}
