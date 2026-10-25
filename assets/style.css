@@ -837,3 +837,15 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding-bottom: 25px;
   }
 }
+
+/* Startseite: Text in der Bildleiste vertikal zentrieren */
+.hero:not([class*="hero-"]) {
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.hero:not([class*="hero-"]) > .wrap {
+  width: 100%;
+}
