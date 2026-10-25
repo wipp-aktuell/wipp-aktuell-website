@@ -604,47 +604,56 @@ listing(
           und weitere Unternehmen aus Wipperfürth und Umgebung.
         </p>
 
-        <div class="company-grid">
-          <div class="company-card">
-            <div class="company-card-content">
-              <h2>Premium-Banner</h2>
-              <p>Prominente Platzierung auf unserer Startseite,
-              oberhalb der neuesten Nachrichten.</p>
-            </div>
-          </div>
 
-          <div class="company-card">
-            <div class="company-card-content">
-              <h2>Standard-Anzeigen</h2>
-              <p>Ihre Werbung zwischen den Nachrichten
-              auf unserer Startseite.</p>
-            </div>
-          </div>
+<div class="company-grid">
 
-          <div class="company-card">
-            <div class="company-card-content">
-              <h2>Rubrikensponsoring</h2>
-              <p>Werbung in einem passenden Themenbereich,
-              beispielsweise Verkehr, Sport oder Wirtschaft.</p>
-            </div>
-          </div>
+  <a class="company-card"
+     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Premium-Banner">
+    <div class="company-card-content">
+      <h2>Premium-Banner</h2>
+      <p>Prominente Platzierung auf unserer Startseite,
+      oberhalb der neuesten Nachrichten.</p>
+    </div>
+  </a>
 
-          <div class="company-card">
-            <div class="company-card-content">
-              <h2>Unternehmensvorstellungen</h2>
-              <p>Ein eigener, als Anzeige gekennzeichneter Beitrag
-              über Ihr Unternehmen und seine Angebote.</p>
-            </div>
-          </div>
+  <a class="company-card"
+     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Standard-Anzeigen">
+    <div class="company-card-content">
+      <h2>Standard-Anzeigen</h2>
+      <p>Ihre Werbung zwischen den Nachrichten
+      auf unserer Startseite.</p>
+    </div>
+  </a>
 
-          <div class="company-card">
-            <div class="company-card-content">
-              <h2>Instagram & Website</h2>
-              <p>Fragen Sie nach einem individuellen Kombiangebot
-              mit unserem Instagram-Kanal @wipp_aktuell.</p>
-            </div>
-          </div>
-        </div>
+  <a class="company-card"
+     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Rubrikensponsoring">
+    <div class="company-card-content">
+      <h2>Rubrikensponsoring</h2>
+      <p>Werbung in einem passenden Themenbereich,
+      beispielsweise Verkehr, Sport oder Wirtschaft.</p>
+    </div>
+  </a>
+
+  <a class="company-card"
+     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Unternehmensvorstellungen">
+    <div class="company-card-content">
+      <h2>Unternehmensvorstellungen</h2>
+      <p>Ein eigener, als Anzeige gekennzeichneter Beitrag
+      über Ihr Unternehmen und seine Angebote.</p>
+    </div>
+  </a>
+
+  <a class="company-card"
+     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Instagram%20und%20Website">
+    <div class="company-card-content">
+      <h2>Instagram &amp; Website</h2>
+      <p>Fragen Sie nach einem individuellen Kombiangebot
+      mit unserem Instagram-Kanal @wipp_aktuell.</p>
+    </div>
+  </a>
+
+</div>
+
 
         <section class="sidebar-box" style="margin-top:32px">
           <h2>Jetzt Werbeanfrage stellen</h2>
