@@ -194,7 +194,7 @@ def render_news_with_ads(articles, ads=None):
 
 def sidebar():
     tags=''.join(f'<a class="tag" href="/rubrik/{slug(c)}/">{esc(c)}</a>' for c in CATEGORIES)
-    return f'''<aside class="sidebar"><section class="sidebox"><h3>Auf Instagram</h3><p>Weitere Meldungen, Eindrücke und Beiträge findest du auf unserem offiziellen Instagram-Profil.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">@wipp_aktuell öffnen ↗</a></section><section class="sidebox"><h3>Unsere Rubriken</h3><div class="taglist">{tags}</div></section><section class="sidebox"><h3>Hinweis senden</h3><p>Du hast eine lokale Nachricht oder einen Veranstaltungshinweis? Schreib uns gern über Instagram.</p><a class="button" href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Kontakt über Instagram ↗</a></section></aside>'''
+    return f'''<aside class="sidebar">{event_calendar()}<section class="sidebox"><h3>Auf Instagram</h3><p>Weitere Meldungen, Eindrücke und Beiträge findest du auf unserem offiziellen Instagram-Profil.</p><a class="button" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/wipp_aktuell/">@wipp_aktuell öffnen ↗</a></section><section class="sidebox"><h3>Unsere Rubriken</h3><div class="taglist">{tags}</div></section><section class="sidebox"><h3>Hinweis senden</h3><p>Du hast eine lokale Nachricht oder einen Veranstaltungshinweis? Schreib uns gern über Instagram.</p><a class="button" href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Kontakt über Instagram ↗</a></section></aside>'''
 def render_ad(ad):
     company = esc(ad.get('company', ''))
     description = esc(ad.get('description', ''))
