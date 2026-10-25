@@ -538,3 +538,21 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* Politik: gleiche Hoehe wie andere Rubriken */
+
+.hero.hero-politik {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+}
+
+.hero.hero-politik .wrap {
+  width: 100%;
+}
+
+@media (max-width: 620px) {
+  .hero.hero-politik {
+    min-height: 190px;
+  }
+}
