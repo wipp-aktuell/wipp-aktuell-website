@@ -546,8 +546,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .hero.hero-politik {
   height: 222px;
   min-height: 222px;
-  display: flex;
-  align-items: center;
+  display: block;
+  padding: 55px 0 60px;
+}
+
 }
 
 .hero.hero-politik .wrap {
