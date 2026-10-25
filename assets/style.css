@@ -951,3 +951,90 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     width: 100%;
   }
 }
+
+/* Veranstaltungskalender: Seitenleiste */
+.event-calendar {
+  padding: 22px;
+}
+
+.event-calendar .calendar-intro {
+  margin: 4px 0 18px;
+  color: #61758a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.event-calendar .calendar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5ebf0;
+}
+
+.event-calendar .calendar-item:last-child {
+  border-bottom: none;
+}
+
+.event-calendar .calendar-date {
+  flex: 0 0 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: 58px;
+  padding: 7px 4px;
+  background: #edf3f8;
+  border-radius: 8px;
+  color: #123752;
+}
+
+.event-calendar .calendar-date strong {
+  display: block;
+  font-size: 23px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.event-calendar .calendar-date small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.event-calendar .calendar-details {
+  flex: 1;
+  min-width: 0;
+  padding-top: 3px;
+}
+
+.event-calendar .calendar-details > strong {
+  display: block;
+  color: #123752;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.event-calendar .calendar-details > small {
+  display: block;
+  margin-top: 6px;
+  color: #61758a;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.event-calendar .calendar-details a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.event-calendar .calendar-details a:hover {
+  text-decoration: underline;
+}
