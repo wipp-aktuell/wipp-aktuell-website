@@ -1,0 +1,13 @@
+{
+  "title": "WegenerDESIGN Standard 2026",
+  "company": "WegenerDESIGN",
+  "placement": "Standard-Startseite",
+  "image": "/uploads/wegenerdesign-standardanzeigepng.png",
+  "description": "Werbetechnik, Folierung, Installationen und Möbeldesign aus Bochum.",
+  "target_url": "https://wegener-design.com/",
+  "start_date": "2026-10-25",
+  "end_date": "2026-11-30",
+  "active": true,
+  "priority": 1,
+  "booking_status": "Bestätigt"
+}
