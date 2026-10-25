@@ -757,3 +757,22 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   font-size: 26px;
   line-height: 1.25;
 }
+
+/* Vollbreite Darstellung aller Bildanzeigen */
+.advertisement .ad-full-image {
+  display: block;
+  width: 100%;
+}
+
+.advertisement .ad-full-image .ad-image {
+  display: block;
+  width: 100%;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.advertisement .ad-full-image .ad-link {
+  display: block;
+}
