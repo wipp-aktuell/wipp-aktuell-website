@@ -791,3 +791,49 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     line-height: 1.22;
   }
 }
+
+/* Kompaktere Bildleisten auf Startseite und Rubriken */
+.hero {
+  height: 180px;
+  min-height: 180px;
+  box-sizing: border-box;
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+
+/* Alle bebilderten Rubriken einheitlich */
+.hero.hero-stadtleben,
+.hero.hero-blaulicht,
+.hero.hero-verkehr,
+.hero.hero-politik,
+.hero.hero-wirtschaft,
+.hero.hero-veranstaltungen,
+.hero.hero-sport,
+.hero.hero-stadtgeschichte,
+.hero.hero-unternehmen,
+.hero.hero-werbung {
+  height: 180px;
+  min-height: 180px;
+  padding-top: 38px;
+  padding-bottom: 38px;
+}
+
+/* Smartphones */
+@media (max-width: 620px) {
+  .hero,
+  .hero.hero-stadtleben,
+  .hero.hero-blaulicht,
+  .hero.hero-verkehr,
+  .hero.hero-politik,
+  .hero.hero-wirtschaft,
+  .hero.hero-veranstaltungen,
+  .hero.hero-sport,
+  .hero.hero-stadtgeschichte,
+  .hero.hero-unternehmen,
+  .hero.hero-werbung {
+    height: 155px;
+    min-height: 155px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
