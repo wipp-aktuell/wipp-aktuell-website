@@ -645,3 +645,32 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 38px 0 42px;
   }
 }
+
+/* Rubrik Stadtgeschichte: Fotobanner */
+.hero.hero-stadtgeschichte {
+  height: 222px;
+  min-height: 222px;
+  display: block;
+  padding: 55px 0 60px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
+    ),
+    url("/assets/hero-stadtgeschichte.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 620px) {
+  .hero.hero-stadtgeschichte {
+    height: auto;
+    min-height: 190px;
+    padding: 38px 0 42px;
+  }
+}
