@@ -553,7 +553,7 @@ listing(
         '<div class="hero hero-unternehmen"><div class="wrap">'
         '<div class="eyebrow">Wipperfürth aktuell</div>'
         '<h1>Unternehmen</h1>'
-        '<p>Lokale Unternehmen aus Wipperfürth und Umgebung kennenlernen.</p>'
+        '<p>Lokale Betriebe entdecken – ihre Angebote, Ideen und Geschichten kennenlernen.</p>'
         '</div></div>'
         '<main class="wrap">'
         '<section class="company-overview">'
@@ -588,7 +588,7 @@ listing(
       <div class="wrap">
         <div class="eyebrow">Wipperfürth aktuell</div>
         <h1>Werbung schalten</h1>
-        <p>Erreichen Sie Menschen in Wipperfürth und Umgebung.</p>
+        <p>Lokal sichtbar werden – mit Werbung, die Wipperfürth erreicht.</p>
       </div>
     </div>
     <main class="wrap">
