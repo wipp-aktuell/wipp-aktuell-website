@@ -917,3 +917,37 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   margin: 0;
   padding: 0;
 }
+
+/* Mobil: Rubrikbanner vertikal zentrieren */
+@media (max-width: 620px) {
+  .hero.hero-stadtleben,
+  .hero.hero-blaulicht,
+  .hero.hero-verkehr,
+  .hero.hero-politik,
+  .hero.hero-wirtschaft,
+  .hero.hero-veranstaltungen,
+  .hero.hero-sport,
+  .hero.hero-stadtgeschichte,
+  .hero.hero-unternehmen,
+  .hero.hero-werbung {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 155px;
+    padding: 18px 0;
+  }
+
+  .hero.hero-stadtleben > .wrap,
+  .hero.hero-blaulicht > .wrap,
+  .hero.hero-verkehr > .wrap,
+  .hero.hero-politik > .wrap,
+  .hero.hero-wirtschaft > .wrap,
+  .hero.hero-veranstaltungen > .wrap,
+  .hero.hero-sport > .wrap,
+  .hero.hero-stadtgeschichte > .wrap,
+  .hero.hero-unternehmen > .wrap,
+  .hero.hero-werbung > .wrap {
+    width: 100%;
+  }
+}
