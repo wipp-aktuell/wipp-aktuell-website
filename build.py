@@ -191,6 +191,102 @@ def render_news_with_ads(articles, ads=None):
     return ''.join(parts)
 
 
+def event_calendar():
+    folder = ROOT / 'content' / 'events'
+    events = []
+    today = datetime.date.today().isoformat()
+
+    if folder.exists():
+        for file in folder.glob('*.json'):
+            try:
+                event = json.loads(
+                    file.read_text(encoding='utf-8')
+                )
+
+                date = str(event.get('date') or '')[:10]
+
+                if (
+                    event.get('published', False)
+                    and date >= today
+                    and event.get('title')
+                ):
+                    datetime.date.fromisoformat(date)
+                    events.append(event)
+
+            except (ValueError, OSError, TypeError):
+                continue
+
+    events.sort(key=lambda e: (
+        str(e.get('date', '')),
+        str(e.get('time', ''))
+    ))
+
+    months = [
+        'Jan', 'Feb', 'Mär', 'Apr',
+        'Mai', 'Jun', 'Jul', 'Aug',
+        'Sep', 'Okt', 'Nov', 'Dez'
+    ]
+
+    items = []
+
+    for event in events[:5]:
+        date = datetime.date.fromisoformat(
+            str(event['date'])[:10]
+        )
+
+        day = date.strftime('%d')
+        month = months[date.month - 1]
+
+        title = esc(str(event['title']))
+        location = esc(str(event.get('location') or ''))
+        time = esc(str(event.get('time') or ''))
+
+        details = ' · '.join(
+            part for part in (time, location) if part
+        )
+
+        url = str(event.get('url') or '').strip()
+
+        if url.startswith(('https://', 'http://')):
+            title = (
+                '<a href="' + esc(url) + '" '
+                'target="_blank" '
+                'rel="noopener noreferrer">'
+                + title + '</a>'
+            )
+
+        items.append(
+            '<div class="calendar-item">'
+            '<div class="calendar-date">'
+            '<strong>' + day + '</strong>'
+            '<small>' + month + '</small>'
+            '</div>'
+            '<div class="calendar-details">'
+            '<strong>' + title + '</strong>'
+            + (
+                '<small>' + details + '</small>'
+                if details else ''
+            )
+            + '</div></div>'
+        )
+
+    content = (
+        ''.join(items)
+        if items
+        else '<p>Derzeit sind keine Termine eingetragen.</p>'
+    )
+
+    return (
+        '<section class="sidebox event-calendar">'
+        '<h3>Veranstaltungen</h3>'
+        '<p class="calendar-intro">'
+        'Das ist los in Wipperfürth</p>'
+        + content
+        + '</section>'
+    )
+
+
+
 
 def sidebar():
     tags=''.join(f'<a class="tag" href="/rubrik/{slug(c)}/">{esc(c)}</a>' for c in CATEGORIES)
