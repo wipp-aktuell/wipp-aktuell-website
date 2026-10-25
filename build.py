@@ -569,7 +569,7 @@ listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=
 
     
     werbung_html = '''
-    <div class="hero">
+    <div class="hero hero-werbung">
       <div class="wrap">
         <div class="eyebrow">Wipperfürth aktuell</div>
         <h1>Werbung schalten</h1>
