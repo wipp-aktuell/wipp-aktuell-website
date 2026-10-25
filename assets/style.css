@@ -587,3 +587,32 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     background-position: center;
   }
 }
+
+/* Rubrik Veranstaltungen: Fotobanner */
+.hero.hero-veranstaltungen {
+  height: 222px;
+  min-height: 222px;
+  display: block;
+  padding: 55px 0 60px;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(9, 36, 61, 0.82) 0%,
+      rgba(9, 36, 61, 0.55) 48%,
+      rgba(9, 36, 61, 0.15) 100%
+    ),
+    url("/assets/hero-veranstaltungen.jpeg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 620px) {
+  .hero.hero-veranstaltungen {
+    height: auto;
+    min-height: 190px;
+    padding: 38px 0 42px;
+  }
+}
