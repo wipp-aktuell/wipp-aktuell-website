@@ -412,12 +412,27 @@ def main():
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
     write(pathlib.Path('index.html'),base('Nachrichten aus Wipperfürth','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
+    RUBRIK_BESCHREIBUNGEN = {
+        'Stadtleben': 'Was Wipperfürth bewegt – Menschen, Alltag und Geschichten aus unserer Stadt.',
+        'Blaulicht': 'Polizei, Feuerwehr und Rettungsdienste – aktuelle Einsätze und Entwicklungen.',
+        'Verkehr': 'Baustellen, Sperrungen und Mobilität – was auf unseren Straßen wichtig ist.',
+        'Politik': 'Entscheidungen, Debatten und Hintergründe aus der Wipperfürther Kommunalpolitik.',
+        'Wirtschaft': 'Unternehmen, Arbeitsplätze und wirtschaftliche Entwicklungen vor Ort.',
+        'Veranstaltungen': 'Feste, Märkte, Kultur und Termine – das ist los in Wipperfürth.',
+        'Sport': 'Vereine, Wettkämpfe und Erfolge – die Wipperfürther Sportwelt im Blick.',
+        'Stadtgeschichte': 'Historische Orte, spannende Ereignisse und Geschichten aus vergangenen Zeiten.'
+    }
     for cat in CATEGORIES:
         selected=[a for a in articles if a['category']==cat]
         sponsor_ads = select_ads(ads, 'Rubrikensponsor', today, category=cat)
         sponsor_html = render_ad(sponsor_ads[0]) if sponsor_ads else ''
         write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,
-listing(cat,'Meldungen und Hintergründe aus Wipperfürth.',selected,premium_ad=sponsor_html)
+listing(
+    cat,
+    RUBRIK_BESCHREIBUNGEN.get(cat, 'Nachrichten aus Wipperfürth.'),
+    selected,
+    premium_ad=sponsor_html
+)
 ,active=cat,canonical='/rubrik/'+slug(cat)+'/'))
     for a in articles:
         article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
