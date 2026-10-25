@@ -338,6 +338,7 @@ def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
             'Politik': 'hero-politik',
             'Wirtschaft': 'hero-wirtschaft',
             'Veranstaltungen': 'hero-veranstaltungen',
+            'Sport': 'hero-sport',
         }
         hero_class = hero_classes.get(title, '')
 
