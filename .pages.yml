@@ -3,6 +3,37 @@ media:
   output: /uploads
   rename: true
 content:
+  - name: termine
+    label: Veranstaltungskalender
+    type: collection
+    path: content/events
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, date, time, location, published]
+      primary: title
+    fields:
+      - name: title
+        label: Veranstaltung
+        type: string
+        required: true
+      - name: date
+        label: Datum
+        type: date
+        required: true
+      - name: time
+        label: Uhrzeit
+        type: string
+      - name: location
+        label: Veranstaltungsort
+        type: string
+      - name: url
+        label: Weiterführender Link
+        type: string
+      - name: published
+        label: Im Kalender anzeigen
+        type: boolean
+        default: true
   - name: artikel
     label: Nachrichtenartikel
     type: collection
