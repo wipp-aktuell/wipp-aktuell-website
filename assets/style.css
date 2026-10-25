@@ -893,3 +893,27 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
+/* Einheitliches 16:9-Format fuer Artikelbilder */
+.article-figure .cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.article-figure .cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Vorschaukacheln: keine weissen Zwischenraeume */
+.story > .article-figure {
+  margin: 0;
+  padding: 0;
+}
