@@ -1038,3 +1038,51 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .event-calendar .calendar-details a:hover {
   text-decoration: underline;
 }
+
+/* Veranstaltungskalender: weitere Termine ausklappen */
+.calendar-expand {
+  margin-top: 12px;
+}
+
+.calendar-expand summary {
+  display: block;
+  padding: 11px 12px;
+  background: #245b83;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s ease;
+}
+
+.calendar-expand summary::-webkit-details-marker {
+  display: none;
+}
+
+.calendar-expand summary:hover {
+  background: #123752;
+}
+
+.calendar-expand summary:focus-visible {
+  outline: 3px solid #7bb5e0;
+  outline-offset: 3px;
+}
+
+.calendar-expand .calendar-show-less {
+  display: none;
+}
+
+.calendar-expand[open] .calendar-show-more {
+  display: none;
+}
+
+.calendar-expand[open] .calendar-show-less {
+  display: inline;
+}
+
+.calendar-expand .calendar-item:first-of-type {
+  margin-top: 12px;
+}
