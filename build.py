@@ -180,14 +180,21 @@ def render_ad(ad):
             + esc(image) + '" alt="' + image_alt + '">'
         )
 
+
     content = (
-        '<div class="ad-content">'
+        '<div class="ad-full-image">'
         + image_html
-        + '<div class="ad-text">'
-        + '<strong class="ad-company">' + company + '</strong>'
-        + ('<p>' + description + '</p>' if description else '')
-        + '</div></div>'
+        + '</div>'
+        if image_html
+        else (
+            '<div class="ad-content">'
+            '<div class="ad-text">'
+            '<strong class="ad-company">' + company + '</strong>'
+            + ('<p>' + description + '</p>' if description else '')
+            + '</div></div>'
+        )
     )
+
 
     if target:
         content = (
