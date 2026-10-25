@@ -751,3 +751,9 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     display: block;
   }
 }
+
+/* Startseite: Ueberschrift "Neueste Beitraege" verkleinern */
+.section-heading h2 {
+  font-size: 26px;
+  line-height: 1.25;
+}
