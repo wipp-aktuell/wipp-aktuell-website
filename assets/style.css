@@ -532,7 +532,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
       rgba(9, 36, 61, 0.72),
       rgba(9, 36, 61, 0.78)
     ),
-    url('/assets/hero-politik.jpg');
+    url('/assets/hero-politik.jpeg');
 
   background-size: cover;
   background-position: center;
