@@ -838,14 +838,27 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
-/* Startseite: Text in der Bildleiste vertikal zentrieren */
-.hero:not([class*="hero-"]) {
+
+/* Startseite: Textblock exakt vertikal zentrieren */
+.hero.hero-startseite {
   display: flex;
   align-items: center;
+  height: 180px;
+  min-height: 180px;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.hero:not([class*="hero-"]) > .wrap {
+.hero.hero-startseite > .wrap {
   width: 100%;
 }
+
+@media (max-width: 620px) {
+  .hero.hero-startseite {
+    height: auto;
+    min-height: 155px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
