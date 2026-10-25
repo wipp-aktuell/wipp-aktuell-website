@@ -95,7 +95,7 @@ def base(title,description,content,active='',canonical='',article=False):
 <head>
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | Wipperfürth aktuell</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/style.css?v=20261025-11">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/assets/style.css?v=20261025-12">
 </head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div><header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo">
   <img class="site-logo" src="/assets/logo-wipp-aktuell.jpg" alt="Logo von Wipperfürth aktuell">
