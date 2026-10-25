@@ -732,3 +732,22 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 38px 0 42px;
   }
 }
+
+/* Einheitliche Hoehe aller Rubrikbanner auf Smartphones */
+@media (max-width: 620px) {
+  .hero.hero-stadtleben,
+  .hero.hero-blaulicht,
+  .hero.hero-verkehr,
+  .hero.hero-politik,
+  .hero.hero-wirtschaft,
+  .hero.hero-veranstaltungen,
+  .hero.hero-sport,
+  .hero.hero-stadtgeschichte,
+  .hero.hero-unternehmen,
+  .hero.hero-werbung {
+    height: 190px;
+    min-height: 190px;
+    padding: 38px 0 42px;
+    display: block;
+  }
+}
