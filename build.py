@@ -336,6 +336,7 @@ def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
             'Blaulicht': 'hero-blaulicht',
             'Verkehr': 'hero-verkehr',
             'Politik': 'hero-politik',
+            'Wirtschaft': 'hero-wirtschaft',
         }
         hero_class = hero_classes.get(title, '')
 
