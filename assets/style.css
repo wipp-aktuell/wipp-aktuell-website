@@ -776,3 +776,18 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .advertisement .ad-full-image .ad-link {
   display: block;
 }
+
+/* Artikelueberschriften dezenter gestalten */
+.article h1 {
+  font-size: 38px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+}
+
+/* Artikelueberschriften auf Smartphones */
+@media (max-width: 620px) {
+  .article h1 {
+    font-size: 30px;
+    line-height: 1.22;
+  }
+}
