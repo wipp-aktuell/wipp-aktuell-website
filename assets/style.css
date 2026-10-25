@@ -862,3 +862,34 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
+/* Transparenter Hinweis auf KI-Unterstuetzung */
+.ai-notice {
+  margin: 20px 0 24px;
+  padding: 14px 18px;
+  background: #f1f5f8;
+  border-left: 3px solid #52748d;
+  border-radius: 4px;
+  color: #34495c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.ai-notice strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #123752;
+  font-size: 13px;
+}
+
+.ai-notice p {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .ai-notice {
+    margin: 16px 0 20px;
+    padding: 12px 14px;
+    font-size: 12px;
+  }
+}
+
