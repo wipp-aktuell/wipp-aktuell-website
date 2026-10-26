@@ -1130,3 +1130,25 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .calendar-expand .calendar-item:first-of-type {
   margin-top: 12px;
 }
+
+/* Sidebar-Werbung: gleiche Breite wie normale Kacheln */
+.sidebar > .advertisement {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin: 0 0 20px 0;
+}
+
+/* Werbebilder passen sich der Kachelbreite an */
+.sidebar > .advertisement .ad-full-image,
+.sidebar > .advertisement .ad-link,
+.sidebar > .advertisement .ad-image {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .sidebar > .advertisement {
+    margin-bottom: 0;
+  }
+}
