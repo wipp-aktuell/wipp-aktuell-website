@@ -128,6 +128,9 @@ content:
             - Premium-Startseite
             - Standard-Startseite
             - Rubrikensponsor
+            - Sidebar-1
+            - Sidebar-2
+            - Sidebar-3
 
       - name: category
         label: Zugeordnete Rubrik
