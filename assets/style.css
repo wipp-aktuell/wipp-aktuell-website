@@ -1204,3 +1204,177 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     margin-bottom: 16px;
   }
 }
+
+/* Werbung schalten: illustrierte Werbeplatz-Vorschau */
+
+.werbung-illustration {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 36px;
+  margin: 28px 0 42px;
+  padding: 36px;
+  background: #ffffff;
+  border: 1px solid #dde5ec;
+  border-radius: 10px;
+}
+
+.werbung-illustration-text {
+  min-width: 0;
+}
+
+.werbung-illustration-label {
+  display: block;
+  margin-bottom: 13px;
+  color: #245c86;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.werbung-illustration-text h2 {
+  margin: 0 0 16px;
+  color: #09243d;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.werbung-illustration-text p {
+  margin: 0;
+  color: #536779;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Schematische Website-Vorschau */
+
+.werbung-mockup {
+  min-width: 0;
+  padding: 16px;
+  background: #f2f6fa;
+  border: 1px solid #d6e1ea;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(9, 36, 61, 0.08);
+}
+
+.werbung-mockup-top {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.werbung-mockup-top span {
+  width: 7px;
+  height: 7px;
+  background: #9bb0c1;
+  border-radius: 50%;
+}
+
+.werbung-mockup-brand {
+  margin-bottom: 13px;
+  padding: 10px 12px;
+  background: #09243d;
+  color: #ffffff;
+  border-radius: 5px;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.werbung-mockup-premium,
+.werbung-mockup-standard,
+.werbung-mockup-side,
+.werbung-mockup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: #dbeaf5;
+  border: 1px dashed #245c86;
+  border-radius: 5px;
+  color: #164a70;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.werbung-mockup-premium {
+  min-height: 52px;
+  margin-bottom: 12px;
+}
+
+.werbung-mockup-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.werbung-mockup-main {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.werbung-mockup-news {
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid #dde5ec;
+  border-radius: 5px;
+}
+
+.werbung-mockup-standard {
+  min-height: 42px;
+}
+
+.werbung-mockup-side {
+  min-height: 138px;
+}
+
+.werbung-mockup-footer {
+  min-height: 44px;
+  margin-top: 12px;
+}
+
+/* Tablet und Smartphone */
+
+@media (max-width: 900px) {
+  .werbung-illustration {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 26px;
+  }
+}
+
+@media (max-width: 620px) {
+  .werbung-illustration {
+    margin: 22px 0 30px;
+    padding: 20px;
+  }
+
+  .werbung-illustration-text h2 {
+    font-size: 25px;
+  }
+
+  .werbung-illustration-text p {
+    font-size: 14px;
+  }
+
+  .werbung-mockup {
+    padding: 12px;
+  }
+
+  .werbung-mockup-brand {
+    font-size: 12px;
+  }
+
+  .werbung-mockup-premium,
+  .werbung-mockup-standard,
+  .werbung-mockup-side,
+  .werbung-mockup-footer {
+    font-size: 9px;
+  }
+}
