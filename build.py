@@ -106,6 +106,58 @@ def base(title,description,content,active='',canonical='',article=False):
         )
         else ''
     )    
+    
+    if canonical == '/werbung/':
+        content += '''
+        <section class="wrap" style="padding-bottom:52px;">
+          <div style="
+            max-width:1120px;
+            margin:0 auto;
+            padding:34px 28px;
+            background:#ffffff;
+            border:1px solid #dde5ec;
+            border-radius:8px;
+            text-align:center;
+          ">
+            <h2 style="
+              margin:0 0 12px;
+              color:#09243d;
+              font-family:Montserrat,Arial,sans-serif;
+              font-size:25px;
+            ">
+              Alle Werbemöglichkeiten auf einen Blick
+            </h2>
+
+            <p style="
+              max-width:650px;
+              margin:0 auto 24px;
+              color:#536779;
+              font-size:15px;
+              line-height:1.7;
+            ">
+              Entdecken Sie unsere Werbeformate,
+              Platzierungsmöglichkeiten und technischen
+              Anforderungen in unserem Werbeportfolio.
+            </p>
+
+            <a class="button"
+               href="/downloads/werbeportfolio-wipperfuerth-aktuell.pdf"
+               download="werbeportfolio-wipperfuerth-aktuell.pdf"
+               style="padding:15px 26px;font-size:14px;">
+              Werbeportfolio als PDF herunterladen &#8595;
+            </a>
+
+            <p style="
+              margin:15px 0 0;
+              color:#627487;
+              font-size:12px;
+            ">
+              Kostenloser Download | Preise auf Anfrage
+            </p>
+          </div>
+        </section>
+        '''
+
     return f'''<!doctype html><html lang="de">
 <head>
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
