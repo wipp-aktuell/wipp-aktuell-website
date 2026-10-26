@@ -1152,3 +1152,13 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     margin-bottom: 0;
   }
 }
+
+/* Abstand zwischen Seiteninhalt und Footer-Werbung verringern */
+.layout:has(+ .advertisement) {
+  padding-bottom: 20px;
+}
+
+.layout + .advertisement {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
