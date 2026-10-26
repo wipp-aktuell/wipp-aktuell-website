@@ -827,7 +827,48 @@ listing(
           und weitere Unternehmen aus Wipperfürth und Umgebung.
         </p>
 
+<!-- Illustration der Werbeplaetze -->
+<div class="werbung-illustration">
+  <div class="werbung-illustration-text">
+    <span class="werbung-illustration-label">
+      IHRE WERBUNG. UNSERE REGION.
+    </span>
+    <h2>Ihre Marke im Mittelpunkt.</h2>
+    <p>
+      Ob aufmerksamkeitsstarker Banner, Werbung
+      innerhalb unserer Nachrichten oder Präsenz
+      in der Seitenleiste: Wir bieten Ihrem
+      Unternehmen verschiedene Möglichkeiten,
+      Menschen in Wipperfürth und Umgebung zu erreichen.
+    </p>
+  </div>
 
+  <div class="werbung-mockup" aria-label="Schematische Darstellung der Werbeplätze auf der Website">
+    <div class="werbung-mockup-top">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="werbung-mockup-brand">Wipperfürth aktuell.</div>
+
+    <div class="werbung-mockup-premium">
+      PREMIUM-BANNER
+    </div>
+
+    <div class="werbung-mockup-columns">
+      <div class="werbung-mockup-main">
+        <div class="werbung-mockup-news"></div>
+        <div class="werbung-mockup-standard">STANDARD-ANZEIGE</div>
+        <div class="werbung-mockup-news"></div>
+      </div>
+      <div class="werbung-mockup-side">
+        SIDEBAR
+      </div>
+    </div>
+
+    <div class="werbung-mockup-footer">
+      FOOTER-BANNER
+    </div>
+  </div>
+</div>
 
 <!-- Werbeplaetze auf der Website -->
 <section class="werbung-gruppe">
