@@ -852,6 +852,10 @@ listing(
     <div class="werbung-mockup-premium">
       PREMIUM-BANNER
     </div>
+    
+    <div class="werbung-mockup-rubrik">
+      RUBRIKENSPONSORING
+    </div>
 
     <div class="werbung-mockup-columns">
       <div class="werbung-mockup-main">
