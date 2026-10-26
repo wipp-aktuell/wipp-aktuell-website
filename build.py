@@ -828,68 +828,89 @@ listing(
         </p>
 
 
-<div class="company-grid">
 
-  <a class="company-card"
-     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Premium-Banner">
-    <div class="company-card-content">
-      <h2>Premium-Banner</h2>
-      <p>Prominente Platzierung auf unserer Startseite,
-      oberhalb der neuesten Nachrichten.</p>
-    </div>
-  </a>
+<!-- Werbeplaetze auf der Website -->
+<section class="werbung-gruppe">
+  <h2>Werbeplätze auf unserer Website</h2>
 
-  <a class="company-card"
-     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Standard-Anzeigen">
-    <div class="company-card-content">
-      <h2>Standard-Anzeigen</h2>
-      <p>Ihre Werbung zwischen den Nachrichten
-      auf unserer Startseite.</p>
-    </div>
-  </a>
+  <div class="company-grid">
 
-  <a class="company-card"
-     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Rubrikensponsoring">
-    <div class="company-card-content">
-      <h2>Rubrikensponsoring</h2>
-      <p>Werbung in einem passenden Themenbereich,
-      beispielsweise Verkehr, Sport oder Wirtschaft.</p>
-    </div>
-  </a>
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Premium-Banner">
+      <div class="company-card-content">
+        <h2>Premium-Banner</h2>
+        <p>Prominente Platzierung auf unserer Startseite,
+        oberhalb der neuesten Nachrichten.</p>
+      </div>
+    </a>
 
-  <a class="company-card"
-     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Unternehmensvorstellungen">
-    <div class="company-card-content">
-      <h2>Unternehmensvorstellungen</h2>
-      <p>Ein eigener, als Anzeige gekennzeichneter Beitrag
-      über Ihr Unternehmen und seine Angebote.</p>
-    </div>
-  </a>
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Standard-Anzeigen">
+      <div class="company-card-content">
+        <h2>Standard-Anzeigen</h2>
+        <p>Ihre Werbung zwischen den Nachrichten
+        auf unserer Startseite.</p>
+      </div>
+    </a>
 
-  <a class="company-card"
-     href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Instagram%20und%20Website">
-    <div class="company-card-content">
-      <h2>Instagram &amp; Website</h2>
-      <p>Fragen Sie nach einem individuellen Kombiangebot
-      mit unserem Instagram-Kanal @wipp_aktuell.</p>
-    </div>
-  </a>
-<a class="company-card"
-   href="mailto:info@wipp-aktuell.de?subject=Anfrage%20Sidebar-%20und%20Footer-Werbung">
-  <div class="company-card-content">
-    <h2>Sidebar- &amp; Footer-Werbung</h2>
-    <p>
-      Präsentieren Sie Ihr Unternehmen in der rechten
-      Seitenleiste oder mit einem großflächigen Banner
-      oberhalb der Fußzeile. Auf der Startseite,
-      in den Nachrichtenrubriken und auf Artikelseiten.
-    </p>
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Rubrikensponsoring">
+      <div class="company-card-content">
+        <h2>Rubrikensponsoring</h2>
+        <p>Werbung in einem passenden Themenbereich,
+        beispielsweise Verkehr, Sport oder Wirtschaft.</p>
+      </div>
+    </a>
+
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Sidebar-Werbung">
+      <div class="company-card-content">
+        <h2>Sidebar-Werbung</h2>
+        <p>Drei attraktive Werbeplätze in der rechten
+        Seitenleiste auf der Startseite, in den Rubriken
+        und auf Artikelseiten.</p>
+      </div>
+    </a>
+
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Footer-Banner">
+      <div class="company-card-content">
+        <h2>Footer-Banner</h2>
+        <p>Großflächige Werbung unterhalb der Nachrichten
+        und oberhalb der Fußzeile – auf der Startseite,
+        in den Rubriken und auf Artikelseiten.</p>
+      </div>
+    </a>
+
   </div>
-</a>
+</section>
 
+<!-- Weitere Werbemoeglichkeiten -->
+<section class="werbung-gruppe">
+  <h2>Weitere Werbemöglichkeiten</h2>
 
-</div>
+  <div class="company-grid">
 
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Unternehmensvorstellungen">
+      <div class="company-card-content">
+        <h2>Unternehmensvorstellungen</h2>
+        <p>Ein eigener, als Anzeige gekennzeichneter
+        Beitrag über Ihr Unternehmen und seine Angebote.</p>
+      </div>
+    </a>
+
+    <a class="company-card"
+       href="mailto:info@wipp-aktuell.de?subject=Werbeanfrage%3A%20Instagram%20und%20Website">
+      <div class="company-card-content">
+        <h2>Instagram &amp; Website</h2>
+        <p>Fragen Sie nach einem individuellen Kombiangebot
+        mit unserem Instagram-Kanal @wipp_aktuell.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
 
         <section class="sidebar-box" style="margin-top:32px">
           <h2>Jetzt Werbeanfrage stellen</h2>
