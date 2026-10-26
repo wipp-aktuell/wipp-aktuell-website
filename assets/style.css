@@ -1378,3 +1378,28 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 9px;
   }
 }
+
+/* Rubrikensponsoring in der Werbeplatz-Illustration */
+
+.werbung-mockup-rubrik {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #dbeaf5;
+  border: 1px dashed #245c86;
+  border-radius: 5px;
+  color: #164a70;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+@media (max-width: 620px) {
+  .werbung-mockup-rubrik {
+    font-size: 9px;
+  }
+}
