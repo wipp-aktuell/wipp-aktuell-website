@@ -9,6 +9,11 @@ ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
 COMPANIES = ROOT / 'content' / 'companies'
 CATEGORIES=['Stadtleben','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
+SIDEBAR_AD_HTML = {
+    'Sidebar-1': '',
+    'Sidebar-2': '',
+    'Sidebar-3': '',
+}
 
 def news_article_jsonld(article):
     url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
@@ -313,9 +318,10 @@ def sidebar():
 
     return f'''<aside class="sidebar">
     {event_calendar()}
-
+    {SIDEBAR_AD_HTML['Sidebar-1']}
     <section class="sidebox">
       <h3>Auf Instagram</h3>
+
       <p>Weitere Meldungen, Eindrücke und Beiträge findest du
       auf unserem offiziellen Instagram-Profil.</p>
       <a class="button"
@@ -324,12 +330,16 @@ def sidebar():
          href="https://www.instagram.com/wipp_aktuell/">
         @wipp_aktuell öffnen ↗
       </a>
+
     </section>
+    {SIDEBAR_AD_HTML['Sidebar-2']}
 
     <section class="sidebox">
       <h3>Unsere Rubriken</h3>
+
       <div class="taglist">{tags}</div>
     </section>
+    {SIDEBAR_AD_HTML['Sidebar-3']}
 
     <section class="sidebox">
       <h3>Hinweis senden</h3>
@@ -408,6 +418,9 @@ def check_ad_bookings(ads):
     limits = {
         'Premium-Startseite': 1,
         'Standard-Startseite': 3,
+        'Sidebar-1': 1,
+        'Sidebar-2': 1,
+        'Sidebar-3': 1,
     }
 
     bookings = {}
@@ -599,6 +612,11 @@ def main():
     print(f'Werbeanzeigen eingelesen: {len(ads)}')
     check_ad_bookings(ads)
     today = datetime.datetime.now(ZoneInfo('Europe/Berlin')).date().isoformat()
+    for placement in ('Sidebar-1', 'Sidebar-2', 'Sidebar-3'):
+        selected = select_ads(ads, placement, today)
+        SIDEBAR_AD_HTML[placement] = (
+            render_ad(selected[0]) if selected else ''
+        )
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
