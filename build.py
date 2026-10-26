@@ -14,6 +14,7 @@ SIDEBAR_AD_HTML = {
     'Sidebar-2': '',
     'Sidebar-3': '',
 }
+BOTTOM_AD_HTML = {'content': ''}
 
 def news_article_jsonld(article):
     url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
@@ -96,6 +97,15 @@ def md(text):
 def base(title,description,content,active='',canonical='',article=False):
     nav=''.join(f'<a href="/rubrik/{slug(cat)}/" class="{"active" if cat==active else ""}">{esc(cat)}</a>' for cat in CATEGORIES)
     canonical_tag=f'<link rel="canonical" href="https://wipp-aktuell.de{esc(canonical)}">' if canonical else ''
+    footer_ad = (
+        BOTTOM_AD_HTML['content']
+        if (
+            canonical == '/'
+            or canonical.startswith('/rubrik/')
+            or canonical.startswith('/artikel/')
+        )
+        else ''
+    )    
     return f'''<!doctype html><html lang="de">
 <head>
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
@@ -112,7 +122,7 @@ def base(title,description,content,active='',canonical='',article=False):
 </a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header><nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
-</div></nav>{content}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261026-1
+</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261026-1
 
 
 
@@ -421,6 +431,7 @@ def check_ad_bookings(ads):
         'Sidebar-1': 1,
         'Sidebar-2': 1,
         'Sidebar-3': 1,
+        'Footer-Banner': 1,
     }
 
     bookings = {}
@@ -617,6 +628,10 @@ def main():
         SIDEBAR_AD_HTML[placement] = (
             render_ad(selected[0]) if selected else ''
         )
+    footer_ads = select_ads(ads, 'Footer-Banner', today)
+    BOTTOM_AD_HTML['content'] = (
+        render_ad(footer_ads[0]) if footer_ads else ''
+    )
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
