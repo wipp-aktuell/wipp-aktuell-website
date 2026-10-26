@@ -311,32 +311,8 @@ def sidebar():
         for c in CATEGORIES
     )
 
-    bus_monitor = '''
-    <section class="sidebox">
-      <h3>Bus-Abfahrten</h3>
-      <p>Wipperfürth Busbahnhof</p>
-      <iframe
-        src="https://www.vrs.de/am/s/195907d1dff1295c29fd576471fa77c5"
-        title="VRS-Abfahrtsmonitor Wipperfürth Busbahnhof"
-        loading="lazy"
-        style="display:block;width:100%;height:440px;border:0;"
-        referrerpolicy="strict-origin-when-cross-origin">
-      </iframe>
-      <p style="font-size:12px;margin-top:12px;">
-        Quelle: Verkehrsverbund Rhein-Sieg
-      </p>
-      <a class="button"
-         href="https://www.vrs.de/am/s/195907d1dff1295c29fd576471fa77c5"
-         target="_blank"
-         rel="noopener noreferrer">
-        Alle Abfahrten beim VRS ↗
-      </a>
-    </section>
-    '''
-
     return f'''<aside class="sidebar">
     {event_calendar()}
-    {bus_monitor}
 
     <section class="sidebox">
       <h3>Auf Instagram</h3>
