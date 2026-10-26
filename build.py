@@ -876,7 +876,8 @@ listing(
     )
 
 
-    impressum_html = '''
+
+impressum_html = '''
     <main class="legal">
       <h1>Impressum</h1>
 
@@ -892,7 +893,10 @@ listing(
 
       <h2>Kontakt</h2>
       <p style="line-height:1.4; margin:0 0 12px 0;">
-        E-Mail: info@wipp-aktuell.de
+        E-Mail:
+        <a href="mailto:info@wipp-aktuell.de">
+          info@wipp-aktuell.de
+        </a>
       </p>
 
       <h2>Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV</h2>
@@ -902,8 +906,16 @@ listing(
         50733 Köln<br>
         Deutschland
       </p>
+
+      <h2>Verbraucherstreitbeilegung</h2>
+      <p style="line-height:1.4; margin:0 0 12px 0;">
+        Wir sind weder verpflichtet noch bereit,
+        an Streitbeilegungsverfahren vor einer
+        Verbraucherschlichtungsstelle teilzunehmen.
+      </p>
     </main>
     '''
+
     write(
         pathlib.Path('impressum') / 'index.html',
         base(
