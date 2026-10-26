@@ -979,14 +979,18 @@ listing(
   padding-top:24px;
   border-top:1px solid #dde5ec;
 ">
-  <h3 style="
-    margin:0 0 10px;
-    color:#09243d;
-    font-family:Montserrat,Arial,sans-serif;
-    font-size:21px;
-  ">
-    Unser Werbeportfolio
-  </h3>
+
+<h3 style="
+  margin:0 0 10px;
+  color:#09243d;
+  font-family:Montserrat,Arial,sans-serif;
+  font-size:25px;
+  font-weight:800;
+  line-height:1.3;
+">
+  Unser Werbeportfolio
+</h3>
+
 
   <p style="
     margin:0 0 18px;
