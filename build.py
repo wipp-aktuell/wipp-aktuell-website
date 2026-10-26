@@ -874,6 +874,19 @@ listing(
       mit unserem Instagram-Kanal @wipp_aktuell.</p>
     </div>
   </a>
+<a class="company-card"
+   href="mailto:info@wipp-aktuell.de?subject=Anfrage%20Sidebar-%20und%20Footer-Werbung">
+  <div class="company-card-content">
+    <h2>Sidebar- &amp; Footer-Werbung</h2>
+    <p>
+      Präsentieren Sie Ihr Unternehmen in der rechten
+      Seitenleiste oder mit einem großflächigen Banner
+      oberhalb der Fußzeile. Auf der Startseite,
+      in den Nachrichtenrubriken und auf Artikelseiten.
+    </p>
+  </div>
+</a>
+
 
 </div>
 
