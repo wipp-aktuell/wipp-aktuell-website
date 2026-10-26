@@ -297,37 +297,46 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   background: var(--line);
 }
 
-/* Desktop: links Marke, in der Mitte Wetter, rechts Instagram */
+/* Desktop: links Logo, rechts Wetter */
 @media (min-width: 1050px) {
   .masthead .masthead-inner {
     display: grid;
-    grid-template-columns: minmax(420px, 1fr) max-content 100px;
+    grid-template-columns: minmax(0, 1fr) max-content;
     align-items: center;
     column-gap: 24px;
   }
-  .masthead .masthead-inner > a { min-width: 0; }
-  .masthead .weather-header { justify-self: center; align-self: center; }
-  .masthead .social {
+
+  .masthead .masthead-inner > a {
+    min-width: 0;
+  }
+
+  .masthead .weather-header {
     justify-self: end;
     align-self: center;
-    width: auto;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
   }
 }
 
-/* Kleinere Bildschirme: Wetter bekommt eigenen Platz statt Ueberlappung */
+/* Kleinere Bildschirme: Wetter unter dem Logo */
 @media (min-width: 621px) and (max-width: 1049px) {
   .masthead .masthead-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     align-items: center;
-    gap: 12px 20px;
+    gap: 12px;
     padding-block: 14px;
   }
-  .masthead .masthead-inner > a { grid-column: 1; grid-row: 1; min-width: 0; }
-  .masthead .social { grid-column: 2; grid-row: 1; justify-self: end; }
-  .masthead .weather-header { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
+
+  .masthead .masthead-inner > a {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .masthead .weather-header {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: end;
+  }
 }
 
 @media (max-width: 620px) {
