@@ -77,3 +77,53 @@ async function ladeWipperWetter() {
 ladeWipperWetter();
 setInterval(ladeWipperWetter, 30 * 60 * 1000);
 
+/* Beitragsanzeige: jeweils 20 Artikel */
+
+document.querySelectorAll(".cards").forEach(function (container) {
+  const beitraege = Array.from(
+    container.querySelectorAll(":scope > .story")
+  );
+
+  const schrittweite = 20;
+
+  if (beitraege.length <= schrittweite) {
+    return;
+  }
+
+  let sichtbar = schrittweite;
+
+  beitraege.forEach(function (beitrag, index) {
+    if (index >= sichtbar) {
+      beitrag.style.display = "none";
+    }
+  });
+
+  const bereich = document.createElement("div");
+  bereich.style.textAlign = "center";
+  bereich.style.marginTop = "30px";
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "button";
+  button.textContent = "Weitere Beiträge anzeigen";
+
+  button.addEventListener("click", function () {
+    const ende = Math.min(
+      sichtbar + schrittweite,
+      beitraege.length
+    );
+
+    for (let i = sichtbar; i < ende; i++) {
+      beitraege[i].style.removeProperty("display");
+    }
+
+    sichtbar = ende;
+
+    if (sichtbar >= beitraege.length) {
+      bereich.remove();
+    }
+  });
+
+  bereich.appendChild(button);
+  container.insertAdjacentElement("afterend", bereich);
+});
