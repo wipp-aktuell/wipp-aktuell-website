@@ -131,6 +131,7 @@ content:
             - Sidebar-1
             - Sidebar-2
             - Sidebar-3
+            - Footer-Banner
 
       - name: category
         label: Zugeordnete Rubrik
