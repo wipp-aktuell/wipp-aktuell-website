@@ -1770,3 +1770,90 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 10px !important;
   }
 }
+/* Teilen-Funktion unter Nachrichtenartikeln */
+.article-share {
+  margin: 32px 0 24px;
+  padding: 22px 24px;
+  border: 1px solid #dde5ec;
+  border-radius: 10px;
+  background: #f7f9fc;
+}
+
+.article-share h2 {
+  margin: 0 0 16px;
+  color: #09243d;
+  font-family: Montserrat, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.article-share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.article-share .share-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid #d3dee8;
+  border-radius: 7px;
+  background: #fff;
+  color: #09243d;
+  font: 600 13px/1.4 Inter, Arial, sans-serif;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color .15s, border-color .15s;
+}
+
+.article-share .share-button:hover {
+  background: #eaf2f9;
+  border-color: #8fb1ce;
+  color: #125484;
+}
+
+.article-share .share-button:focus-visible {
+  outline: 2px solid #125484;
+  outline-offset: 3px;
+}
+
+.article-share .share-button[hidden] {
+  display: none;
+}
+
+.article-share .share-feedback {
+  margin: 0;
+  color: #536779;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.article-share .share-feedback:not(:empty) {
+  margin-top: 12px;
+}
+
+@media (max-width: 620px) {
+  .article-share {
+    margin: 26px 0 20px;
+    padding: 18px 16px;
+  }
+
+  .article-share h2 {
+    font-size: 17px;
+  }
+
+  .article-share-buttons {
+    gap: 8px;
+  }
+
+  .article-share .share-button {
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+}
