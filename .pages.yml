@@ -259,6 +259,16 @@ content:
         label: Unternehmenswebsite
         type: string
 
+      - name: date
+        label: Veröffentlichungsdatum
+        type: date
+        required: false
+
+      - name: show_on_home
+        label: Auf der Startseite anzeigen
+        type: boolean
+        default: true
+
       - name: published
         label: Veröffentlichen
         type: boolean
