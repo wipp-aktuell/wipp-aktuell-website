@@ -95,9 +95,11 @@ content:
       - name: published
         label: Veröffentlichen
         type: boolean
-      - name: source
-        label: Quellenhinweis (optional)
+      - name: sources
+        label: Quellenangaben (optional)
         type: string
+        list: true
+        required: false
 
   - name: werbung
     label: Werbeanzeigen
