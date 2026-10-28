@@ -85,6 +85,7 @@ def md(text):
     # Render a restricted Markdown subset safely, without allowing raw HTML.
     text=html.escape(text or '')
     text=re.sub(r'!\[([^]]*)\]\((/uploads/[\w./-]+)\)',lambda m:'<img loading="lazy" alt="'+esc(html.unescape(m[1]))+'" src="'+m[2]+'">',text)
+    text=re.sub(r'\[([^]\n]+)\]\((mailto:[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,})\)',lambda m:'<a href="'+m[2]+'">'+m[1]+'</a>',text)
     text=re.sub(r'\[([^]]+)\]\((https?://[^\s)]+)\)',lambda m:'<a rel="noopener noreferrer" target="_blank" href="'+m[2]+'">'+m[1]+'</a>',text)
     text=re.sub(r'\*\*([^*\n]+)\*\*',r'<strong>\1</strong>',text)
     text=re.sub(r'(?<!\*)\*([^*\n]+)\*(?!\*)',r'<em>\1</em>',text)
