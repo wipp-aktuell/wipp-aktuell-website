@@ -96,7 +96,7 @@ def md(text):
         else:blocks.append('<p>'+block.replace('\n','<br>')+'</p>')
     return '\n'.join(blocks)
 def base(title,description,content,active='',canonical='',article=False,image=''):
-        social_image = ''
+    social_image = ''
 
     if (
         isinstance(image, str)
