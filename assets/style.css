@@ -1443,3 +1443,79 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     margin-bottom: 22px;
   }
 }
+
+/* =========================================
+   Werbeanzeigen: vollflächige Darstellung
+   Desktop und Smartphone
+   ========================================= */
+
+/* Kachel ohne überflüssige Innenabstände */
+.advertisement {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+/* Anzeigenkennzeichnung bleibt sichtbar */
+.advertisement .ad-label {
+  display: block;
+  margin: 0;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: #526578;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.045em;
+  text-align: center;
+}
+
+/* Werbemotiv über die gesamte Kachelbreite */
+.advertisement .ad-link,
+.advertisement .ad-full-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Bild vollständig und unverzerrt anzeigen */
+.advertisement .ad-full-image .ad-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* Textanzeigen behalten einen Innenabstand */
+.advertisement .ad-content {
+  padding: 18px;
+}
+
+/* Anzeigen in der Seitenleiste */
+.sidebar > .advertisement {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Smartphone-Ansicht */
+@media (max-width: 900px) {
+  .advertisement {
+    padding: 0;
+  }
+
+  .advertisement .ad-label {
+    padding: 9px 10px;
+  }
+
+  .advertisement .ad-full-image .ad-image {
+    width: 100%;
+    height: auto;
+  }
+}
