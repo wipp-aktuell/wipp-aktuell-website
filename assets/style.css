@@ -1519,3 +1519,75 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     height: auto;
   }
 }
+
+/* ==========================================
+   Werbeanzeigen: optimierte Darstellung
+   Desktop und Mobil
+   ========================================== */
+
+/* Werbekacheln ohne innere Abstände */
+.advertisement {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Dezente, aber erkennbare Kennzeichnung */
+.advertisement .ad-label {
+  display: block;
+  margin: 0;
+  padding: 6px 8px;
+  background: #ffffff;
+  color: #6b7785;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* Werbebilder über die volle Kachelbreite */
+.advertisement .ad-link,
+.advertisement .ad-full-image {
+  display: block;
+  width: 100%;
+}
+
+.advertisement .ad-full-image .ad-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* Innenabstand nur bei reinen Textanzeigen */
+.advertisement .ad-content {
+  padding: 18px;
+}
+
+/* Seitenleistenanzeigen */
+.sidebar > .advertisement {
+  width: 100%;
+  padding: 0;
+}
+
+/* Smartphone-Ansicht */
+@media (max-width: 900px) {
+  .advertisement {
+    padding: 0;
+  }
+
+  .advertisement .ad-label {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .advertisement .ad-full-image .ad-image {
+    width: 100%;
+    height: auto;
+  }
+}
