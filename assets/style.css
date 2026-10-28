@@ -1731,3 +1731,42 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 10px;
   }
 }
+
+/* Bildunterschrift: Desktop und Mobil */
+.article-content .article-figure .image-caption,
+.article .article-figure .image-caption {
+  display: block;
+  margin: 6px 0 0;
+  padding: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px !important;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5 !important;
+  color: #647588;
+  text-align: left;
+}
+
+/* Bildnachweis */
+.article-content .article-figure .image-credit,
+.article .article-figure .image-credit {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  color: #7b8998;
+  text-align: right;
+}
+
+/* Mobilansicht */
+@media (max-width: 620px) {
+  .article-content .article-figure .image-caption,
+  .article .article-figure .image-caption {
+    font-size: 12px !important;
+  }
+
+  .article-content .article-figure .image-credit,
+  .article .article-figure .image-credit {
+    font-size: 10px !important;
+  }
+}
