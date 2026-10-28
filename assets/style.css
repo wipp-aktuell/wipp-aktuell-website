@@ -1687,36 +1687,47 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
-/* Bildbeschreibung und Bildnachweis unter Artikelbildern */
+
+/* =========================================
+   Bildunterschriften in Nachrichtenartikeln
+   ========================================= */
 
 .article-figure .image-details {
   display: block;
-  margin-top: 9px;
+  margin-top: 8px;
   padding: 0 2px;
 }
 
+/* Sichtbare Bildunterschrift */
 .article-figure .image-caption {
-  color: #526578;
-  font-size: 13px;
-  line-height: 1.6;
+  margin: 0;
+  color: #647588;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
   text-align: left;
 }
 
+/* Bildnachweis */
 .article-figure .image-details .image-credit {
   margin-top: 5px;
   padding: 0;
-  color: #627487;
-  font-size: 12px;
-  line-height: 1.5;
+  color: #7b8998;
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1.4;
   text-align: right;
 }
 
+/* Optimierung für Smartphones */
 @media (max-width: 620px) {
   .article-figure .image-caption {
     font-size: 12px;
+    line-height: 1.5;
   }
 
   .article-figure .image-details .image-credit {
-    font-size: 11px;
+    font-size: 10px;
   }
 }
