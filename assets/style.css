@@ -1591,3 +1591,18 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     height: auto;
   }
 }
+
+/* Instagram-Symbol in der Seitenleiste */
+.instagram-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instagram-heading .instagram-icon {
+  display: block;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
