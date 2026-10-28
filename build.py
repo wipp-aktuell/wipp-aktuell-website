@@ -214,8 +214,45 @@ def ai_notice(a):
         '</div>'
     )
 
+
 def card(a):
-    return f'''<a class="story" data-search="{esc((a['title']+' '+a.get('summary','')+' '+a['category']).lower())}" href="/artikel/{a['slug']}/">{cover(a)}<div class="story-body"><span class="pill">{esc(a['category'])}</span><h3>{esc(a['title'])}</h3><p>{esc(a.get('summary',''))}</p><div class="meta">{prettydate(a.get('date',''))} · weiterlesen →</div></div></a>'''
+    is_company = a.get('is_company', False)
+
+    if is_company:
+        url = '/unternehmen/' + a['slug'] + '/'
+        label = 'Anzeige · Unternehmensvorstellung'
+        search_category = 'Unternehmen ' + a.get('category', '')
+        meta_label = 'Unternehmen ansehen'
+    else:
+        url = '/artikel/' + a['slug'] + '/'
+        label = a['category']
+        search_category = a['category']
+        meta_label = 'weiterlesen'
+
+    search_text = (
+        a['title'] + ' ' +
+        a.get('summary', '') + ' ' +
+        search_category
+    ).lower()
+
+    date_html = (
+        prettydate(a['date']) + ' · '
+        if a.get('date') else ''
+    )
+
+    return (
+        '<a class="story" data-search="' + esc(search_text) +
+        '" href="' + esc(url) + '">'
+        + cover(a)
+        + '<div class="story-body">'
+        + '<span class="pill">' + esc(label) + '</span>'
+        + '<h3>' + esc(a['title']) + '</h3>'
+        + '<p>' + esc(a.get('summary', '')) + '</p>'
+        + '<div class="meta">'
+        + date_html + meta_label + ' →'
+        + '</div></div></a>'
+    )
+
 
 
 def render_news_with_ads(articles, ads=None):
@@ -668,7 +705,31 @@ def main():
     premium_ads = select_ads(ads, 'Premium-Startseite', today)
     premium_html = render_ad(premium_ads[0]) if premium_ads else ''
     standard_ads = select_ads(ads, 'Standard-Startseite', today)[:3]
-    write(pathlib.Path('index.html'),base('Wipperfürth aktuell','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',articles,True,premium_ad=premium_html,standard_ads=standard_ads)
+    
+    # Nachrichten und Unternehmensvorstellungen
+    # für die Startseite zusammenführen
+    homepage_entries = list(articles)
+
+    for company in companies:
+        if company.get('show_on_home', True) is False:
+            continue
+
+        company_entry = dict(company)
+        company_entry['is_company'] = True
+
+        homepage_entries.append(company_entry)
+
+    # Neueste Beiträge zuerst
+    homepage_entries.sort(
+        key=lambda entry: (
+            str(entry.get('date') or ''),
+            entry['slug']
+        ),
+        reverse=True
+    )
+
+
+    write(pathlib.Path('index.html'),base('Wipperfürth aktuell','Aktuelle Nachrichten, Stadtleben und Hintergründe aus Wipperfürth.',listing('Stadtleben','',homepage_entries,True,premium_ad=premium_html,standard_ads=standard_ads)
 ,canonical='/'))
     RUBRIK_BESCHREIBUNGEN = {
         'Stadtleben': 'Was Wipperfürth bewegt – Menschen, Alltag und Geschichten aus unserer Stadt.',
