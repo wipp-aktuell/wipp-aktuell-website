@@ -95,7 +95,36 @@ def md(text):
         if block.startswith('## '): blocks.append('<h2>'+block[3:]+'</h2>')
         else:blocks.append('<p>'+block.replace('\n','<br>')+'</p>')
     return '\n'.join(blocks)
-def base(title,description,content,active='',canonical='',article=False):
+def base(title,description,content,active='',canonical='',article=False,image=''):
+        social_image = ''
+
+    if (
+        isinstance(image, str)
+        and image.startswith('/uploads/')
+        and '..' not in image
+    ):
+        social_image = 'https://wipp-aktuell.de' + image
+
+    social_tags = ''
+
+    if canonical:
+        social_tags += (
+            '<meta property="og:url" content="https://wipp-aktuell.de'
+            + esc(canonical) + '">'
+        )
+
+    if social_image:
+        social_tags += (
+            '<meta property="og:image" content="'
+            + esc(social_image) + '">'
+            '<meta name="twitter:image" content="'
+            + esc(social_image) + '">'
+        )
+
+    social_tags += (
+        '<meta name="twitter:card" content="summary_large_image">'
+        '<meta property="og:site_name" content="Wipperfürth aktuell">'
+    )
     nav=''.join(f'<a href="/rubrik/{slug(cat)}/" class="{"active" if cat==active else ""}">{esc(cat)}</a>' for cat in CATEGORIES)
     canonical_tag=f'<link rel="canonical" href="https://wipp-aktuell.de{esc(canonical)}">' if canonical else ''
     footer_ad = (
@@ -111,7 +140,7 @@ def base(title,description,content,active='',canonical='',article=False):
     return f'''<!doctype html><html lang="de">
 <head>
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title) if title == 'Wipperfürth aktuell' else esc(title) + ' | Wipperfürth aktuell'}</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title) if title == 'Wipperfürth aktuell' else esc(title) + ' | Wipperfürth aktuell'}</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">{social_tags}
 <link rel="stylesheet" href="/assets/style.css?v=20261028-3">
 </head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div><header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo">
@@ -792,7 +821,7 @@ listing(
 <div class="article-content">{md(a.get('body',''))}</div>{source_notice(a)}{ai_notice(a)}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         
         article = article + news_article_jsonld(a)
-        write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True))
+        write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True,image=a.get('cover','')))
     
     for company in companies:
         company_title = esc(company.get('title', ''))
