@@ -1456,17 +1456,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   border-radius: 6px;
 }
 
-/* Anzeigenkennzeichnung bleibt sichtbar */
+/* Dezente Kennzeichnung der Werbeanzeigen */
 .advertisement .ad-label {
   display: block;
   margin: 0;
-  padding: 10px 12px;
+  padding: 6px 10px;
   background: #ffffff;
-  color: #526578;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.045em;
+  color: #7b8794;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
   text-align: center;
 }
 
