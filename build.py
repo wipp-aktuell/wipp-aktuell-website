@@ -132,23 +132,47 @@ Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startsw
 def write(path,txt):
     p=DIST/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(txt,encoding='utf-8')
 
+
 def cover(a, show_credit=False):
     img = a.get('cover', '')
+
     if isinstance(img, str) and img.startswith('/uploads/') and '..' not in img:
-        alt = esc(a.get('image_alt') or a['title'])
-        credit = a.get('image_credit', '')
-        credit_html = (
-            '<figcaption class="image-credit">Foto: ' + esc(credit) + '</figcaption>'
-            if credit and show_credit else ''
-        )
+        description = str(a.get('image_alt') or '').strip()
+        alt = esc(description or a.get('title', ''))
+        credit = str(a.get('image_credit') or '').strip()
+
+        caption_html = ''
+
+        if show_credit:
+            if description:
+                caption_html += (
+                    '<div class="image-caption">'
+                    + esc(description)
+                    + '</div>'
+                )
+
+            if credit:
+                caption_html += (
+                    '<div class="image-credit">'
+                    'Foto: ' + esc(credit) +
+                    '</div>'
+                )
+
         return (
             '<figure class="article-figure">'
-            '<div class="cover"><img loading="lazy" src="' + esc(img) +
-            '" alt="' + alt + '"></div>'
-            + credit_html +
-            '</figure>'
+            '<div class="cover"><img loading="lazy" src="'
+            + esc(img) + '" alt="' + alt + '"></div>'
+            + (
+                '<figcaption class="image-details">'
+                + caption_html
+                + '</figcaption>'
+                if caption_html else ''
+            )
+            + '</figure>'
         )
+
     return '<div class="cover">Wipperfürth aktuell</div>'
+
 
 def source_notice(a):
     sources = a.get('sources') or []
