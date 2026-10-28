@@ -1607,25 +1607,39 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   object-fit: contain;
 }
 
-/* Grafische Hinweiskachel */
+/* Hinweiskachel ohne Rahmen und Hintergrund */
 .sidebox.hinweis-grafik {
-  padding: 0;
+  padding: 0 !important;
+  margin: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   overflow: hidden;
 }
 
+/* Gesamte Grafik anklickbar */
 .hinweis-grafik a {
   display: block;
   width: 100%;
   line-height: 0;
+  text-decoration: none;
 }
 
+/* Grafik nutzt die volle verfügbare Breite */
 .hinweis-grafik img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
 }
 
-.hinweis-grafik a:hover img {
-  opacity: 0.96;
+/* Keine zusätzlichen Abstände auf Smartphones */
+@media (max-width: 900px) {
+  .sidebox.hinweis-grafik {
+    padding: 0 !important;
+  }
 }
