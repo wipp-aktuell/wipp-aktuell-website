@@ -429,17 +429,16 @@ def sidebar():
     </section>
     {SIDEBAR_AD_HTML['Sidebar-3']}
 
-    <section class="sidebox">
-      <h3>Hinweis senden</h3>
-      <p>Du hast eine lokale Nachricht oder einen
-      Veranstaltungshinweis? Schreib uns gern über Instagram.</p>
-      <a class="button"
-         href="https://www.instagram.com/wipp_aktuell/"
-         target="_blank"
-         rel="noopener noreferrer">
-        Kontakt über Instagram ↗
+    <section class="sidebox hinweis-grafik">
+      <a href="mailto:info@wipp-aktuell.de"
+         aria-label="Lokalen Hinweis per E-Mail an Wipperfürth aktuell senden">
+        <img
+          src="/assets/hinweis-senden.png"
+          alt="Hinweis senden: Lokale Nachrichten und Veranstaltungshinweise per E-Mail an info@wipp-aktuell.de"
+          loading="lazy">
       </a>
     </section>
+
     </aside>'''
 
 def render_ad(ad):
