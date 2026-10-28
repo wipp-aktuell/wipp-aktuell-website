@@ -1606,3 +1606,26 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   flex-shrink: 0;
   object-fit: contain;
 }
+
+/* Grafische Hinweiskachel */
+.sidebox.hinweis-grafik {
+  padding: 0;
+  overflow: hidden;
+}
+
+.hinweis-grafik a {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.hinweis-grafik img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.hinweis-grafik a:hover img {
+  opacity: 0.96;
+}
