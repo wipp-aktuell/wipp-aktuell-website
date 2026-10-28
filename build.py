@@ -400,7 +400,15 @@ def sidebar():
     {event_calendar()}
     {SIDEBAR_AD_HTML['Sidebar-1']}
     <section class="sidebox">
-      <h3>Auf Instagram</h3>
+      
+<h3 class="instagram-heading">
+  <img
+    src="/assets/instagram-glyph.svg"
+    alt=""
+    class="instagram-icon">
+  Auf Instagram
+</h3>
+
 
       <p>Weitere Meldungen, Eindrücke und Beiträge findest du
       auf unserem offiziellen Instagram-Profil.</p>
