@@ -202,7 +202,51 @@ def cover(a, show_credit=False):
 
     return '<div class="cover">Wipperfürth aktuell</div>'
 
+def share_buttons(a):
+    url = (
+        'https://wipp-aktuell.de/artikel/'
+        + a['slug'] + '/'
+    )
+    title = str(a.get('title') or 'Wipperfürth aktuell')
 
+    whatsapp_url = (
+        'https://api.whatsapp.com/send?text='
+        + quote(title + '\n' + url)
+    )
+    facebook_url = (
+        'https://www.facebook.com/sharer/sharer.php?u='
+        + quote(url, safe='')
+    )
+    x_url = (
+        'https://twitter.com/intent/tweet?text='
+        + quote(title)
+        + '&url=' + quote(url, safe='')
+    )
+
+    return (
+        '<section class="article-share" aria-label="Artikel teilen">'
+        '<h2>Diesen Artikel teilen</h2>'
+        '<div class="article-share-buttons">'
+        '<a class="share-button" href="' + esc(whatsapp_url) + '" '
+        'target="_blank" rel="noopener noreferrer">'
+        'WhatsApp</a>'
+        '<a class="share-button" href="' + esc(facebook_url) + '" '
+        'target="_blank" rel="noopener noreferrer">'
+        'Facebook</a>'
+        '<a class="share-button" href="' + esc(x_url) + '" '
+        'target="_blank" rel="noopener noreferrer">'
+        'X</a>'
+        '<button type="button" class="share-button" '
+        'data-share-action="copy" data-share-url="' + esc(url) + '">'
+        'Link kopieren</button>'
+        '<button type="button" class="share-button" '
+        'data-share-action="native" data-share-url="' + esc(url) + '" '
+        'data-share-title="' + esc(title) + '" hidden>'
+        'Weitere teilen</button>'
+        '</div>'
+        '<p class="share-feedback" role="status" aria-live="polite"></p>'
+        '</section>'
+    )
 def source_notice(a):
     sources = a.get('sources') or []
 
@@ -818,7 +862,7 @@ listing(
     for a in articles:
         article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
 {cover(a, show_credit=True)}
-<div class="article-content">{md(a.get('body',''))}</div>{source_notice(a)}{ai_notice(a)}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
+<div class="article-content">{md(a.get('body',''))}</div>{source_notice(a)}{ai_notice(a)}{share_buttons(a)}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         
         article = article + news_article_jsonld(a)
         write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True,image=a.get('cover','')))
