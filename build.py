@@ -429,26 +429,17 @@ def sidebar():
     </section>
     {SIDEBAR_AD_HTML['Sidebar-3']}
 
-    <section class="sidebox hinweis-kachel">
-      <a href="mailto:info@wipp-aktuell.de"
-         class="hinweis-link"
-         aria-label="Nachricht per E-Mail senden">
+    
+<section class="hinweis-bildkachel">
+  <a href="mailto:info@wipp-aktuell.de"
+     aria-label="Hinweis per E-Mail an Wipperfürth aktuell senden">
+    <img
+      src="/assets/hinweis-senden.png"
+      alt="Hinweis senden – lokale Nachrichten und Veranstaltungshinweise an info@wipp-aktuell.de"
+      loading="lazy">
+  </a>
+</section>
 
-        <div class="hinweis-icon">&#9993;</div>
-
-        <h3>Hinweis senden</h3>
-
-        <p>
-          Du hast eine lokale Nachricht oder einen
-          Veranstaltungshinweis? Schreib uns!
-        </p>
-
-        <span class="hinweis-button">
-          E-Mail schreiben &#8594;
-        </span>
-
-      </a>
-    </section>
 
     </aside>'''
 
