@@ -77,14 +77,14 @@ async function ladeWipperWetter() {
 ladeWipperWetter();
 setInterval(ladeWipperWetter, 30 * 60 * 1000);
 
-/* Beitragsanzeige: jeweils 20 Artikel */
+/* Beitragsanzeige: jeweils 10 Artikel */
 
 document.querySelectorAll(".cards").forEach(function (container) {
   const beitraege = Array.from(
     container.querySelectorAll(":scope > .story")
   );
 
-  const schrittweite = 20;
+  const schrittweite = 10;
 
   if (beitraege.length <= schrittweite) {
     return;
