@@ -1686,3 +1686,37 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     margin-bottom: 0;
   }
 }
+
+/* Bildbeschreibung und Bildnachweis unter Artikelbildern */
+
+.article-figure .image-details {
+  display: block;
+  margin-top: 9px;
+  padding: 0 2px;
+}
+
+.article-figure .image-caption {
+  color: #526578;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.article-figure .image-details .image-credit {
+  margin-top: 5px;
+  padding: 0;
+  color: #627487;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+@media (max-width: 620px) {
+  .article-figure .image-caption {
+    font-size: 12px;
+  }
+
+  .article-figure .image-details .image-credit {
+    font-size: 11px;
+  }
+}
