@@ -1607,39 +1607,52 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   object-fit: contain;
 }
 
-/* Hinweiskachel ohne Rahmen und Hintergrund */
-.sidebox.hinweis-grafik {
+
+/* Hinweiskachel: gleiche Breite wie Sidebar-Kacheln */
+.sidebar > .sidebox.hinweis-grafik {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  justify-self: stretch;
+
+  margin: 0 0 20px 0;
   padding: 0 !important;
-  margin: 0;
+
   background: transparent !important;
   border: none !important;
+  border-radius: 5px;
   box-shadow: none !important;
   overflow: hidden;
 }
 
 /* Gesamte Grafik anklickbar */
-.hinweis-grafik a {
+.sidebar .hinweis-grafik a {
   display: block;
   width: 100%;
+  margin: 0;
+  padding: 0;
   line-height: 0;
-  text-decoration: none;
 }
 
-/* Grafik nutzt die volle verfügbare Breite */
-.hinweis-grafik img {
+/* Grafik über volle Sidebar-Breite */
+.sidebar .hinweis-grafik img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
-  max-width: none;
   margin: 0;
   padding: 0;
   border: none;
-  border-radius: 0;
+  border-radius: 5px;
 }
 
-/* Keine zusätzlichen Abstände auf Smartphones */
+/* Einheitliche Abstände auf Tablet und Smartphone */
 @media (max-width: 900px) {
-  .sidebox.hinweis-grafik {
+  .sidebar > .sidebox.hinweis-grafik {
+    width: 100%;
+    margin: 0;
     padding: 0 !important;
   }
 }
