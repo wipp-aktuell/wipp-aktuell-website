@@ -1,6 +1,9 @@
 {
   "title": "Neuer Spielbereich an Ellers Ecke eröffnet: Wipperfürths Innenstadt gewinnt an Lebensqualität",
-  "category": "Politik",
+  "categories": [
+    "Stadtleben",
+    "Politik"
+  ],
   "date": "2026-10-29",
   "summary": "Nach mehrjähriger Planung ist die neue Spielanlage an der Ellers Ecke in Wipperfürth am Mittwoch offiziell eröffnet worden. Bürgermeisterin Anne Loth betonte bei der Eröffnung die Bedeutung kleiner öffentlicher Plätze für das Zusammenleben in der Stadt. Mit der Neugestaltung soll der Innenstadtbereich insbesondere für Familien attraktiver werden.",
   "cover": "/uploads/ellers-ecke-1.jpeg",
