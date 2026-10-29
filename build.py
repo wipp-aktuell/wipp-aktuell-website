@@ -331,12 +331,11 @@ def article_categories(a):
 
 
 def category_badges(a):
-    badges = ''.join(
-        '<span class="pill">' + esc(category) + '</span>'
-        for category in article_categories(a)
-    )
+    categories = article_categories(a)
 
-    return '<div class="category-pills">' + badges + '</div>'
+    text = ' · '.join(esc(category) for category in categories)
+
+    return '<div class="category-pills"><span class="pill">' + text + '</span></div>'
 
 
 def card(a):
