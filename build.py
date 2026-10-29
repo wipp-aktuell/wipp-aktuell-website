@@ -311,6 +311,33 @@ def ai_notice(a):
         '</div>'
     )
 
+def article_categories(a):
+    selected = a.get('categories')
+
+    # Bestehende Artikel mit nur einer Rubrik unterstützen
+    if not isinstance(selected, list) or not selected:
+        selected = a.get('category') or 'Stadtleben'
+
+    if isinstance(selected, str):
+        selected = [selected]
+
+    # Nur bekannte Rubriken übernehmen
+    categories = [
+        category for category in CATEGORIES
+        if category in selected
+    ]
+
+    return categories or ['Stadtleben']
+
+
+def category_badges(a):
+    badges = ''.join(
+        '<span class="pill">' + esc(category) + '</span>'
+        for category in article_categories(a)
+    )
+
+    return '<div class="category-pills">' + badges + '</div>'
+
 
 def card(a):
     is_company = a.get('is_company', False)
@@ -322,8 +349,8 @@ def card(a):
         meta_label = 'Unternehmen ansehen'
     else:
         url = '/artikel/' + a['slug'] + '/'
-        label = a['category']
-        search_category = a['category']
+        label = ''
+        search_category = ' '.join(article_categories(a))
         meta_label = 'weiterlesen'
 
     search_text = (
@@ -342,7 +369,10 @@ def card(a):
         '" href="' + esc(url) + '">'
         + cover(a)
         + '<div class="story-body">'
-        + '<span class="pill">' + esc(label) + '</span>'
+        + (
+            '<span class="pill">' + esc(label) + '</span>'
+            if is_company else category_badges(a)
+        )
         + '<h3>' + esc(a['title']) + '</h3>'
         + '<p>' + esc(a.get('summary', '')) + '</p>'
         + '<div class="meta">'
@@ -848,7 +878,7 @@ def main():
         'Stadtgeschichte': 'Historische Orte, spannende Ereignisse und Geschichten aus vergangenen Zeiten.'
     }
     for cat in CATEGORIES:
-        selected=[a for a in articles if a['category']==cat]
+        selected=[a for a in articles if cat in article_categories(a)]
         sponsor_ads = select_ads(ads, 'Rubrikensponsor', today, category=cat)
         sponsor_html = render_ad(sponsor_ads[0]) if sponsor_ads else ''
         write(pathlib.Path('rubrik')/slug(cat)/'index.html',base(cat,'Nachrichten und Informationen aus der Rubrik '+cat,
@@ -860,12 +890,12 @@ listing(
 )
 ,active=cat,canonical='/rubrik/'+slug(cat)+'/'))
     for a in articles:
-        article=f'''<main class="wrap layout"><article class="article"><div class="pill">{esc(a['category'])}</div><h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
+        article=f'''<main class="wrap layout"><article class="article">{category_badges(a)}<h1>{esc(a['title'])}</h1><div class="meta">Veröffentlicht am {prettydate(a.get('date',''))}</div><p class="article-lead">{esc(a.get('summary',''))}</p>
 {cover(a, show_credit=True)}
 <div class="article-content">{md(a.get('body',''))}</div>{source_notice(a)}{ai_notice(a)}{share_buttons(a)}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         
         article = article + news_article_jsonld(a)
-        write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=a['category'],canonical='/artikel/'+a['slug']+'/',article=True,image=a.get('cover','')))
+        write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=article_categories(a)[0],canonical='/artikel/'+a['slug']+'/',article=True,image=a.get('cover','')))
     
     for company in companies:
         company_title = esc(company.get('title', ''))
