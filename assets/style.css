@@ -1857,3 +1857,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 9px 12px;
   }
 }
+/* Mehrere Artikelrubriken mit Abstand darstellen */
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.category-pills .pill {
+  display: inline-block;
+  flex: 0 0 auto;
+  margin: 0;
+}
