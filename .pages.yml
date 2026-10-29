@@ -41,7 +41,7 @@ content:
     format: json
     filename: "{year}-{month}-{day}-{title}.json"
     view:
-      fields: [title, category, date, published]
+      fields: [title, categories, date, published]
       primary: title
       sort: [date]
       default:
@@ -52,12 +52,22 @@ content:
         label: Überschrift
         type: string
         required: true
-      - name: category
-        label: Rubrik
+      - name: categories
+        label: Rubriken
         type: select
         required: true
         options:
-          values: [Stadtleben, Blaulicht, Verkehr, Politik, Wirtschaft, Veranstaltungen, Sport, Stadtgeschichte]
+          multiple: true
+          min: 1
+          values:
+            - Stadtleben
+            - Blaulicht
+            - Verkehr
+            - Politik
+            - Wirtschaft
+            - Veranstaltungen
+            - Sport
+            - Stadtgeschichte
       - name: date
         label: Datum
         type: date
