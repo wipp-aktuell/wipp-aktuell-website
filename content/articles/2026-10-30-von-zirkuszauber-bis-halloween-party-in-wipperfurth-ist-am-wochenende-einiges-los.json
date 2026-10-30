@@ -13,14 +13,13 @@
   "ai_usage": "KI-generiert, redaktionell geprüft",
   "published": true,
   "sources": [
-    "Circus Traber: Offizielle Website des Zirkus mit Informationen zum Gastspiel in Wipperfürth und den Vorstellungszeiten (https://circus-traber.com)",
-    "Alte Drahtzieherei Wipperfürth: Offizielle Veranstaltungsankündigung für das Konzert mit Daniel Sypien am 30. Oktober 2026 (https://altedrahtzieherei.de/event/daniel-sypien-2026)",
-    "Hansestadt Wipperfürth: Offizieller Veranstaltungskalender mit Informationen zum Filzworkshop für Kinder im Kunstbahnhof (https://www.wipperfuerth.de/tourismus-freizeit/termine/details/5773.html)",
-    "Dorfladen Thier: Offizieller Veranstaltungskalender 2026 mit Informationen zum Konzert der Formation 60 RPM (https://www.dorfladen-thier.de/veranstaltungen-2026)",
-    "Bürgerstiftung Wir Wipperfürther: Offizieller Ticketshop mit Angaben zur Halloween-Party in der Alten Drahtzieherei, zum Musikprogramm, zu den Eintrittspreisen und zum Veranstaltungsbeginn (https://buergerstiftung-wir-wipperfuerther.ticket.io/KLXVj1iL/?lang=de)",
-    "Katholische Kirchengemeinde St. Nikolaus Wipperfürth: Offizielle Übersicht der Gottesdienste und Gräbersegnungen zu Allerheiligen 2026 (https://www.katholisch-in-wipperfuerth.de/export/sites/nikolaus-wipperfuerth/.content/.galleries/downloads/Plakat-Allerheiligen-2026.pdf)",
-    "Hansestadt Wipperfürth: Offizieller Veranstaltungskalender mit Informationen zur Führung im Bergisch-Märkischen Pulvermuseum am 1. November 2026 (https://www.wipperfuerth.de/tourismus-freizeit/termine/details/5818.html)",
-    "Bergisch-Märkisches Pulvermuseum: Offizielle Museumswebsite mit Informationen zu Führungen, Museumsangeboten und Eintrittsbedingungen (https://pulvermuseum.info/im-museum.html)",
-    "Land Nordrhein-Westfalen – Feiertagsgesetz NRW (FTG NRW): Gesetzliche Grundlage für die besonderen Einschränkungen öffentlicher Veranstaltungen an Allerheiligen, insbesondere § 6 (https://recht.nrw.de)"
+    "Circus Traber (https://circus-traber.com)",
+    "Alte Drahtzieherei (https://altedrahtzieherei.de)",
+    "Hansestadt Wipperfürth (https://www.wipperfuerth.de)",
+    "Dorfladen Thier (https://www.dorfladen-thier.de)",
+    "Bürgerstiftung Wir Wipperfürther (https://buergerstiftung-wir-wipperfuerther.ticket.io)",
+    "Katholische Kirchengemeinde St. Nikolaus (https://www.katholisch-in-wipperfuerth.de)",
+    "Bergisch-Märkisches Pulvermuseum (https://pulvermuseum.info)",
+    "Land NRW (Feiertagsgesetz) (https://recht.nrw.de)"
   ]
 }
