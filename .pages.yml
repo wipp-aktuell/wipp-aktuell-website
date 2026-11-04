@@ -69,9 +69,12 @@ content:
             - Sport
             - Stadtgeschichte
       - name: date
-        label: Datum
+        label: Veröffentlichungsdatum und Uhrzeit
         type: date
         required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm"
       - name: summary
         label: Kurzbeschreibung
         type: text
