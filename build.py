@@ -34,6 +34,48 @@ def publication_date_iso(value):
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=ZoneInfo('Europe/Berlin'))
     return dt.isoformat(timespec='minutes' if dt.second == 0 and dt.microsecond == 0 else 'seconds')
+BREAKING_ARTICLES = []
+
+
+def breaking_news_bar():
+    if not BREAKING_ARTICLES:
+        return ''
+
+    items = []
+
+    for article in BREAKING_ARTICLES:
+        url = '/artikel/' + article['slug'] + '/'
+        title = esc(article.get('title', ''))
+
+        items.append(
+            '<a class="breaking-news-link" href="'
+            + esc(url) + '">'
+            + title
+            + '</a>'
+        )
+
+    ticker = (
+        '<span class="breaking-news-separator" '
+        'aria-hidden="true">·</span>'
+    ).join(items)
+
+    first_url = (
+        '/artikel/' + BREAKING_ARTICLES[0]['slug'] + '/'
+    )
+
+    return (
+        '<div class="breaking-news" '
+        'role="region" aria-label="Aktuelle Eilmeldungen">'
+        '<a class="breaking-news-label" href="'
+        + esc(first_url) + '">EILMELDUNG</a>'
+        '<div class="breaking-news-window">'
+        '<div class="breaking-news-track">'
+        + ticker
+        + '</div></div>'
+        '</div>'
+    )
+
+
 
 def news_article_jsonld(article):
     url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
@@ -161,7 +203,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title) if title == 'Wipperfürth aktuell' else esc(title) + ' | Wipperfürth aktuell'}</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">{social_tags}
 <link rel="stylesheet" href="/assets/style.css?v=20261029-1"><script src="/assets/share.js?v=1" defer></script>
-</head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div><header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
+</head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div>{breaking_news_bar()}<header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo">
   <img class="site-logo" src="/assets/logo-wipp-aktuell.jpg" alt="Logo von Wipperfürth aktuell">
   <div class="brand-text">
@@ -862,7 +904,11 @@ def main():
         used.add(data['slug']);articles.append(data)
     articles.sort(key=lambda a:(str(a.get('date','')),a['slug']),reverse=True)
     ads = []
-
+    BREAKING_ARTICLES.clear()
+    BREAKING_ARTICLES.extend(
+        article for article in articles
+        if article.get('breaking') is True
+    )
     if ADS.exists():
         for file in ADS.glob('*.json'):
             data = json.loads(
