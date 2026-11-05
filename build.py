@@ -66,13 +66,14 @@ def breaking_news_bar():
     return (
         '<div class="breaking-news" '
         'role="region" aria-label="Aktuelle Eilmeldungen">'
+        '<div class="wrap breaking-news-inner">'
         '<a class="breaking-news-label" href="'
         + esc(first_url) + '">EILMELDUNG</a>'
         '<div class="breaking-news-window">'
         '<div class="breaking-news-track">'
         + ticker
         + '</div></div>'
-        '</div>'
+        '</div></div>'
     )
 
 
