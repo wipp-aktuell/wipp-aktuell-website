@@ -1882,7 +1882,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   overflow: hidden;
   box-sizing: border-box;
 }
+.breaking-news-inner {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+}
 
+.breaking-news-inner .breaking-news-window {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .breaking-news-label {
   position: relative;
   z-index: 1;
