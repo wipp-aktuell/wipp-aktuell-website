@@ -778,6 +778,59 @@ def listing(title,description,arr,home=False,premium_ad='',standard_ads=None):
 </div>
 {text}
 </section>{sidebar()}</main>'''
+def create_news_sitemap(articles):
+    # Nur Nachrichten aus den letzten 48 Stunden aufnehmen.
+    now = datetime.datetime.now(ZoneInfo('Europe/Berlin'))
+    cutoff = now - datetime.timedelta(days=2)
+    entries = []
+
+    for article in articles:
+        raw_date = str(article.get('date') or '').strip()
+        try:
+            published = datetime.datetime.fromisoformat(
+                raw_date.replace('Z', '+00:00')
+            )
+        except ValueError:
+            continue
+
+        if published.tzinfo is None:
+            published = published.replace(
+                tzinfo=ZoneInfo('Europe/Berlin')
+            )
+
+        if not cutoff <= published <= now:
+            continue
+
+        # Keine Uhrzeit erfinden, wenn nur das Datum gespeichert ist.
+        publication_date = (
+            raw_date if len(raw_date) == 10
+            else published.isoformat(timespec='minutes')
+        )
+
+        entries.append(
+            '<url>'
+            '<loc>https://wipp-aktuell.de/artikel/'
+            + esc(article['slug']) + '/</loc>'
+            '<news:news>'
+            '<news:publication>'
+            '<news:name>Wipperfürth aktuell</news:name>'
+            '<news:language>de</news:language>'
+            '</news:publication>'
+            '<news:publication_date>' + esc(publication_date)
+            + '</news:publication_date>'
+            '<news:title>' + esc(article['title']) + '</news:title>'
+            '</news:news>'
+            '</url>'
+        )
+
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">'
+        + ''.join(entries)
+        + '</urlset>'
+    )
+
 def main():
     if DIST.exists():shutil.rmtree(DIST)
     shutil.copytree(ROOT/'assets',DIST/'assets')
@@ -1333,5 +1386,6 @@ listing(
     )
 
     write(pathlib.Path('sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>https://wipp-aktuell.de{esc(p)}</loc></url>' for p in links)+'</urlset>')
+    write(pathlib.Path('news-sitemap.xml'), create_news_sitemap(articles))
     print(f'Built {len(articles)} posts, {len(links)} URLs in {DIST}')
 if __name__=='__main__':main()
