@@ -16,6 +16,25 @@ SIDEBAR_AD_HTML = {
 }
 BOTTOM_AD_HTML = {'content': ''}
 
+def publication_date_iso(value):
+    """Preserve date-only values; add Berlin timezone to local datetimes."""
+    raw = str(value or '').strip()
+    if not raw:
+        return ''
+    if re.fullmatch(r'\d{4}-\d{2}-\d{2}', raw):
+        try:
+            datetime.date.fromisoformat(raw)
+        except ValueError:
+            return ''
+        return raw
+    try:
+        dt = datetime.datetime.fromisoformat(raw.replace('Z', '+00:00'))
+    except ValueError:
+        return ''
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=ZoneInfo('Europe/Berlin'))
+    return dt.isoformat(timespec='minutes' if dt.second == 0 and dt.microsecond == 0 else 'seconds')
+
 def news_article_jsonld(article):
     url = 'https://wipp-aktuell.de/artikel/' + article['slug'] + '/'
 
@@ -28,7 +47,7 @@ def news_article_jsonld(article):
         },
         'headline': article.get('title', ''),
         'description': article.get('summary', ''),
-        'datePublished': article.get('date', ''),
+        'datePublished': publication_date_iso(article.get('date', '')),
         'author': {
             '@type': 'Organization',
             'name': 'Wipperfürth aktuell'
@@ -802,10 +821,7 @@ def create_news_sitemap(articles):
             continue
 
         # Keine Uhrzeit erfinden, wenn nur das Datum gespeichert ist.
-        publication_date = (
-            raw_date if len(raw_date) == 10
-            else published.isoformat(timespec='minutes')
-        )
+        publication_date = publication_date_iso(raw_date)
 
         entries.append(
             '<url>'
