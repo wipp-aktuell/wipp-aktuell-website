@@ -108,6 +108,10 @@ content:
       - name: published
         label: Veröffentlichen
         type: boolean
+      - name: breaking
+        label: Als Eilmeldung anzeigen
+        type: boolean
+        default: false        
       - name: sources
         label: Quellenangaben (optional)
         type: string
