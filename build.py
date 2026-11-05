@@ -172,7 +172,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 </a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header><nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
-</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261026-1
+</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261026-1
 
 
 
@@ -1034,7 +1034,124 @@ listing(
                 canonical='/unternehmen/' + company['slug'] + '/'
             )
         )
+    # Öffentliche Informationsseite über Wipperfürth aktuell
+    ueber_uns_html = '''
+    <main class="legal">
+      <h1>Über Wipperfürth aktuell</h1>
 
+      <p>
+        <strong>Lokal. Unabhängig. Informiert.</strong>
+      </p>
+
+      <p>
+        Wipperfürth aktuell ist ein unabhängiges, nichtamtliches
+        Nachrichtenportal für Wipperfürth und die Umgebung.
+        Unser Ziel ist es, über aktuelle Ereignisse,
+        Entwicklungen und Themen zu informieren, die für
+        die Menschen vor Ort von Bedeutung sind.
+      </p>
+
+      <h2>Unsere Themen</h2>
+
+      <p>
+        Wir berichten unter anderem über Stadtleben,
+        Kommunalpolitik, Verkehr, Wirtschaft,
+        Veranstaltungen, Sport, Vereine und Stadtgeschichte.
+        Auch Meldungen von Polizei und Rettungsdiensten
+        gehören zu unserem Nachrichtenangebot.
+      </p>
+
+      <h2>Quellen und redaktionelle Arbeit</h2>
+
+      <p>
+        Unsere Beiträge entstehen auf Grundlage
+        unterschiedlicher Informationsquellen.
+        Dazu können insbesondere Mitteilungen von Behörden,
+        öffentlichen Einrichtungen, Vereinen,
+        Unternehmen und Veranstaltern sowie öffentlich
+        zugängliche Dokumente gehören.
+      </p>
+
+      <p>
+        Wir legen Wert auf eine nachvollziehbare
+        Quellenbasis und eine eigenständige journalistische
+        Darstellung. Soweit Quellen in Beiträgen angegeben
+        werden, können Leser die Herkunft der Informationen
+        nachvollziehen.
+      </p>
+
+      <p>
+        Trotz sorgfältiger Arbeit können Fehler auftreten.
+        Hinweise auf mögliche Unrichtigkeiten nehmen
+        wir entgegen und prüfen sie.
+      </p>
+
+      <h2>Umgang mit künstlicher Intelligenz</h2>
+
+      <p>
+        Bei der Erstellung von Inhalten können Werkzeuge
+        der künstlichen Intelligenz eingesetzt werden.
+        Der jeweilige KI-Einsatz wird, soweit vorgesehen,
+        direkt am betreffenden Beitrag kenntlich gemacht.
+        Dabei unterscheiden wir zwischen KI-unterstützten
+        und KI-generierten Inhalten sowie dem angegebenen
+        Stand der redaktionellen Prüfung.
+      </p>
+
+      <p>
+        KI-generierte Symbolbilder werden als solche
+        gekennzeichnet.
+      </p>
+
+      <h2>Werbung und redaktionelle Inhalte</h2>
+
+      <p>
+        Zur Finanzierung unseres Nachrichtenangebots
+        bieten wir Werbemöglichkeiten für Unternehmen an.
+        Bezahlte Unternehmensvorstellungen und sonstige
+        Werbeinhalte werden als Anzeige gekennzeichnet.
+        Sie sollen für Leser eindeutig von der
+        redaktionellen Berichterstattung unterscheidbar sein.
+      </p>
+
+      <h2>Hinweise, Fragen und Korrekturen</h2>
+
+      <p>
+        Sie haben einen Hinweis auf ein wichtiges Ereignis,
+        möchten auf einen möglichen Fehler aufmerksam machen
+        oder eine Veranstaltung mitteilen?
+      </p>
+
+      <p>
+        Schreiben Sie uns gerne an
+        <a href="mailto:info@wipp-aktuell.de">
+          info@wipp-aktuell.de
+        </a>.
+      </p>
+
+      <h2>Verantwortung und Kontakt</h2>
+
+      <p>
+        Angaben zum Betreiber und zur redaktionell
+        verantwortlichen Person finden Sie in unserem
+        <a href="/impressum/">Impressum</a>.
+        Informationen zum Umgang mit personenbezogenen Daten
+        enthält unsere
+        <a href="/datenschutz/">Datenschutzerklärung</a>.
+      </p>
+    </main>
+    '''
+
+    write(
+        pathlib.Path('ueber-uns') / 'index.html',
+        base(
+            'Über uns',
+            'Informationen über Wipperfürth aktuell, '
+            'unsere Themen, Quellen und redaktionellen Grundsätze.',
+            ueber_uns_html,
+            canonical='/ueber-uns/'
+        )
+    )
     write(pathlib.Path('redaktion')/'index.html',base('Redaktion','Geschützter Redaktionszugang', '''<main class="legal"><h1>Redaktionsbereich</h1><p>Beiträge werden über Pages CMS geschrieben, bearbeitet und veröffentlicht. Der Login erfolgt sicher mit deinem GitHub-Konto.</p><p><a class="button" href="https://app.pagescms.org/" rel="noopener noreferrer" target="_blank">Zum Redaktionsbereich ↗</a></p><p><strong>Hinweis:</strong> Der Redaktionsbereich liegt bei Pages CMS und nicht auf dieser Website. Nur berechtigte GitHub-Konten können Inhalte bearbeiten.</p></main>''',canonical='/redaktion/'))
     
     company_cards = []
@@ -1396,7 +1513,7 @@ listing(
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
 
     links = (
-        ['/', '/impressum/', '/datenschutz/', '/unternehmen/', '/werbung/']
+        ['/', '/ueber-uns/', '/impressum/', '/datenschutz/', '/unternehmen/', '/werbung/']
         + [f'/rubrik/{slug(c)}/' for c in CATEGORIES]
         + [f'/artikel/{a["slug"]}/' for a in articles]
     )
