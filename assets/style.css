@@ -2039,3 +2039,20 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .breaking-news.info-news .breaking-news-label {
   cursor: default;
 }
+/* Hinweisleiste: ununterbrochene Animation */
+.info-news:hover .breaking-news-track,
+.info-news:focus-within .breaking-news-track,
+.info-news .breaking-news-track {
+  animation-play-state: running;
+}
+
+/* Hinweisleiste: keinerlei Mausinteraktion */
+.info-news {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Keine automatische Unterstreichung */
+.info-news .breaking-news-link {
+  text-decoration: none;
+}
