@@ -48,7 +48,11 @@ content:
         label: Interner Name
         type: string
         required: true
-
+      - name: label
+        label: Beschriftung der Laufleiste
+        type: string
+        required: false
+        default: "AKTUELL"
       - name: text
         label: Text der Laufleiste
         type: rich-text
