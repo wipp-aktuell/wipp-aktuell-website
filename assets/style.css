@@ -1994,15 +1994,22 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   }
 }
 
-/* Barrierefreiheit: reduzierte Bewegung */
+/* Bei reduzierter Bewegung: Text ohne Animation anzeigen */
 @media (prefers-reduced-motion: reduce) {
   .breaking-news-window {
-    overflow-x: auto;
+    overflow: hidden;
   }
 
   .breaking-news-track {
     animation: none;
     padding-left: 0;
+    white-space: normal;
+    width: auto;
+    flex-wrap: wrap;
+  }
+
+  .breaking-news {
+    min-height: 42px;
   }
 }
 /* Dezente Laufleiste fuer aktuelle Hinweise */
