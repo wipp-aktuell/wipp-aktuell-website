@@ -36,6 +36,46 @@ def publication_date_iso(value):
     return dt.isoformat(timespec='minutes' if dt.second == 0 and dt.microsecond == 0 else 'seconds')
 BREAKING_ARTICLES = []
 INFO_ITEMS = []
+def breaking_news_bar():
+    if not BREAKING_ARTICLES:
+        return ''
+
+    items = []
+
+    for article in BREAKING_ARTICLES:
+        url = '/artikel/' + article['slug'] + '/'
+        title = esc(article.get('title', ''))
+
+        items.append(
+            '<a class="breaking-news-link" href="'
+            + esc(url) + '">'
+            + title
+            + '</a>'
+        )
+
+    ticker = (
+        '<span class="breaking-news-separator" '
+        'aria-hidden="true">·</span>'
+    ).join(items)
+
+    first_url = (
+        '/artikel/' + BREAKING_ARTICLES[0]['slug'] + '/'
+    )
+
+    return (
+        '<div class="breaking-news" '
+        'role="region" aria-label="Aktuelle Eilmeldungen">'
+        '<div class="wrap breaking-news-inner">'
+        '<a class="breaking-news-label" href="'
+        + esc(first_url) + '">EILMELDUNG</a>'
+        '<div class="breaking-news-window">'
+        '<div class="breaking-news-track">'
+        + ticker
+        + '</div></div></div></div>'
+    )
+
+
+
 def format_ticker_text(text):
     # HTML-Zeichen sicher behandeln
     text = html.escape(str(text or '').strip())
