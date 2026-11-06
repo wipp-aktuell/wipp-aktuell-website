@@ -2005,3 +2005,30 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding-left: 0;
   }
 }
+/* Dezente Laufleiste fuer aktuelle Hinweise */
+.breaking-news.info-news {
+  background: #edf3f8;
+  border-bottom: 1px solid #d7e3ed;
+}
+
+.breaking-news.info-news .breaking-news-label {
+  background: #275e8b;
+  color: #ffffff;
+}
+
+.breaking-news.info-news .breaking-news-link {
+  color: #29475f;
+}
+
+.breaking-news.info-news a.breaking-news-link:hover {
+  color: #174b77;
+  text-decoration: underline;
+}
+
+.breaking-news.info-news .breaking-news-separator {
+  color: #7c99b1;
+}
+
+.breaking-news.info-news .breaking-news-label {
+  cursor: default;
+}
