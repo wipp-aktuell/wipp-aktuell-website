@@ -2056,3 +2056,21 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .info-news .breaking-news-link {
   text-decoration: none;
 }
+/* Flexible Beschriftung der Hinweisleiste */
+.info-news .breaking-news-label {
+  width: auto;
+  min-width: max-content;
+  max-width: 220px;
+  padding-left: 14px;
+  padding-right: 14px;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .info-news .breaking-news-label {
+    max-width: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 10px;
+  }
+}
