@@ -34,6 +34,35 @@ content:
         label: Im Kalender anzeigen
         type: boolean
         default: true
+  - name: hinweise
+    label: Aktuelle Hinweise
+    type: collection
+    path: content/notifications
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, active]
+      primary: title
+    fields:
+      - name: title
+        label: Interner Name
+        type: string
+        required: true
+
+      - name: text
+        label: Text der Laufleiste
+        type: string
+        required: true
+
+      - name: url
+        label: Zieladresse (optional)
+        type: string
+        required: false
+
+      - name: active
+        label: Hinweis einblenden
+        type: boolean
+        default: false        
   - name: artikel
     label: Nachrichtenartikel
     type: collection
