@@ -127,3 +127,39 @@ document.querySelectorAll(".cards").forEach(function (container) {
   bereich.appendChild(button);
   container.insertAdjacentElement("afterend", bereich);
 });
+{/* Laufleisten mit konstanter Geschwindigkeit */
+(function () {
+  const geschwindigkeit = 55; // Pixel pro Sekunde
+
+  function tickerGeschwindigkeitAktualisieren() {
+    document.querySelectorAll('.breaking-news').forEach(function (leiste) {
+      const fenster = leiste.querySelector('.breaking-news-window');
+      const lauftext = leiste.querySelector('.breaking-news-track');
+
+      if (!fenster || !lauftext) return;
+
+      // Textbreite ohne den Startabstand messen
+      const textbreite = lauftext.scrollWidth - fenster.clientWidth;
+      const strecke = fenster.clientWidth + Math.max(0, textbreite);
+
+      // Animationsdauer aus Weg und Geschwindigkeit berechnen
+      const dauer = strecke / geschwindigkeit;
+
+      lauftext.style.animationDuration = dauer + 's';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener(
+      'DOMContentLoaded',
+      tickerGeschwindigkeitAktualisieren
+    );
+  } else {
+    tickerGeschwindigkeitAktualisieren();
+  }
+
+  window.addEventListener(
+    'resize',
+    tickerGeschwindigkeitAktualisieren
+  );
+})();
