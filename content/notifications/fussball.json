@@ -1,5 +1,6 @@
 {
   "title": "FUSSBALL",
-  "text": "Beispielverein – Gastmannschaft 3:1 · Nächstes Heimspiel am Sonntag",
+  "label": "TESTMELDUNG",
+  "text": "Dies ist ein Test. Gute Nacht!",
   "active": true
 }
