@@ -51,8 +51,10 @@ content:
 
       - name: text
         label: Text der Laufleiste
-        type: string
+        type: rich-text
         required: true
+        options:
+          format: markdown
 
       - name: active
         label: Hinweis einblenden
