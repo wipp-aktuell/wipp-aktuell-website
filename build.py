@@ -36,6 +36,31 @@ def publication_date_iso(value):
     return dt.isoformat(timespec='minutes' if dt.second == 0 and dt.microsecond == 0 else 'seconds')
 BREAKING_ARTICLES = []
 INFO_ITEMS = []
+def format_ticker_text(text):
+    # HTML-Zeichen sicher behandeln
+    text = html.escape(str(text or '').strip())
+
+    # Fett, kursiv und durchgestrichen
+    text = re.sub(
+        r'\*\*([^*\n]+)\*\*',
+        r'<strong>\1</strong>',
+        text
+    )
+    text = re.sub(
+        r'(?<!\*)\*([^*\n]+)\*(?!\*)',
+        r'<em>\1</em>',
+        text
+    )
+    text = re.sub(
+        r'~~([^~\n]+)~~',
+        r'<del>\1</del>',
+        text
+    )
+
+    # Laufleiste auf eine Zeile begrenzen
+    text = re.sub(r'\s*\n+\s*', ' ', text)
+
+    return text
 def info_ticker_bar():
     if not INFO_ITEMS:
         return ''
@@ -43,7 +68,7 @@ def info_ticker_bar():
     items = []
 
     for info in INFO_ITEMS:
-        message = esc(str(info.get('text') or '').strip())
+        message = format_ticker_text(info.get('text'))
         target = str(info.get('url') or '').strip()
 
         # Nur interne Links oder gueltige Webadressen
