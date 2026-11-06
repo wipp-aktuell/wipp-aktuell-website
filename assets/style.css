@@ -1930,7 +1930,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   width: max-content;
   padding-left: 100%;
   white-space: nowrap;
-  animation: breaking-news-scroll 30s linear infinite;
+  animation: breaking-news-scroll 50s linear infinite;
 }
 
 .breaking-news-link {
