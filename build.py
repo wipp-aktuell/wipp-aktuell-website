@@ -87,43 +87,39 @@ def info_ticker_bar():
         + ticker
         + '</div></div></div></div>'
     )
-def breaking_news_bar():
-    if not BREAKING_ARTICLES:
+def info_ticker_bar():
+    if not INFO_ITEMS:
         return ''
 
     items = []
 
-    for article in BREAKING_ARTICLES:
-        url = '/artikel/' + article['slug'] + '/'
-        title = esc(article.get('title', ''))
+    for info in INFO_ITEMS:
+        message = esc(str(info.get('text') or '').strip())
 
-        items.append(
-            '<a class="breaking-news-link" href="'
-            + esc(url) + '">'
-            + title
-            + '</a>'
-        )
+        if message:
+            items.append(
+                '<span class="breaking-news-link">'
+                + message
+                + '</span>'
+            )
+
+    if not items:
+        return ''
 
     ticker = (
         '<span class="breaking-news-separator" '
         'aria-hidden="true">·</span>'
     ).join(items)
 
-    first_url = (
-        '/artikel/' + BREAKING_ARTICLES[0]['slug'] + '/'
-    )
-
     return (
-        '<div class="breaking-news" '
-        'role="region" aria-label="Aktuelle Eilmeldungen">'
+        '<div class="breaking-news info-news" '
+        'role="region" aria-label="Aktuelle Hinweise">'
         '<div class="wrap breaking-news-inner">'
-        '<a class="breaking-news-label" href="'
-        + esc(first_url) + '">EILMELDUNG</a>'
+        '<span class="breaking-news-label">AKTUELL</span>'
         '<div class="breaking-news-window">'
         '<div class="breaking-news-track">'
         + ticker
-        + '</div></div>'
-        '</div></div>'
+        + '</div></div></div></div>'
     )
 
 
