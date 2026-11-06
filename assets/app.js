@@ -129,7 +129,7 @@ document.querySelectorAll(".cards").forEach(function (container) {
 });
 {/* Laufleisten mit konstanter Geschwindigkeit */
 (function () {
-  const geschwindigkeit = 55; // Pixel pro Sekunde
+  const geschwindigkeit = 40; // Pixel pro Sekunde
 
   function tickerGeschwindigkeitAktualisieren() {
     document.querySelectorAll('.breaking-news').forEach(function (leiste) {
