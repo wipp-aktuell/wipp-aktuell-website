@@ -35,8 +35,58 @@ def publication_date_iso(value):
         dt = dt.replace(tzinfo=ZoneInfo('Europe/Berlin'))
     return dt.isoformat(timespec='minutes' if dt.second == 0 and dt.microsecond == 0 else 'seconds')
 BREAKING_ARTICLES = []
+INFO_ITEMS = []
+def info_ticker_bar():
+    if not INFO_ITEMS:
+        return ''
 
+    items = []
 
+    for info in INFO_ITEMS:
+        message = esc(str(info.get('text') or '').strip())
+        target = str(info.get('url') or '').strip()
+
+        # Nur interne Links oder gueltige Webadressen
+        if target.startswith('/') and not target.startswith('//'):
+            valid_url = (
+                target if not any(
+                    c.isspace() or c == '\\'
+                    for c in target
+                ) else ''
+            )
+        else:
+            valid_url = safe_ad_url(target)
+
+        if valid_url:
+            items.append(
+                '<a class="breaking-news-link" href="'
+                + esc(valid_url)
+                + '">'
+                + message
+                + '</a>'
+            )
+        else:
+            items.append(
+                '<span class="breaking-news-link">'
+                + message
+                + '</span>'
+            )
+
+    ticker = (
+        '<span class="breaking-news-separator" '
+        'aria-hidden="true">·</span>'
+    ).join(items)
+
+    return (
+        '<div class="breaking-news info-news" '
+        'role="region" aria-label="Aktuelle Hinweise">'
+        '<div class="wrap breaking-news-inner">'
+        '<span class="breaking-news-label">AKTUELL</span>'
+        '<div class="breaking-news-window">'
+        '<div class="breaking-news-track">'
+        + ticker
+        + '</div></div></div></div>'
+    )
 def breaking_news_bar():
     if not BREAKING_ARTICLES:
         return ''
@@ -204,7 +254,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title) if title == 'Wipperfürth aktuell' else esc(title) + ' | Wipperfürth aktuell'}</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">{social_tags}
 <link rel="stylesheet" href="/assets/style.css?v=20261106-2"><script src="/assets/share.js?v=1" defer></script>
-</head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div>{breaking_news_bar()}<header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
+</head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div>{breaking_news_bar() or info_ticker_bar()}<header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo">
   <img class="site-logo" src="/assets/logo-wipp-aktuell.jpg" alt="Logo von Wipperfürth aktuell">
   <div class="brand-text">
@@ -910,6 +960,27 @@ def main():
         article for article in articles
         if article.get('breaking') is True
     )
+    # Aktuelle Hinweise aus PagesCMS einlesen
+    INFO_ITEMS.clear()
+    info_folder = ROOT / 'content' / 'notifications'
+
+    if info_folder.exists():
+        for file in sorted(info_folder.glob('*.json')):
+            try:
+                info = json.loads(
+                    file.read_text(encoding='utf-8')
+                )
+            except (ValueError, OSError):
+                continue
+
+            if not isinstance(info, dict):
+                continue
+
+            if (
+                info.get('active') is True
+                and str(info.get('text') or '').strip()
+            ):
+                INFO_ITEMS.append(info)
     if ADS.exists():
         for file in ADS.glob('*.json'):
             data = json.loads(
