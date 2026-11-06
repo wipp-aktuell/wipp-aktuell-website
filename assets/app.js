@@ -127,39 +127,45 @@ document.querySelectorAll(".cards").forEach(function (container) {
   bereich.appendChild(button);
   container.insertAdjacentElement("afterend", bereich);
 });
-{/* Laufleisten mit konstanter Geschwindigkeit */
+/* Laufleisten: konstante Geschwindigkeit in Pixel pro Sekunde */
 (function () {
-  const geschwindigkeit = 40; // Pixel pro Sekunde
+  const PIXEL_PRO_SEKUNDE = 45;
 
-  function tickerGeschwindigkeitAktualisieren() {
-    document.querySelectorAll('.breaking-news').forEach(function (leiste) {
-      const fenster = leiste.querySelector('.breaking-news-window');
-      const lauftext = leiste.querySelector('.breaking-news-track');
+  function tickerAktualisieren() {
+    requestAnimationFrame(function () {
+      document.querySelectorAll('.breaking-news-track').forEach(function (track) {
 
-      if (!fenster || !lauftext) return;
+        // Die Animation bewegt das Element um seine gesamte Breite.
+        const strecke = track.getBoundingClientRect().width;
 
-      // Textbreite ohne den Startabstand messen
-      const textbreite = lauftext.scrollWidth - fenster.clientWidth;
-      const strecke = fenster.clientWidth + Math.max(0, textbreite);
+        if (strecke <= 0) return;
 
-      // Animationsdauer aus Weg und Geschwindigkeit berechnen
-      const dauer = strecke / geschwindigkeit;
+        const dauer = strecke / PIXEL_PRO_SEKUNDE;
 
-      lauftext.style.animationDuration = dauer + 's';
+        // Überschreibt auch ältere feste CSS-Zeitangaben.
+        track.style.setProperty(
+          'animation-duration',
+          dauer.toFixed(3) + 's',
+          'important'
+        );
+      });
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener(
-      'DOMContentLoaded',
-      tickerGeschwindigkeitAktualisieren
-    );
+    document.addEventListener('DOMContentLoaded', tickerAktualisieren);
   } else {
-    tickerGeschwindigkeitAktualisieren();
+    tickerAktualisieren();
   }
 
-  window.addEventListener(
-    'resize',
-    tickerGeschwindigkeitAktualisieren
-  );
+  // Nach dem vollständigen Laden erneut messen.
+  window.addEventListener('load', tickerAktualisieren);
+
+  // Schriftarten können die Textbreite verändern.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(tickerAktualisieren);
+  }
+
+  // Bei einer Änderung der Fensterbreite neu berechnen.
+  window.addEventListener('resize', tickerAktualisieren);
 })();
