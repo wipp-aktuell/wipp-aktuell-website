@@ -146,7 +146,9 @@ def info_ticker_bar():
         '<div class="breaking-news info-news" '
         'role="region" aria-label="Aktuelle Hinweise">'
         '<div class="wrap breaking-news-inner">'
-        '<span class="breaking-news-label">AKTUELL</span>'
+        '<span class="breaking-news-label">'
+        + esc(str(INFO_ITEMS[0].get('label') or 'AKTUELL').strip())
+        + '</span>'
         '<div class="breaking-news-window">'
         '<div class="breaking-news-track">'
         + ticker
