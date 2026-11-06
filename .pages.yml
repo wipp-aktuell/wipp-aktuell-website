@@ -54,15 +54,10 @@ content:
         type: string
         required: true
 
-      - name: url
-        label: Zieladresse (optional)
-        type: string
-        required: false
-
       - name: active
         label: Hinweis einblenden
         type: boolean
-        default: false        
+        default: false      
   - name: artikel
     label: Nachrichtenartikel
     type: collection
