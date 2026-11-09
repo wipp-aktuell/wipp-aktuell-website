@@ -1070,8 +1070,13 @@ def main():
             data['slug'] = slug(file.stem)
             companies.append(data)
 
+    # Unternehmensvorstellungen: neueste zuerst
     companies.sort(
-        key=lambda company: company.get('title', '').lower()
+        key=lambda company: (
+            str(company.get('date') or ''),
+            company['slug']
+        ),
+        reverse=True
     )
 
     print(f'Unternehmensvorstellungen eingelesen: {len(companies)}')
