@@ -2089,3 +2089,19 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   aspect-ratio: auto;
   object-fit: initial;
 }
+/* Unternehmensvorstellungen: Website-Button korrigieren */
+.company-detail .article-content a.button,
+.company-detail .article-content a.button:visited {
+  display: inline-block;
+  background-color: #275e8b;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.company-detail .article-content a.button:hover,
+.company-detail .article-content a.button:focus-visible {
+  background-color: #194c73;
+  color: #ffffff;
+  text-decoration: none;
+}
