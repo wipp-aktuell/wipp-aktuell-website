@@ -1193,7 +1193,7 @@ listing(
 
         company_html = (
             '<main class="wrap layout">'
-            '<article class="article">'
+            '<article class="article company-detail">'
             '<div class="pill">Anzeige · Unternehmensvorstellung</div>'
             '<h1>' + company_title + '</h1>'
             '<p class="article-lead">' + company_summary + '</p>'
