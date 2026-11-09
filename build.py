@@ -1170,9 +1170,9 @@ listing(
 
             company_image_html = (
                 '<figure class="article-figure">'
-                '<div class="cover"><img loading="lazy" src="'
+                '<img class="company-detail-image" loading="lazy" src="'
                 + esc(company_image)
-                + '" alt="' + image_alt + '"></div>'
+                + '" alt="' + image_alt + '">'
                 + (
                     '<figcaption class="image-credit">Foto: '
                     + image_credit + '</figcaption>'
