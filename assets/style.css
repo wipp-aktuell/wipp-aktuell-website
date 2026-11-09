@@ -2074,17 +2074,18 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 10px;
   }
 }
-/* Unternehmensvorstellungen: Artikelbilder vollständig anzeigen */
-.company-detail .article-figure .cover {
-  aspect-ratio: auto;
-  height: auto;
-  overflow: visible;
+/* Unternehmensvorstellungen: Bilder in Originalproportion */
+.company-detail .article-figure {
+  margin: 24px 0 28px;
+  width: 100%;
 }
 
-.company-detail .article-figure .cover img {
+.company-detail .company-detail-image {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   max-height: none;
-  object-fit: contain;
+  aspect-ratio: auto;
+  object-fit: initial;
 }
