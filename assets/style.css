@@ -2105,3 +2105,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   color: #ffffff;
   text-decoration: none;
 }
+/* Unternehmensvorstellungen: Buttontext immer weiss */
+.company-detail .article-content a.button,
+.company-detail .article-content a.button:visited {
+  color: #ffffff !important;
+  background-color: #275e8b;
+  text-decoration: none;
+}
+
+.company-detail .article-content a.button:hover,
+.company-detail .article-content a.button:focus-visible {
+  color: #ffffff !important;
+  background-color: #194c73;
+  text-decoration: none;
+}
