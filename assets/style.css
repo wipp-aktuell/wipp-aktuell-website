@@ -2074,3 +2074,17 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     font-size: 10px;
   }
 }
+/* Unternehmensvorstellungen: Artikelbilder vollständig anzeigen */
+.company-detail .article-figure .cover {
+  aspect-ratio: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.company-detail .article-figure .cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
