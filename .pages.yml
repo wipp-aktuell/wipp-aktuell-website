@@ -309,9 +309,12 @@ content:
         type: string
 
       - name: date
-        label: Veröffentlichungsdatum
+        label: Veröffentlichungsdatum und Uhrzeit
         type: date
         required: false
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm"
 
       - name: show_on_home
         label: Auf der Startseite anzeigen
