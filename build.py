@@ -1739,7 +1739,24 @@ listing(
           info@wipp-aktuell.de
         </a>
       </p>
-
+      <h2>Geltungsbereich des Impressums</h2>
+      <p>
+        Dieses Impressum gilt für die Webseite
+        <a href="https://wipp-aktuell.de/">
+          wipp-aktuell.de
+        </a>
+        sowie für den zugehörigen Instagram-Auftritt
+        <a href="https://www.instagram.com/wipp_aktuell/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Wipperfürth aktuell (@wipp_aktuell)
+        </a>.
+      </p>
+      <p>
+        Für beide Angebote gelten die hier aufgeführten
+        Angaben zum Diensteanbieter und zur
+        redaktionellen Verantwortlichkeit.
+      </p>
       <h2>Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV</h2>
       <p style="line-height:1.4; margin:0 0 12px 0;">
         Christian Andres<br>
