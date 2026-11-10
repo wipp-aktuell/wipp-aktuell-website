@@ -266,11 +266,80 @@ def md(text):
     text=re.sub(r'\[([^]]+)\]\((https?://[^\s)]+)\)',lambda m:'<a rel="noopener noreferrer" target="_blank" href="'+m[2]+'">'+m[1]+'</a>',text)
     text=re.sub(r'\*\*([^*\n]+)\*\*',r'<strong>\1</strong>',text)
     text=re.sub(r'(?<!\*)\*([^*\n]+)\*(?!\*)',r'<em>\1</em>',text)
-    blocks=[]
-    for block in re.split(r'\n\s*\n',text.strip()):
-        if not block:continue
-        if block.startswith('## '): blocks.append('<h2>'+block[3:]+'</h2>')
-        else:blocks.append('<p>'+block.replace('\n','<br>')+'</p>')
+    blocks = []
+    paragraph = []
+    list_items = []
+    list_type = None
+
+    def flush_paragraph():
+        if paragraph:
+            blocks.append(
+                '<p>' + '<br>'.join(paragraph) + '</p>'
+            )
+            paragraph.clear()
+
+    def flush_list():
+        nonlocal list_type
+        if list_items:
+            blocks.append(
+                '<' + list_type + '>'
+                + ''.join(
+                    '<li>' + item + '</li>'
+                    for item in list_items
+                )
+                + '</' + list_type + '>'
+            )
+            list_items.clear()
+        list_type = None
+
+    for line in text.strip().splitlines():
+        line = line.strip()
+
+        if not line:
+            flush_paragraph()
+            flush_list()
+            continue
+
+        # Markdown-Ueberschriften
+        heading = re.match(r'^(#{2,3})\s+(.+)$', line)
+
+        if heading:
+            flush_paragraph()
+            flush_list()
+            level = len(heading.group(1))
+            blocks.append(
+                '<h' + str(level) + '>'
+                + heading.group(2)
+                + '</h' + str(level) + '>'
+            )
+            continue
+
+        # Ungeordnete Listen: -, * oder +
+        bullet = re.match(r'^[-*+]\s+(.+)$', line)
+
+        # Nummerierte Listen: 1. oder 1)
+        numbered = re.match(r'^\d+[.)]\s+(.+)$', line)
+
+        if bullet or numbered:
+            flush_paragraph()
+            new_type = 'ul' if bullet else 'ol'
+
+            if list_type != new_type:
+                flush_list()
+                list_type = new_type
+
+            list_items.append(
+                (bullet or numbered).group(1)
+            )
+            continue
+
+        # Normaler Absatztext
+        flush_list()
+        paragraph.append(line)
+
+    flush_paragraph()
+    flush_list()
+
     return '\n'.join(blocks)
 def base(title,description,content,active='',canonical='',article=False,image=''):
     social_image = ''
