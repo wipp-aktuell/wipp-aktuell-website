@@ -2119,3 +2119,32 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   background-color: #194c73;
   text-decoration: none;
 }
+/* Artikel: korrekte Aufzaehlungen und Nummerierungen */
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.35em;
+  padding-left: 1.6em;
+}
+
+.article-content ul {
+  list-style-type: disc;
+}
+
+.article-content ol {
+  list-style-type: decimal;
+}
+
+.article-content li {
+  display: list-item;
+  padding-left: 0.15em;
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+
+.article-content li::marker {
+  color: #275e8b;
+}
+
+.article-content li strong {
+  font-weight: 700;
+}
