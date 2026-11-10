@@ -1742,15 +1742,9 @@ listing(
       <h2>Geltungsbereich des Impressums</h2>
       <p>
         Dieses Impressum gilt für die Webseite
-        <a href="https://wipp-aktuell.de/">
-          wipp-aktuell.de
-        </a>
+        <a href="https://wipp-aktuell.de/">wipp-aktuell.de</a>
         sowie für den zugehörigen Instagram-Auftritt
-        <a href="https://www.instagram.com/wipp_aktuell/"
-           target="_blank"
-           rel="noopener noreferrer">
-          Wipperfürth aktuell (@wipp_aktuell)
-        </a>.
+        <a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Wipperfürth aktuell (@wipp_aktuell)</a>.
       </p>
       <p>
         Für beide Angebote gelten die hier aufgeführten
