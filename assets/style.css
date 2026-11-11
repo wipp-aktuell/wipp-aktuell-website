@@ -2254,3 +2254,131 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+/* ==========================================
+   KONTAKTFORMULAR – WIPPERFÜRTH AKTUELL
+   ========================================== */
+
+.legal .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 680px;
+  margin: 30px 0 26px;
+}
+
+.legal .contact-form > label {
+  display: block;
+  margin: 0 0 8px;
+  color: #183550;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.legal .contact-form > input,
+.legal .contact-form > textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 13px 15px;
+  border: 1px solid #cbd5df;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #15283b;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: border-color .2s ease,
+              box-shadow .2s ease;
+}
+
+.legal .contact-form > input {
+  min-height: 48px;
+}
+
+.legal .contact-form > textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.legal .contact-form > input:hover,
+.legal .contact-form > textarea:hover {
+  border-color: #94a9bb;
+}
+
+.legal .contact-form > input:focus,
+.legal .contact-form > textarea:focus {
+  outline: none;
+  border-color: #275e8b;
+  box-shadow: 0 0 0 3px rgba(39, 94, 139, .12);
+}
+
+.legal .contact-form > input::placeholder,
+.legal .contact-form > textarea::placeholder {
+  color: #8595a5;
+}
+
+.legal .contact-form .cf-turnstile {
+  display: block;
+  margin: 0 0 23px;
+  max-width: 100%;
+}
+
+.legal .contact-form .contact-privacy {
+  margin: 0 0 23px;
+  color: #667789;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.legal .contact-form .contact-privacy a {
+  color: #275e8b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal .contact-form > button[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-height: 48px;
+  padding: 13px 26px;
+  border: 0;
+  border-radius: 6px;
+  background: #275e8b;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.legal .contact-form > button[type="submit"]:hover {
+  background: #194c73;
+}
+
+.legal .contact-form > button[type="submit"]:focus-visible {
+  outline: 3px solid rgba(39, 94, 139, .35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .legal .contact-form {
+    margin-top: 24px;
+  }
+
+  .legal .contact-form > input,
+  .legal .contact-form > textarea {
+    margin-bottom: 21px;
+    font-size: 16px;
+  }
+
+  .legal .contact-form > button[type="submit"] {
+    width: 100%;
+  }
+}
