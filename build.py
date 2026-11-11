@@ -411,7 +411,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 </a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header>{info_ticker_bar()}<nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
-</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261111-2
+</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261111-2
 
 
 
@@ -1961,7 +1961,7 @@ listing(
     write(pathlib.Path('robots.txt'),'User-agent: *\nAllow: /\nSitemap: https://wipp-aktuell.de/sitemap.xml\n')
 
     links = (
-        ['/', '/ueber-uns/', '/impressum/', '/datenschutz/', '/unternehmen/', '/werbung/']
+        ['/', '/ueber-uns/', '/kontakt/', '/impressum/', '/datenschutz/', '/unternehmen/', '/werbung/']
         + [f'/rubrik/{slug(c)}/' for c in CATEGORIES]
         + [f'/artikel/{a["slug"]}/' for a in articles]
     )
