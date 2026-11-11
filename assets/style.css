@@ -2453,3 +2453,32 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     outline-offset: -3px;
   }
 }
+/* Nachrichtenartikel: bessere Lesbarkeit auf Smartphones */
+
+@media (max-width: 620px) {
+
+  .article .article-figure .image-caption,
+  .article-content .article-figure .image-caption {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: #526578;
+  }
+
+  .article .article-figure .image-credit,
+  .article-content .article-figure .image-credit {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    color: #647587;
+    text-align: left;
+  }
+
+  .article-content a:focus-visible {
+    outline: 2px solid #275e8b;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .article-content a {
+    overflow-wrap: anywhere;
+  }
+}
