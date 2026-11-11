@@ -1805,6 +1805,13 @@ listing(
         Angaben zum Diensteanbieter und zur
         redaktionellen Verantwortlichkeit.
       </p>
+      <p>
+        Informationen zur Verarbeitung personenbezogener
+        Daten auf unserer Webseite und unserem
+        Instagram-Auftritt finden Sie in unserer
+        <a href="/datenschutz/#instagram">Datenschutzerklärung,
+        insbesondere im Abschnitt zu Instagram</a>.
+      </p>
       <h2>Redaktionell verantwortlich gemäß § 18 Abs. 2 MStV</h2>
       <p style="line-height:1.4; margin:0 0 12px 0;">
         Christian Andres<br>
