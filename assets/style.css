@@ -2401,8 +2401,11 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
 }
 
-.skip-link:focus {
-  transform: translateY(0);
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none !important;
+  top: 12px;
+  left: 12px;
   outline: 3px solid #f3bd56;
   outline-offset: 2px;
 }
