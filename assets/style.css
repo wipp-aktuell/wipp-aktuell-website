@@ -2190,3 +2190,67 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .source-notice-list a:hover {
   color: #123f60;
 }
+/* Dezente, aufklappbare Quellenangaben */
+.source-details {
+  margin: 22px 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  color: #647587;
+}
+
+.source-details-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.source-details-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.source-details-toggle::before {
+  content: "▸";
+  display: inline-block;
+  color: #647587;
+  transition: transform 0.2s ease;
+}
+
+.source-details[open] .source-details-toggle::before {
+  transform: rotate(90deg);
+}
+
+.source-details-toggle:hover {
+  color: #245b83;
+}
+
+.source-details-toggle:focus-visible {
+  outline: 2px solid #245b83;
+  outline-offset: 4px;
+}
+
+.source-details .source-notice-list {
+  margin: 13px 0 0 19px;
+  padding-left: 14px;
+  list-style-type: disc;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #647587;
+}
+
+.source-details .source-notice-list li {
+  margin-bottom: 6px;
+  overflow-wrap: anywhere;
+}
+
+.source-details .source-notice-list a {
+  color: #356488;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
