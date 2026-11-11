@@ -578,14 +578,15 @@ def source_notice(a):
     label = 'Quelle' if len(sources) == 1 else 'Quellen'
 
     return (
-        '<div class="notice source-notice">'
-        '<strong class="source-notice-title">'
-        + label
-        + '</strong>'
+        '<details class="source-details">'
+        '<summary class="source-details-toggle">'
+        'Quellen und weiterführende Links ('
+        + str(len(sources))
+        + ')</summary>'
         '<ul class="source-notice-list">'
         + items
         + '</ul>'
-        '</div>'
+        '</details>'
     )
 
 
