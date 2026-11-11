@@ -517,7 +517,7 @@ def source_notice(a):
         if isinstance(source, str) and source.strip()
     ]
 
-    # Bestehende Artikel weiterhin unterstützen
+    # Alte Artikel mit einzelnem Quellenfeld unterstuetzen
     if not sources:
         old_source = a.get('source') or ''
         if isinstance(old_source, str) and old_source.strip():
@@ -526,13 +526,66 @@ def source_notice(a):
     if not sources:
         return ''
 
+    # Markdown-Links und ausgeschriebene Webadressen erkennen
+    link_pattern = re.compile(
+        r'\[([^\]\n]+)\]\((https?://[^\s)]+)\)'
+        r'|(https?://[^\s<>"\']+)',
+        re.IGNORECASE
+    )
+
+    def format_source(source):
+        result = []
+        position = 0
+
+        for match in link_pattern.finditer(source):
+            result.append(esc(source[position:match.start()]))
+
+            if match.group(2):
+                # Markdown: [Bezeichnung](https://beispiel.de)
+                url = match.group(2)
+                label = match.group(1)
+                endzeichen = ''
+            else:
+                # Ausgeschriebene URL
+                url = match.group(3)
+                endzeichen = ''
+
+                while url and url[-1] in '.,;:!?)]':
+                    endzeichen = url[-1] + endzeichen
+                    url = url[:-1]
+
+                label = url
+
+            if url:
+                result.append(
+                    '<a href="' + esc(url) + '" '
+                    'target="_blank" '
+                    'rel="noopener noreferrer">'
+                    + esc(label) + '</a>'
+                )
+
+            result.append(esc(endzeichen))
+            position = match.end()
+
+        result.append(esc(source[position:]))
+        return ''.join(result)
+
+    items = ''.join(
+        '<li>' + format_source(source) + '</li>'
+        for source in sources
+    )
+
     label = 'Quelle' if len(sources) == 1 else 'Quellen'
-    content = '; '.join(esc(source) for source in sources)
 
     return (
-        '<div class="notice">'
-        + label + ': ' + content
-        + '</div>'
+        '<div class="notice source-notice">'
+        '<strong class="source-notice-title">'
+        + label
+        + '</strong>'
+        '<ul class="source-notice-list">'
+        + items
+        + '</ul>'
+        '</div>'
     )
 
 
