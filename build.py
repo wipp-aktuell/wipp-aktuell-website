@@ -399,7 +399,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 <head>
 <link rel="icon" type="image/jpeg" href="/assets/logo-wipp-aktuell.jpg?v=2">
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title) if title == 'Wipperfürth aktuell' else esc(title) + ' | Wipperfürth aktuell'}</title><meta name="description" content="{esc(description)}">{canonical_tag}<meta name="theme-color" content="#09243d"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:type" content="{'article' if article else 'website'}">{social_tags}
-<link rel="stylesheet" href="/assets/style.css?v=20261110-1"><script src="/assets/share.js?v=1" defer></script>
+<link rel="stylesheet" href="/assets/style.css?v=20261111-1"><script src="/assets/share.js?v=1" defer></script>
 </head><body><div class="topline"><div class="wrap"><span>Dein Nachrichtenportal für die älteste Stadt des Bergischen Landes</span><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram: @wipp_aktuell ↗</a></div></div>{breaking_news_bar()}<header class="masthead"><div class="wrap masthead-inner"><a href="/" aria-label="Wipperfürth aktuell Startseite">
 <div class="brand-with-logo">
   <img class="site-logo" src="/assets/logo-wipp-aktuell.jpg" alt="Logo von Wipperfürth aktuell">
@@ -411,7 +411,7 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 </a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header>{info_ticker_bar()}<nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
-</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261106-1
+</div></nav>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261111-1
 
 
 
