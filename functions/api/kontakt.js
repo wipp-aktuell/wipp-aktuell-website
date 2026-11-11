@@ -1,4 +1,4 @@
-{/* Kontaktformular Wipperfürth aktuell
+/* Kontaktformular Wipperfürth aktuell
    Cloudflare Pages Functions + Resend + Turnstile */
 
 const EMPFAENGER = "info@wipp-aktuell.de";
