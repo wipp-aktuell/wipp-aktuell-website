@@ -1770,6 +1770,113 @@ listing(
         )
     )
 
+    # Kontaktseite
+    kontakt_html = '''
+    <main class="legal">
+      <h1>Kontakt zu Wipperfürth aktuell</h1>
+      <p>
+        Sie haben eine Frage, einen Nachrichtenhinweis
+        oder ein anderes Anliegen? Schreiben Sie uns
+        gerne über das Kontaktformular.
+      </p>
+
+      <form class="contact-form"
+            action="/api/kontakt"
+            method="post"
+            accept-charset="UTF-8">
+
+        <label for="kontakt-name">Name (optional)</label>
+        <input id="kontakt-name" name="name"
+               type="text" maxlength="120"
+               autocomplete="name">
+
+        <label for="kontakt-email">E-Mail-Adresse *</label>
+        <input id="kontakt-email" name="email"
+               type="email" maxlength="254"
+               autocomplete="email" required>
+
+        <label for="kontakt-betreff">Betreff *</label>
+        <input id="kontakt-betreff" name="betreff"
+               type="text" maxlength="140" required>
+
+        <label for="kontakt-nachricht">Nachricht *</label>
+        <textarea id="kontakt-nachricht"
+                  name="nachricht"
+                  rows="7"
+                  minlength="10"
+                  maxlength="8000"
+                  required></textarea>
+
+        <div hidden aria-hidden="true">
+          <label for="kontakt-website">Website</label>
+          <input id="kontakt-website"
+                 type="text" name="website"
+                 tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAAAF8ypEWQlgRSg-9F">
+        </div>
+
+        <p class="contact-privacy">
+          Ihre Angaben werden zur Bearbeitung Ihrer
+          Anfrage verarbeitet. Informationen hierzu
+          finden Sie in unserer
+          <a href="/datenschutz/#kontaktformular">
+            Datenschutzerklärung
+          </a>.
+        </p>
+
+        <button type="submit" class="button">
+          Nachricht senden
+        </button>
+      </form>
+
+      <p>
+        Alternativ erreichen Sie uns unter
+        <a href="mailto:info@wipp-aktuell.de">info@wipp-aktuell.de</a>.
+      </p>
+    </main>
+
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async defer></script>
+    '''
+
+    write(
+        pathlib.Path('kontakt') / 'index.html',
+        base(
+            'Kontakt',
+            'Kontaktformular von Wipperfürth aktuell',
+            kontakt_html,
+            canonical='/kontakt/'
+        )
+    )
+
+    # Bestaetigungsseite nach erfolgreichem Versand
+    kontakt_success_html = '''
+    <main class="legal">
+      <h1>Vielen Dank für Ihre Nachricht!</h1>
+      <p>
+        Ihre Nachricht wurde zur Übermittlung
+        angenommen.
+      </p>
+      <p>
+        <a href="/">Zurück zur Startseite</a>
+      </p>
+    </main>
+    '''
+
+    write(
+        pathlib.Path('kontakt') / 'gesendet' / 'index.html',
+        base(
+            'Nachricht gesendet',
+            'Bestätigung der Kontaktanfrage',
+            kontakt_success_html,
+            canonical='/kontakt/gesendet/'
+        )
+    )
+
 
 
     impressum_html = '''
