@@ -2413,3 +2413,43 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 #hauptinhalt {
   scroll-margin-top: 12px;
 }
+/* Mobile Navigation: Wischhinweis und Bedienbarkeit */
+
+.nav-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 620px) {
+
+  .nav-inner {
+    gap: 18px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 18px;
+  }
+
+  .nav-inner a {
+    flex: 0 0 auto;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  .nav-swipe-hint {
+    display: block;
+    margin: 0;
+    padding: 5px 18px 9px;
+    background: #ffffff;
+    color: #647587;
+    font-size: 11px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .nav-inner a:focus-visible {
+    outline: 2px solid #275e8b;
+    outline-offset: -3px;
+  }
+}
