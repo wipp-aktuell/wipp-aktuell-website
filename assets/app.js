@@ -169,3 +169,33 @@ document.querySelectorAll(".cards").forEach(function (container) {
   // Bei einer Änderung der Fensterbreite neu berechnen.
   window.addEventListener('resize', tickerAktualisieren);
 })();
+/* Karnevalsdesign am 11.11.2026 automatisch aktivieren */
+(function () {
+  function karnevalsdesignAktualisieren() {
+    const datum = new Intl.DateTimeFormat('de-DE', {
+      timeZone: 'Europe/Berlin',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    }).formatToParts(new Date());
+
+    const teile = Object.fromEntries(
+      datum.map(eintrag => [eintrag.type, eintrag.value])
+    );
+
+    const istKarneval =
+      teile.year === '2026' &&
+      teile.month === '11' &&
+      teile.day === '11';
+
+    document.body.classList.toggle(
+      'karneval-1111',
+      istKarneval
+    );
+  }
+
+  karnevalsdesignAktualisieren();
+
+  // Auch bei laenger geoeffneten Browser-Tabs aktualisieren
+  setInterval(karnevalsdesignAktualisieren, 60000);
+})();
