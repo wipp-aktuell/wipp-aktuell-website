@@ -2148,3 +2148,45 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .article-content li strong {
   font-weight: 700;
 }
+/* Quellenangaben unter Nachrichtenartikeln */
+.source-notice {
+  line-height: 1.6;
+}
+
+.source-notice-title {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.source-notice-list {
+  margin: 0;
+  padding-left: 22px;
+  list-style-type: disc;
+}
+
+.source-notice-list li {
+  display: list-item;
+  margin-bottom: 7px;
+  padding-left: 2px;
+  overflow-wrap: anywhere;
+}
+
+.source-notice-list li:last-child {
+  margin-bottom: 0;
+}
+
+.source-notice-list li::marker {
+  color: #b47b2a;
+}
+
+.source-notice-list a,
+.source-notice-list a:visited {
+  color: #245b83;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.source-notice-list a:hover {
+  color: #123f60;
+}
