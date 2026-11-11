@@ -1900,6 +1900,11 @@ listing(
           info@wipp-aktuell.de
         </a>
       </p>
+            <p>
+        Sie können uns auch über unser
+        <a href="/kontakt/">Kontaktformular</a>
+        eine Nachricht senden.
+      </p>
       <h2>Geltungsbereich des Impressums</h2>
       <p>
         Dieses Impressum gilt für die Webseite
