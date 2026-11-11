@@ -48,12 +48,64 @@ export async function onRequestPost(context) {
     return htmlAntwort("Ungültiges Formularformat.", 415);
   }
 
+  // Maximale Groesse der gesamten Formularanfrage: 24 KiB
+  const MAX_BODY_BYTES = 24 * 1024;
+
+  const contentLength = request.headers.get("content-length");
+
+  if (
+    contentLength !== null &&
+    Number.isFinite(Number(contentLength)) &&
+    Number(contentLength) > MAX_BODY_BYTES
+  ) {
+    return htmlAntwort("Die Formularanfrage ist zu gross.", 413);
+  }
+
   let form;
 
   try {
-    form = await request.formData();
-  } catch {
-    return htmlAntwort("Die Formulardaten konnten nicht gelesen werden.");
+    if (!request.body) {
+      return htmlAntwort("Die Formulardaten fehlen.", 400);
+    }
+
+    const reader = request.body.getReader();
+    const chunks = [];
+    let totalBytes = 0;
+
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (done) break;
+
+      totalBytes += value.byteLength;
+
+      if (totalBytes > MAX_BODY_BYTES) {
+        await reader.cancel();
+        return htmlAntwort("Die Formularanfrage ist zu gross.", 413);
+      }
+
+      chunks.push(value);
+    }
+
+    const body = new Uint8Array(totalBytes);
+    let offset = 0;
+
+    for (const chunk of chunks) {
+      body.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+
+    form = await new Response(body, {
+      headers: { "Content-Type": contentType }
+    }).formData();
+
+  } catch (error) {
+    console.error("Kontaktformular: Ungueltige Formulardaten");
+
+    return htmlAntwort(
+      "Die Formulardaten konnten nicht gelesen werden.",
+      400
+    );
   }
 
   const name = String(form.get("name") || "").trim();
@@ -84,7 +136,7 @@ export async function onRequestPost(context) {
     );
   }
 
-  if (!turnstileToken) {
+  if (!turnstileToken || turnstileToken.length > 2048) {
     return htmlAntwort(
       "Bitte bestätigen Sie die Sicherheitsprüfung."
     );
