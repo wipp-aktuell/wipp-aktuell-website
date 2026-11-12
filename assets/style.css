@@ -2482,3 +2482,14 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     overflow-wrap: anywhere;
   }
 }
+/* Startseite: Abstand zwischen Premium-Anzeige und Nachrichten */
+
+.hero-startseite ~ .advertisement + .layout {
+  padding-top: 12px;
+}
+
+@media (max-width: 620px) {
+  .hero-startseite ~ .advertisement + .layout {
+    padding-top: 12px;
+  }
+}
