@@ -2493,3 +2493,11 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding-top: 12px;
   }
 }
+/* Automatische Silbentrennung für Nachrichtenüberschriften */
+
+.story h3 {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
