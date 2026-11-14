@@ -684,7 +684,10 @@ def card(a):
             '<span class="pill">' + esc(label) + '</span>'
             if is_company else category_badges(a)
         )
-        + '<h3>' + esc(a['title']) + '</h3>'
+        + '<h3>' + esc(a['title']).replace(
+            'Sportstättennutzungsgebühren',
+            'Sportstätten&shy;nutzungs&shy;gebühren'
+        ) + '</h3>'
         + '<p>' + esc(a.get('summary', '')) + '</p>'
         + '<div class="meta">'
         + date_html + meta_label + ' →'
