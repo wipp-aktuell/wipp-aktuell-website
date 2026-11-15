@@ -2505,11 +2505,12 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding-top: 12px;
   }
 }
-/* Automatische Silbentrennung für Nachrichtenüberschriften */
+/* Nachrichtenüberschriften: keine automatische Silbentrennung */
 
 .story h3 {
-  -webkit-hyphens: auto;
-  hyphens: auto;
+  -webkit-hyphens: none;
+  hyphens: none;
   word-break: normal;
   overflow-wrap: break-word;
+  text-wrap: pretty;
 }
