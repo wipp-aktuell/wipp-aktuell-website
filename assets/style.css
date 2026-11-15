@@ -2514,3 +2514,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
+/* Nachrichtenüberschriften: vorhandene Trennstellen bevorzugen */
+.story h3 {
+  -webkit-hyphens: manual;
+  hyphens: manual;
+  word-break: normal;
+  overflow-wrap: normal;
+}
