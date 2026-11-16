@@ -1343,8 +1343,6 @@ listing(
             '<p class="article-lead">' + company_summary + '</p>'
             + company_image_html
             + '<div class="article-content">'
-            + '<p><strong>Unternehmen:</strong> ' + company_name + '</p>'
-            + '<p><strong>Branche:</strong> ' + company_category + '</p>'
             + company_body
             + company_link
             + '</div></article>'
