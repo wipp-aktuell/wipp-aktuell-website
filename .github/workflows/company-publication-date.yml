@@ -1,0 +1,37 @@
+name: Unternehmensvorstellungen automatisch datieren
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/companies/*.json"
+
+permissions:
+  contents: write
+
+jobs:
+  publication-date:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Veroeffentlichungszeit setzen
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: python3 .github/scripts/stamp_company_publications.py
+
+      - name: Aenderungen automatisch speichern
+        run: |
+          if ! git diff --quiet -- content/companies; then
+            git config user.name "Wipperfürth aktuell Automatisierung"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add content/companies
+            git commit -m "Setze Veröffentlichungszeit für Unternehmensvorstellungen"
+            git push
+          fi
