@@ -1047,8 +1047,7 @@ def select_ads(ads, placement, today, category=None):
 
     return sorted(
         selected,
-        key=lambda ad: ad.get('priority') or 1,
-        reverse=True
+        key=lambda ad: int(ad.get('priority') or 1)
     )
 
 
