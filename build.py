@@ -933,8 +933,17 @@ def sidebar():
     tags = ''.join(
         f'<a class="tag" href="/rubrik/{slug(c)}/">'
         f'{esc(c)}</a>'
-        for c in CATEGORIES
+        for c in MAIN_CATEGORIES
     )
+
+    more_tags = ''.join(
+        f'<a class="tag" href="/rubrik/{slug(c)}/">'
+        f'{esc(c)}</a>'
+        for c in CATEGORIES
+        if c not in MAIN_CATEGORIES
+    )
+
+    more_count = len(CATEGORIES) - len(MAIN_CATEGORIES)
 
     return f'''<aside class="sidebar">
     {event_calendar()}
@@ -963,9 +972,18 @@ def sidebar():
     {SIDEBAR_AD_HTML['Sidebar-2']}
 
     <section class="sidebox">
-      <h3>Unsere Rubriken</h3>
+<h3>Unsere Rubriken</h3>
 
-      <div class="taglist">{tags}</div>
+<div class="taglist">{tags}</div>
+
+<details class="sidebar-more-categories">
+  <summary>
+    Weitere {more_count} Rubriken anzeigen
+  </summary>
+  <div class="taglist sidebar-more-taglist">
+    {more_tags}
+  </div>
+</details>
     </section>
     {SIDEBAR_AD_HTML['Sidebar-3']}
 
