@@ -37,8 +37,7 @@ MORE_CATEGORY_GROUPS = [
         'Familie & Alltag',
         'Haus & Garten',
         'Freizeit & Reisen',
-        'Essen & Trinken',
-        'Wissen & Ratgeber'
+        'Essen & Trinken'
     ])
 ]
 CATEGORIES = MAIN_CATEGORIES + [
@@ -1559,7 +1558,6 @@ def main():
         'Haus & Garten': 'Wohnen, Haushalt und Gartenpflege.',
         'Freizeit & Reisen': 'Freizeitideen, Reiseziele und Ausflüge.',
         'Essen & Trinken': 'Ernährung, Lebensmittel und Genuss.',
-        'Wissen & Ratgeber': 'Wissenswertes, Hintergründe und praktische Tipps.'
     })
     for cat in CATEGORIES:
         selected=[a for a in articles if cat in article_categories(a)]
