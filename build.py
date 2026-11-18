@@ -1550,7 +1550,7 @@ def main():
         'Vereine & Ehrenamt': 'Vereinsleben und freiwilliges Engagement.',
         'Kultur': 'Kunst, Musik, Theater und kulturelles Leben.',
         'Bergisches Land': 'Nachrichten und Geschichten aus der Region.',
-        'Panorama': 'Interessante Nachrichten, Entwicklungen und Geschichten aus Deutschland und darüber hinaus.',
+        'Panorama': 'Nachrichten und Geschichten über Wipperfürth hinaus.',
         'Wissenschaft & Forschung': 'Wissenschaftliche Erkenntnisse und Forschung.',
         'Digitales & Technik': 'Digitalisierung, Internet, KI und Technik.',
         'Gesundheit': 'Medizin, Prävention und Gesundheitswissen.',
