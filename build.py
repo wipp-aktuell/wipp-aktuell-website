@@ -301,7 +301,27 @@ def prettydate(d):
     except: return esc(d)
 def md(text):
     # Render a restricted Markdown subset safely, without allowing raw HTML.
-    text=html.escape(text or '')
+    text = text or ''
+
+    # Zusaetzlichen Fettdruck aus H2- und H3-Ueberschriften entfernen
+    def clean_heading(match):
+        prefix = match.group(1)
+        heading_text = match.group(2)
+        heading_text = re.sub(
+            r'\*\*(.+?)\*\*',
+            r'\1',
+            heading_text
+        )
+        return prefix + heading_text
+
+    text = re.sub(
+        r'^(#{2,3}[ \t]+)(.*)$',
+        clean_heading,
+        text,
+        flags=re.MULTILINE
+    )
+
+    text = html.escape(text)
     text=re.sub(r'!\[([^]]*)\]\((/uploads/[\w./-]+)\)',lambda m:'<img loading="lazy" alt="'+esc(html.unescape(m[1]))+'" src="'+m[2]+'">',text)
     text=re.sub(r'\[([^]\n]+)\]\((mailto:[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,})\)',lambda m:'<a href="'+m[2]+'">'+m[1]+'</a>',text)
     text=re.sub(r'\[([^]]+)\]\((https?://[^\s)]+)\)',lambda m:'<a rel="noopener noreferrer" target="_blank" href="'+m[2]+'">'+m[1]+'</a>',text)
