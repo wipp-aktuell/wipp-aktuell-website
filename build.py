@@ -8,7 +8,48 @@ DIST=ROOT/'dist'
 ARTICLES=ROOT/'content'/'articles'
 ADS = ROOT / 'content' / 'ads'
 COMPANIES = ROOT / 'content' / 'companies'
-CATEGORIES=['Stadtleben','Blaulicht','Verkehr','Politik','Wirtschaft','Veranstaltungen','Sport','Stadtgeschichte']
+MAIN_CATEGORIES = [
+    'Stadtleben',
+    'Blaulicht',
+    'Verkehr',
+    'Politik',
+    'Wirtschaft',
+    'Veranstaltungen',
+    'Sport',
+    'Stadtgeschichte'
+]
+
+MORE_CATEGORY_GROUPS = [
+    ('Wipperfürth & Region', [
+        'Wetter',
+        'Natur & Umwelt',
+        'Bildung & Schule',
+        'Vereine & Ehrenamt',
+        'Kultur',
+        'Bergisches Land'
+    ]),
+    ('Deutschland & Welt', [
+        'Deutschland',
+        'Weltgeschehen',
+        'Wissenschaft & Forschung',
+        'Digitales & Technik'
+    ]),
+    ('Leben & Ratgeber', [
+        'Gesundheit',
+        'Verbraucher & Finanzen',
+        'Familie & Alltag',
+        'Haus & Garten',
+        'Freizeit & Reisen',
+        'Essen & Trinken',
+        'Wissen & Ratgeber'
+    ])
+]
+
+CATEGORIES = MAIN_CATEGORIES + [
+    category
+    for group_name, group_categories in MORE_CATEGORY_GROUPS
+    for category in group_categories
+]
 SIDEBAR_AD_HTML = {
     'Sidebar-1': '',
     'Sidebar-2': '',
@@ -383,7 +424,44 @@ def base(title,description,content,active='',canonical='',article=False,image=''
         '<meta name="twitter:card" content="summary_large_image">'
         '<meta property="og:site_name" content="Wipperfürth aktuell">'
     )
-    nav=''.join(f'<a href="/rubrik/{slug(cat)}/" class="{"active" if cat==active else ""}">{esc(cat)}</a>' for cat in CATEGORIES)
+    # Bisherige Rubriken bleiben im Hauptmenue
+    nav = ''.join(
+        f'<a href="/rubrik/{slug(cat)}/" '
+        f'class="{"active" if cat == active else ""}">'
+        f'{esc(cat)}</a>'
+        for cat in MAIN_CATEGORIES
+    )
+
+    # Zusaetzliche Rubriken im Dropdown "Mehr"
+    more_groups_html = ''.join(
+        '<section class="nav-more-group">'
+        '<h3>' + esc(group_name) + '</h3>'
+        + ''.join(
+            '<a href="/rubrik/' + slug(category) + '/"'
+            + (' class="active"' if category == active else '')
+            + '>' + esc(category) + '</a>'
+            for category in group_categories
+        )
+        + '</section>'
+        for group_name, group_categories in MORE_CATEGORY_GROUPS
+    )
+
+    more_active = any(
+        active in group_categories
+        for group_name, group_categories in MORE_CATEGORY_GROUPS
+    )
+
+    more_menu = (
+        '<details class="nav-more">'
+        '<summary class="nav-more-toggle'
+        + (' active' if more_active else '')
+        + '" aria-label="Weitere Rubriken öffnen">'
+        'Mehr <span aria-hidden="true">▾</span>'
+        '</summary>'
+        '<div class="nav-more-panel">'
+        + more_groups_html
+        + '</div></details>'
+    )
     canonical_tag=f'<link rel="canonical" href="https://wipp-aktuell.de{esc(canonical)}">' if canonical else ''
     footer_ad = (
         BOTTOM_AD_HTML['content']
@@ -409,10 +487,10 @@ def base(title,description,content,active='',canonical='',article=False,image=''
     <div class="brand-sub">Lokal. Unabhängig. Informiert.</div>
   </div>
 </div>
-</a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header>{info_ticker_bar()}<nav class="nav" aria-label="Rubriken"><div class="wrap nav-inner"><a href="/" class="{'active' if not active else ''}">
+</a><div class="weather-header"><span id="wipp-wetter" hidden aria-label="Wetter in Wipperfürth"></span></div></div></header>{info_ticker_bar()}<nav class="nav" aria-label="Rubriken"><div class="wrap nav-shell"><div class="nav-inner"><a href="/" class="{'active' if not active else ''}">
 Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startswith('/unternehmen/') else ''}">Unternehmen</a>
 <a href="/werbung/" class="{'active' if canonical == '/werbung/' else ''}">Werbung schalten</a>
-</div><p class="nav-swipe-hint">← Weitere Rubriken durch Wischen entdecken →</p></nav><div id="hauptinhalt" tabindex="-1"></div>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261111-2
+</div>{more_menu}</div><p class="nav-swipe-hint">← Weitere Rubriken durch Wischen entdecken →</p></nav><div id="hauptinhalt" tabindex="-1"></div>{content}{footer_ad}<footer class="footer"><div class="wrap footer-inner"><div><h3>Wipperfürth aktuell.</h3><p>Lokale Nachrichten und Geschichten aus Wipperfürth. Unabhängiges, nichtamtliches Nachrichtenangebot.</p></div><div><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Kontakt</a><a href="/impressum/">Impressum</a><a href="/datenschutz/">Datenschutz</a><a href="https://www.instagram.com/wipp_aktuell/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></footer><script src="/assets/app.js?v=20261111-2
 
 
 
