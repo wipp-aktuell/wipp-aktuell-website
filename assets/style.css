@@ -2655,3 +2655,52 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .article-content h3 b {
   font-weight: inherit;
 }
+/* Sidebar: weitere Rubriken aufklappen */
+
+.sidebar-more-categories {
+  margin-top: 16px;
+}
+
+.sidebar-more-categories summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #dce5ed;
+  border-radius: 4px;
+  background: #f5f8fa;
+  color: #275e8b;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sidebar-more-categories summary::-webkit-details-marker {
+  display: none;
+}
+
+.sidebar-more-categories summary::after {
+  content: "⌄";
+  font-size: 17px;
+  line-height: 1;
+}
+
+.sidebar-more-categories[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.sidebar-more-categories summary:hover {
+  background: #eaf1f6;
+}
+
+.sidebar-more-categories summary:focus-visible {
+  outline: 2px solid #275e8b;
+  outline-offset: 3px;
+}
+
+.sidebar-more-taglist {
+  margin-top: 12px;
+}
