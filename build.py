@@ -1316,7 +1316,10 @@ def main():
     
     # Nachrichten und Unternehmensvorstellungen
     # für die Startseite zusammenführen
-    homepage_entries = list(articles)
+    homepage_entries = [
+        article for article in articles
+        if article.get('show_on_home', True) is not False
+    ]
 
     for company in companies:
         if company.get('show_on_home', True) is False:
