@@ -2731,3 +2731,13 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   top: 100%;
   right: 0;
 }
+/* Navigation: alle Menüpunkte besser unterbringen */
+@media (min-width: 1100px) {
+  .nav .nav-shell {
+    gap: 12px;
+  }
+
+  .nav .nav-inner {
+    gap: 17px;
+  }
+}
