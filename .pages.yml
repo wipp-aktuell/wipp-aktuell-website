@@ -154,6 +154,10 @@ content:
             - "KI-unterstützt, redaktionell geprüft"
             - "KI-generiert, redaktionell geprüft"
             - "KI-generiert, ohne redaktionelle Prüfung"
+      - name: show_on_home
+        label: Auf der Startseite anzeigen
+        type: boolean
+        default: true
       - name: published
         label: Veröffentlichen
         type: boolean
