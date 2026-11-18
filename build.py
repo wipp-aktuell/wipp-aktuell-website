@@ -365,8 +365,88 @@ def md(text):
             list_items.clear()
         list_type = None
 
-    for line in text.strip().splitlines():
-        line = line.strip()
+    lines = text.strip().splitlines()
+    i = 0
+
+    while i < len(lines):
+        line = lines[i].strip()
+        i += 1
+
+        # Markdown-Tabellen erkennen
+        if i < len(lines) and '|' in line:
+            header_cells = [
+                cell.strip()
+                for cell in line.strip('|').split('|')
+            ]
+            separator_cells = [
+                cell.strip()
+                for cell in lines[i].strip().strip('|').split('|')
+            ]
+
+            is_table = (
+                len(header_cells) >= 2
+                and len(header_cells) == len(separator_cells)
+                and all(
+                    re.fullmatch(r':?-{3,}:?', cell)
+                    for cell in separator_cells
+                )
+            )
+
+            if is_table:
+                flush_paragraph()
+                flush_list()
+                i += 1
+
+                table_rows = [
+                    '<thead><tr>'
+                    + ''.join(
+                        '<th scope="col">' + cell + '</th>'
+                        for cell in header_cells
+                    )
+                    + '</tr></thead>'
+                ]
+
+                body_rows = []
+
+                while i < len(lines):
+                    row = lines[i].strip()
+
+                    if not row or '|' not in row:
+                        break
+
+                    cells = [
+                        cell.strip()
+                        for cell in row.strip('|').split('|')
+                    ]
+
+                    if len(cells) != len(header_cells):
+                        break
+
+                    body_rows.append(
+                        '<tr>'
+                        + ''.join(
+                            '<td>' + cell + '</td>'
+                            for cell in cells
+                        )
+                        + '</tr>'
+                    )
+                    i += 1
+
+                if body_rows:
+                    table_rows.append(
+                        '<tbody>'
+                        + ''.join(body_rows)
+                        + '</tbody>'
+                    )
+
+                blocks.append(
+                    '<div class="article-table-scroll">'
+                    '<table>'
+                    + ''.join(table_rows)
+                    + '</table>'
+                    '</div>'
+                )
+                continue
 
         if not line:
             flush_paragraph()
