@@ -2741,3 +2741,21 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     gap: 17px;
   }
 }
+/* Navigation: gleichmaessige Abstaende aller Menuepunkte */
+@media (min-width: 1100px) {
+  .nav .nav-shell {
+    justify-content: flex-start;
+    gap: 17px;
+  }
+
+  .nav .nav-inner {
+    flex: 0 1 auto;
+    width: auto;
+    min-width: 0;
+    gap: 17px;
+  }
+
+  .nav .nav-more {
+    margin-left: 0;
+  }
+}
