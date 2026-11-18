@@ -2521,241 +2521,118 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   word-break: normal;
   overflow-wrap: normal;
 }
-/* Zusaetzliche Rubriken: Dropdown "Mehr" */
+/* Themenmenue in der oberen Leiste */
 
-.nav {
+.topline {
   position: relative;
-  z-index: 30;
+  z-index: 100;
 }
 
-.nav-shell {
-  display: flex;
-  align-items: stretch;
-  gap: 22px;
-  position: relative;
-}
-
-.nav-shell .nav-inner {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.nav-more {
+.topline .nav-more {
   position: relative;
   flex: 0 0 auto;
-  display: flex;
-  align-items: stretch;
 }
 
-.nav-more-toggle {
+.topline .nav-more-toggle {
   display: flex;
   align-items: center;
-  gap: 7px;
-  padding: 16px 0 14px;
-  border-bottom: 2px solid transparent;
-  color: #33485c;
-  font-size: 13px;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: .015em;
-  white-space: nowrap;
   cursor: pointer;
   list-style: none;
+  white-space: nowrap;
 }
 
-.nav-more-toggle::-webkit-details-marker {
+.topline .nav-more-toggle::marker {
+  content: "";
+}
+
+.topline .nav-more-toggle::-webkit-details-marker {
   display: none;
 }
 
-.nav-more-toggle:hover,
-.nav-more-toggle.active,
-.nav-more[open] > .nav-more-toggle {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+.topline .nav-more-toggle:hover,
+.topline .nav-more[open] .nav-more-toggle {
+  background: rgba(255,255,255,.12);
 }
 
-.nav-more-toggle:focus-visible {
-  outline: 2px solid #275e8b;
+.topline .nav-more-toggle:focus-visible {
+  outline: 2px solid #fff;
   outline-offset: 3px;
 }
 
-.nav-more-toggle span {
-  display: inline-block;
-  transition: transform .2s ease;
-}
-
-.nav-more[open] .nav-more-toggle span {
-  transform: rotate(180deg);
-}
-
-.nav-more-panel {
+.topline .nav-more-panel {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   right: 0;
-  z-index: 50;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
+  gap: 24px;
   width: min(760px, calc(100vw - 36px));
-  max-height: min(75vh, 650px);
+  max-height: 75vh;
   overflow-y: auto;
   padding: 24px;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #dce5ed;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 12px 28px rgba(9, 36, 61, .13);
+  border-radius: 6px;
+  box-shadow: 0 12px 30px rgba(9,36,61,.18);
+  color: #33485c;
   box-sizing: border-box;
   white-space: normal;
 }
 
-.nav-more-group {
-  min-width: 0;
-}
-
-.nav-more-group h3 {
-  margin: 0 0 13px;
-  padding-bottom: 9px;
+.topline .nav-more-group h3 {
+  margin: 0 0 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid #e1e8ef;
   color: #275e8b;
   font-size: 12px;
-  line-height: 1.4;
   font-weight: 800;
+  line-height: 1.4;
 }
 
-.nav .nav-more-group a {
+.topline .nav-more-group a {
   display: block;
-  padding: 9px 0;
-  border: 0;
+  padding: 8px 0;
   color: #33485c;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
-  white-space: normal;
   text-decoration: none;
 }
 
-.nav .nav-more-group a:hover,
-.nav .nav-more-group a.active {
-  color: var(--accent);
+.topline .nav-more-group a:hover,
+.topline .nav-more-group a.active {
+  color: #275e8b;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.nav .nav-more-group a:focus-visible {
+.topline .nav-more-group a:focus-visible {
   outline: 2px solid #275e8b;
   outline-offset: 3px;
 }
 
-/* Smartphones: Mehr-Menue als zweispaltiges Panel */
 @media (max-width: 620px) {
-  .nav-shell {
-    gap: 12px;
+  .topline .wrap {
+    justify-content: space-between;
+    text-align: left;
   }
 
-  .nav-more-toggle {
-    min-height: 44px;
-    padding: 13px 0 12px;
-    font-size: 12px;
-  }
-
-  .nav-more-panel {
-    width: calc(100vw - 36px);
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 16px;
-    padding: 18px;
-    max-height: 70vh;
-  }
-
-  .nav-more-group h3 {
-    font-size: 11px;
-  }
-
-  .nav .nav-more-group a {
-    font-size: 12px;
-    padding: 8px 0;
-  }
-
-  .nav-more-group:last-child {
-    grid-column: 1 / -1;
-  }
-}
-
-/* Sehr schmale Displays */
-@media (max-width: 360px) {
-  .nav-more-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .nav-more-group:last-child {
-    grid-column: auto;
-  }
-}
-/* Korrektur: Mehr-Menue in der Navigationszeile */
-
-.nav .nav-shell {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 18px;
-}
-
-.nav .nav-inner {
-  flex: 1 1 0;
-  width: 0;
-  min-width: 0;
-  overflow-x: auto;
-}
-
-.nav .nav-more {
-  display: block;
-  flex: 0 0 auto;
-  margin: 0;
-  padding: 0;
-}
-
-.nav .nav-more-toggle {
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-.nav .nav-more-toggle::marker {
-  content: "";
-}
-
-.nav .nav-more-toggle::-webkit-details-marker {
-  display: none;
-}
-
-.nav .nav-more-panel {
-  position: absolute;
-  top: 100%;
-  right: 0;
-}
-/* Navigation: alle Menüpunkte besser unterbringen */
-@media (min-width: 1100px) {
-  .nav .nav-shell {
-    gap: 12px;
-  }
-
-  .nav .nav-inner {
-    gap: 17px;
-  }
-}
-/* Navigation: gleichmaessige Abstaende aller Menuepunkte */
-@media (min-width: 1100px) {
-  .nav .nav-shell {
-    justify-content: flex-start;
-    gap: 17px;
-  }
-
-  .nav .nav-inner {
-    flex: 0 1 auto;
-    width: auto;
+  .topline .wrap > span {
+    flex: 1;
     min-width: 0;
-    gap: 17px;
   }
 
-  .nav .nav-more {
-    margin-left: 0;
+  .topline .nav-more-panel {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    max-height: 70vh;
+    padding: 18px;
   }
 }
