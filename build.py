@@ -16,7 +16,8 @@ MAIN_CATEGORIES = [
     'Wirtschaft',
     'Veranstaltungen',
     'Sport',
-    'Stadtgeschichte'
+    'Stadtgeschichte',
+    'Panorama'
 ]
 
 MORE_CATEGORY_GROUPS = [
@@ -28,13 +29,9 @@ MORE_CATEGORY_GROUPS = [
         'Kultur',
         'Bergisches Land'
     ]),
-    ('Deutschland & Welt', [
-        'Deutschland',
-        'Weltgeschehen',
-        'Wissenschaft & Forschung',
-        'Digitales & Technik'
-    ]),
     ('Leben & Ratgeber', [
+        'Wissenschaft & Forschung',
+        'Digitales & Technik',
         'Gesundheit',
         'Verbraucher & Finanzen',
         'Familie & Alltag',
@@ -815,14 +812,25 @@ def ai_notice(a):
 def article_categories(a):
     selected = a.get('categories')
 
-    # Bestehende Artikel mit nur einer Rubrik unterstützen
+    # Auch ältere Artikel mit nur einer Rubrik unterstützen
     if not isinstance(selected, list) or not selected:
         selected = a.get('category') or 'Stadtleben'
 
     if isinstance(selected, str):
         selected = [selected]
 
-    # Nur bekannte Rubriken übernehmen
+    # Frühere Rubrikbezeichnungen berücksichtigen
+    aliases = {
+        'Deutschland': 'Panorama',
+        'Weltgeschehen': 'Panorama'
+    }
+
+    selected = [
+        aliases.get(category, category)
+        for category in selected
+    ]
+
+    # Nur gültige Rubriken übernehmen
     categories = [
         category for category in CATEGORIES
         if category in selected
@@ -1543,8 +1551,7 @@ def main():
         'Vereine & Ehrenamt': 'Vereinsleben und freiwilliges Engagement.',
         'Kultur': 'Kunst, Musik, Theater und kulturelles Leben.',
         'Bergisches Land': 'Nachrichten und Geschichten aus der Region.',
-        'Deutschland': 'Wichtige Nachrichten aus Deutschland.',
-        'Weltgeschehen': 'Internationale Ereignisse und Entwicklungen.',
+        'Panorama': 'Interessante Nachrichten, Entwicklungen und Geschichten aus Deutschland und darüber hinaus.',
         'Wissenschaft & Forschung': 'Wissenschaftliche Erkenntnisse und Forschung.',
         'Digitales & Technik': 'Digitalisierung, Internet, KI und Technik.',
         'Gesundheit': 'Medizin, Prävention und Gesundheitswissen.',
