@@ -178,7 +178,7 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .article-content p { margin: 0 0 1.35em; }
 .article-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 .article-content img, .article img { max-width: 100%; height: auto; }
-.article-content h2 { margin: 20px 0; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(22px, 2.4vw, 27px); line-height: 1.25; }
+.article-content h2 { margin: 0 0 23px; color: var(--navy); font-family: var(--font-editorial); font-size: clamp(22px, 2.4vw, 27px); line-height: 1.25; }
 .article-content h3 { color: var(--navy); font-size: 20px; line-height: 1.35; }
 .article .cover { margin: 24px 0; }
 .article-figure { margin: 24px 0 28px; }
