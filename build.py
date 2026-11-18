@@ -1348,7 +1348,25 @@ def main():
         'Veranstaltungen': 'Feste, Märkte, Kultur und Termine – das ist los in Wipperfürth.',
         'Sport': 'Vereine, Wettkämpfe und Erfolge – die Wipperfürther Sportwelt im Blick.',
         'Stadtgeschichte': 'Historische Orte, spannende Ereignisse und Geschichten aus vergangenen Zeiten.'
-    }
+    }    RUBRIK_BESCHREIBUNGEN.update({
+        'Wetter': 'Wetterentwicklungen, Prognosen und Warnungen.',
+        'Natur & Umwelt': 'Natur, Tierwelt, Klima und Umweltschutz.',
+        'Bildung & Schule': 'Schulen, Ausbildung und Bildungsthemen.',
+        'Vereine & Ehrenamt': 'Vereinsleben und freiwilliges Engagement.',
+        'Kultur': 'Kunst, Musik, Theater und kulturelles Leben.',
+        'Bergisches Land': 'Nachrichten und Geschichten aus der Region.',
+        'Deutschland': 'Wichtige Nachrichten aus Deutschland.',
+        'Weltgeschehen': 'Internationale Ereignisse und Entwicklungen.',
+        'Wissenschaft & Forschung': 'Wissenschaftliche Erkenntnisse und Forschung.',
+        'Digitales & Technik': 'Digitalisierung, Internet, KI und Technik.',
+        'Gesundheit': 'Medizin, Prävention und Gesundheitswissen.',
+        'Verbraucher & Finanzen': 'Verbraucherrechte, Geld und Finanzen.',
+        'Familie & Alltag': 'Familie, Erziehung und Alltagsthemen.',
+        'Haus & Garten': 'Wohnen, Haushalt und Gartenpflege.',
+        'Freizeit & Reisen': 'Freizeitideen, Reiseziele und Ausflüge.',
+        'Essen & Trinken': 'Ernährung, Lebensmittel und Genuss.',
+        'Wissen & Ratgeber': 'Wissenswertes, Hintergründe und praktische Tipps.'
+    })
     for cat in CATEGORIES:
         selected=[a for a in articles if cat in article_categories(a)]
         sponsor_ads = select_ads(ads, 'Rubrikensponsor', today, category=cat)
