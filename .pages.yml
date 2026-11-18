@@ -34,7 +34,7 @@ content:
         label: Im Kalender anzeigen
         type: boolean
         default: true
- - name: hinweise
+  - name: hinweise
     label: Aktuelle Hinweise
     type: collection
     path: content/notifications
