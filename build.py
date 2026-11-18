@@ -16,8 +16,7 @@ MAIN_CATEGORIES = [
     'Wirtschaft',
     'Veranstaltungen',
     'Sport',
-    'Stadtgeschichte',
-    'Panorama'
+    'Stadtgeschichte'
 ]
 
 MORE_CATEGORY_GROUPS = [
@@ -30,6 +29,7 @@ MORE_CATEGORY_GROUPS = [
         'Bergisches Land'
     ]),
     ('Leben & Ratgeber', [
+        'Panorama',
         'Wissenschaft & Forschung',
         'Digitales & Technik',
         'Gesundheit',
@@ -41,7 +41,6 @@ MORE_CATEGORY_GROUPS = [
         'Wissen & Ratgeber'
     ])
 ]
-
 CATEGORIES = MAIN_CATEGORIES + [
     category
     for group_name, group_categories in MORE_CATEGORY_GROUPS
