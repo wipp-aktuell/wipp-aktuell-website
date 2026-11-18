@@ -2636,3 +2636,15 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 18px;
   }
 }
+/* Obere Leiste: Instagram rechts neben dem Mehr-Menue */
+.topline .wrap {
+  justify-content: flex-start;
+}
+
+.topline .wrap > a {
+  margin-left: auto;
+}
+
+.topline .nav-more {
+  margin-left: 0;
+}
