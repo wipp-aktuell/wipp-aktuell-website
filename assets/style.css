@@ -2648,3 +2648,10 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .topline .nav-more {
   margin-left: 0;
 }
+/* H2 und H3: keine zusaetzliche Fettschrift */
+.article-content h2 strong,
+.article-content h3 strong,
+.article-content h2 b,
+.article-content h3 b {
+  font-weight: inherit;
+}
