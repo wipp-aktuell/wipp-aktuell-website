@@ -499,8 +499,9 @@ def base(title,description,content,active='',canonical='',article=False,image=''
 
     if (
         isinstance(image, str)
-        and image.startswith('/uploads/')
+        and image.startswith(('/uploads/', '/social/'))
         and '..' not in image
+        and '\\' not in image
     ):
         social_image = 'https://wipp-aktuell.de' + image
 
