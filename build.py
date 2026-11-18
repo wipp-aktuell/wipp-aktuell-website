@@ -519,6 +519,15 @@ def base(title,description,content,active='',canonical='',article=False,image=''
             '<meta name="twitter:image" content="'
             + esc(social_image) + '">'
         )
+    if social_image.startswith('https://wipp-aktuell.de/social/'):
+        social_tags += (
+            '<meta property="og:image:type" content="image/jpeg">'
+            '<meta property="og:image:width" content="1200">'
+            '<meta property="og:image:height" content="630">'
+            '<meta property="og:image:alt" content="'
+            + esc(title) + '">'
+        )
+
 
     social_tags += (
         '<meta name="twitter:card" content="summary_large_image">'
@@ -1338,6 +1347,62 @@ def create_news_sitemap(articles):
         + ''.join(entries)
         + '</urlset>'
     )
+def create_social_preview(article):
+    """Erstellt automatisch ein Social-Media-Vorschaubild."""
+
+    from PIL import Image, ImageOps
+
+    cover = article.get('cover') or ''
+
+    if not isinstance(cover, str) or not cover.startswith('/uploads/'):
+        return cover
+
+    if '..' in cover or '\\' in cover:
+        return ''
+
+    source = ROOT / 'public' / cover.lstrip('/')
+
+    if not source.is_file():
+        print('Social-Vorschau: Bild nicht gefunden:', cover)
+        return cover
+
+    filename = article['slug'] + '.jpg'
+    target_dir = DIST / 'social'
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target = target_dir / filename
+
+    try:
+        with Image.open(source) as original:
+            original = ImageOps.exif_transpose(original)
+            original = original.convert('RGB')
+
+            # Ausschliesslich das Vorschaubild zuschneiden.
+            # Das Bild im Artikel bleibt unveraendert.
+            preview = ImageOps.fit(
+                original,
+                (1200, 630),
+                method=Image.Resampling.LANCZOS
+            )
+
+            # Dateigroesse moeglichst klein halten.
+            for quality in (82, 75, 68, 60):
+                preview.save(
+                    target,
+                    'JPEG',
+                    quality=quality,
+                    optimize=True
+                )
+
+                if target.stat().st_size <= 300_000:
+                    break
+
+        return '/social/' + filename
+
+    except (OSError, ValueError) as error:
+        print('Social-Vorschau fehlgeschlagen:', error)
+        return cover
+
+
 
 def main():
     if DIST.exists():shutil.rmtree(DIST)
@@ -1507,7 +1572,20 @@ listing(
 <div class="article-content">{md(a.get('body',''))}</div>{source_notice(a)}{ai_notice(a)}{share_buttons(a)}<p><a class="button" href="/">← Zurück zur Startseite</a></p></article>{sidebar()}</main>'''
         
         article = article + news_article_jsonld(a)
-        write(pathlib.Path('artikel')/a['slug']/'index.html',base(a['title'],a.get('summary',''),article,active=article_categories(a)[0],canonical='/artikel/'+a['slug']+'/',article=True,image=a.get('cover','')))
+        social_preview = create_social_preview(a)
+
+        write(
+            pathlib.Path('artikel') / a['slug'] / 'index.html',
+            base(
+                a['title'],
+                a.get('summary', ''),
+                article,
+                active=article_categories(a)[0],
+                canonical='/artikel/' + a['slug'] + '/',
+                article=True,
+                image=social_preview
+            )
+        )
     
     for company in companies:
         company_title = esc(company.get('title', ''))
