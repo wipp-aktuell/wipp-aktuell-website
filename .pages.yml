@@ -100,6 +100,23 @@ content:
             - Veranstaltungen
             - Sport
             - Stadtgeschichte
+            - Wetter
+            - Natur & Umwelt
+            - Bildung & Schule
+            - Vereine & Ehrenamt
+            - Kultur
+            - Bergisches Land
+            - Deutschland
+            - Weltgeschehen
+            - Wissenschaft & Forschung
+            - Digitales & Technik
+            - Gesundheit
+            - Verbraucher & Finanzen
+            - Familie & Alltag
+            - Haus & Garten
+            - Freizeit & Reisen
+            - Essen & Trinken
+            - Wissen & Ratgeber
       - name: date
         label: Veröffentlichungsdatum und Uhrzeit
         type: date
