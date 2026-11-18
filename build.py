@@ -1348,7 +1348,7 @@ def main():
         'Veranstaltungen': 'Feste, Märkte, Kultur und Termine – das ist los in Wipperfürth.',
         'Sport': 'Vereine, Wettkämpfe und Erfolge – die Wipperfürther Sportwelt im Blick.',
         'Stadtgeschichte': 'Historische Orte, spannende Ereignisse und Geschichten aus vergangenen Zeiten.'
-    }    RUBRIK_BESCHREIBUNGEN.update({
+    }RUBRIK_BESCHREIBUNGEN.update({
         'Wetter': 'Wetterentwicklungen, Prognosen und Warnungen.',
         'Natur & Umwelt': 'Natur, Tierwelt, Klima und Umweltschutz.',
         'Bildung & Schule': 'Schulen, Ausbildung und Bildungsthemen.',
