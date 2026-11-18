@@ -2689,3 +2689,45 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     grid-column: auto;
   }
 }
+/* Korrektur: Mehr-Menue in der Navigationszeile */
+
+.nav .nav-shell {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav .nav-inner {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.nav .nav-more {
+  display: block;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+}
+
+.nav .nav-more-toggle {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav .nav-more-toggle::marker {
+  content: "";
+}
+
+.nav .nav-more-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav .nav-more-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+}
