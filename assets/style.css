@@ -2704,3 +2704,67 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
 .sidebar-more-taglist {
   margin-top: 12px;
 }
+/* Tabellen innerhalb von Nachrichtenartikeln */
+
+.article-content .article-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  margin: 24px 0 28px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid #dce5ed;
+  border-radius: 4px;
+}
+
+.article-content .article-table-scroll table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.article-content .article-table-scroll th,
+.article-content .article-table-scroll td {
+  padding: 12px 15px;
+  border-right: 1px solid #dce5ed;
+  border-bottom: 1px solid #dce5ed;
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+
+.article-content .article-table-scroll th {
+  background: #edf2f6;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.article-content .article-table-scroll td {
+  background: #fff;
+  color: #243545;
+}
+
+.article-content .article-table-scroll tbody tr:nth-child(even) td {
+  background: #f7f9fb;
+}
+
+.article-content .article-table-scroll tr > :last-child {
+  border-right: 0;
+}
+
+.article-content .article-table-scroll tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 620px) {
+  .article-content .article-table-scroll table {
+    font-size: 13px;
+  }
+
+  .article-content .article-table-scroll th,
+  .article-content .article-table-scroll td {
+    padding: 10px 12px;
+  }
+}
