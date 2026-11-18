@@ -115,7 +115,6 @@ content:
             - Haus & Garten
             - Freizeit & Reisen
             - Essen & Trinken
-            - Wissen & Ratgeber
       - name: date
         label: Veröffentlichungsdatum und Uhrzeit
         type: date
