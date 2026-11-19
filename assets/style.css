@@ -2799,3 +2799,19 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
     padding: 10px 12px;
   }
 }
+/* Vorschaukacheln: Bilder sauber und proportional skalieren */
+.story > .article-figure .cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.story > .article-figure .cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center;
+  max-width: none;
+}
