@@ -603,7 +603,43 @@ Startseite</a>{nav}<a href="/unternehmen/" class="{'active' if canonical.startsw
 def write(path,txt):
     p=DIST/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(txt,encoding='utf-8')
 
+def linkify_caption(text):
+    """Webadressen in Bildunterschriften sicher verlinken."""
+    text = str(text or '')
 
+    pattern = re.compile(
+        r'(?<![\w@])(?:https?://|www\.)[^\s<>"\']+',
+        re.IGNORECASE
+    )
+
+    parts = []
+    start = 0
+
+    for match in pattern.finditer(text):
+        parts.append(esc(text[start:match.start()]))
+
+        found = match.group(0)
+        url = found.rstrip('.,;:!?)]}')
+        trailing = found[len(url):]
+
+        href = (
+            url if url.lower().startswith(('http://', 'https://'))
+            else 'https://' + url
+        )
+
+        parts.append(
+            '<a href="' + esc(href) + '" '
+            'target="_blank" '
+            'rel="noopener noreferrer">'
+            + esc(url) + '</a>'
+        )
+
+        parts.append(esc(trailing))
+        start = match.end()
+
+    parts.append(esc(text[start:]))
+
+    return ''.join(parts)
 def cover(a, show_credit=False):
     img = a.get('cover', '')
 
@@ -618,14 +654,14 @@ def cover(a, show_credit=False):
             if description:
                 caption_html += (
                     '<div class="image-caption">'
-                    + esc(description)
+                    + linkify_caption(description)
                     + '</div>'
                 )
 
             if credit:
                 caption_html += (
                     '<div class="image-credit">'
-                    'Foto: ' + esc(credit) +
+                    'Foto: ' + linkify_caption(credit) +
                     '</div>'
                 )
 
