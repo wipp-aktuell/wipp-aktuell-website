@@ -2815,3 +2815,19 @@ button, a, input { -webkit-tap-highlight-color: transparent; }
   object-position: center;
   max-width: none;
 }
+/* Links in Bildunterschriften wie Quellenlinks darstellen */
+
+.article .image-details a,
+.article .image-details a:visited {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
+}
+
+.article .image-details a:hover,
+.article .image-details a:focus-visible {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
